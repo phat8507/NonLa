@@ -240,22 +240,24 @@ export default function Hero() {
               className="w-fit rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-white/72 backdrop-blur-md sm:text-xs"
               variants={fadeUp}
             >
-              Mở ra một Việt Nam · NONLA Campaign
+              Unbox Vietnam · NONLA Campaign
             </motion.p>
 
             <motion.div variants={fadeUp}>
               <h1 className="hero-headline max-w-[760px] text-[3.1rem] font-black leading-[0.98] text-white sm:text-6xl md:text-7xl xl:text-7xl">
                 Trọn tinh túy Việt
-                <span className="block text-yellow">dưới bóng nón</span>
+                <span className="block text-yellow">dưới bóng nón lá</span>
               </h1>
+              <p className="mt-2 text-xs md:text-sm font-bold text-[#FFD84D] tracking-wide">
+                “The full essence of Vietnam, sheltered under the nón lá.”
+              </p>
             </motion.div>
 
             <motion.p
               className="max-w-2xl text-base leading-relaxed text-white/76 sm:text-lg md:text-xl"
               variants={fadeUp}
             >
-              A premium Vietnamese freeze-dried coffee gift, opening culture through taste,
-              design, and ritual.
+              A premium Vietnamese freeze-dried coffee gift that turns convenience into a refined gifting ritual.
             </motion.p>
 
             <motion.div

@@ -65,8 +65,8 @@ export default function MarketResearch() {
             Market Research
           </h2>
           <p className="text-white/74 text-lg md:text-xl mt-5 leading-relaxed">
-            The opportunity is not “more instant coffee.” It is a giftable,
-            culturally coded coffee format that feels premium before the first
+            The opportunity is not more instant coffee. It is a premium,
+            culturally coded coffee gift that feels valuable before the first
             sip.
           </p>
         </div>

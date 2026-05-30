@@ -78,13 +78,16 @@ const StrategicApproach = () => {
           <motion.div variants={itemVariants} className="mb-8">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0A1628] leading-tight mb-4">
               <span className="text-[#F4B400]">REFRAME</span> — NONLA does not sell convenient coffee.<br/>
-              NONLA sells <span className="italic font-normal">"một Việt Nam được che chở và trao đi."</span>
+              NONLA sells <span className="italic font-normal">“a sheltered and shared Vietnam.”</span>
             </h2>
+            <p className="text-xs text-[#8A9BB5] mt-1 font-bold">
+              Vietnamese: “Một Việt Nam được che chở và trao đi”
+            </p>
           </motion.div>
 
           <motion.div variants={itemVariants} className="flex flex-col md:flex-row items-center justify-center gap-4 text-lg">
             <div className="px-6 py-3 bg-[#F5F7FA] text-[#8A9BB5] rounded-lg font-medium strike-through relative">
-              <span className="line-through">Ngon / Tiện</span>
+              <span className="line-through">Tasty / Convenient (Ngon / Tiện)</span>
             </div>
             <motion.div 
               initial={{ width: 0, opacity: 0 }}
@@ -95,7 +98,7 @@ const StrategicApproach = () => {
               <div className="absolute right-0 top-1/2 -translate-y-1/2 border-solid border-l-[#F4B400] border-l-[8px] border-y-transparent border-y-[6px] border-r-0"></div>
             </motion.div>
             <div className="px-6 py-3 bg-[#0A1628] text-white rounded-lg font-bold shadow-lg">
-              Có gu + Bản sắc + An toàn thể diện
+              Taste + Identity + Prestige (Gu + Bản sắc + Thể diện)
             </div>
           </motion.div>
         </motion.div>

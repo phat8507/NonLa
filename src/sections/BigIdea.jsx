@@ -6,28 +6,28 @@ import { MiniNonlaPack, NonLaDivider } from '../components/BrandDecor';
 const territories = [
   {
     id: 1,
-    title: 'Mở hộp, mở vị',
+    title: 'Unbox Flavor (Mở Hộp, Mở Vị)',
     subtitle: 'Product unboxing',
     funnel: 'TOFU',
     detail: 'Focus on product discovery, first taste experience, and shareable unboxing content.',
   },
   {
     id: 2,
-    title: 'Mở lòng Tết này',
+    title: 'Open Hearts this Tết (Mở Lòng Tết Này)',
     subtitle: 'Emotional gifting',
     funnel: 'MOFU',
-    detail: 'Connect Tet generosity with a gift that feels Vietnamese, polished, and easy to give.',
+    detail: 'Connect Tết generosity with a gift that feels Vietnamese, polished, and easy to give.',
   },
   {
     id: 3,
-    title: 'Dấu ấn doanh nghiệp',
+    title: 'Corporate Impression (Dấu Ấn Doanh Nghiệp)',
     subtitle: 'B2B corporate',
     funnel: 'BOFU',
-    detail: 'Make corporate gifting feel thoughtful through customization, cultural story, and premium ritual.',
+    detail: 'Make B2B corporate gifting feel thoughtful through customization, cultural story, and premium ritual.',
   },
   {
     id: 4,
-    title: 'Việt Nam trong tay bạn',
+    title: 'Vietnam in Your Hands (Việt Nam Trong Tay Bạn)',
     subtitle: 'Overseas gifting',
     funnel: 'Long-term',
     detail: 'Extend NONLA as a compact Vietnamese coffee souvenir for diaspora and travel gifting.',
@@ -35,9 +35,9 @@ const territories = [
 ];
 
 const pillars = [
-  ['Công nghệ', 'Freeze-drying protects flavor.'],
-  ['Thiết kế', 'The pod and pack protect the coffee ritual.'],
-  ['Thể diện', 'The gift protects the giver’s image.'],
+  ['Technology', 'Freeze-drying protects coffee flavor and essence.'],
+  ['Design', 'The nón lá pack protects the premium gifting ritual.'],
+  ['Prestige', 'The gift protects the giver’s face and recipient’s respect.'],
 ];
 
 export default function BigIdea() {
@@ -59,8 +59,11 @@ export default function BigIdea() {
             </p>
             <h2 className="max-w-xl text-4xl font-black leading-[0.98] text-white md:text-6xl lg:text-7xl">
               Trọn tinh túy Việt
-              <span className="block text-[#F4B400]">dưới bóng nón</span>
+              <span className="block text-[#F4B400]">dưới bóng nón lá</span>
             </h2>
+            <p className="mt-2 text-xs md:text-sm font-bold text-[#FFD84D] tracking-wide">
+              “The full essence of Vietnam, sheltered under the nón lá.”
+            </p>
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/74">
               NONLA turns instant coffee from a convenience format into a premium Vietnamese
               gifting ritual: protected by technology, design, and cultural meaning.
@@ -104,11 +107,14 @@ export default function BigIdea() {
               </div>
             </div>
 
-            <div className="mt-6 rounded-lg border border-[#F4B400]/30 bg-[#F4B400]/10 p-5">
-              <p className="text-sm leading-relaxed text-white/84">
-                Competitors often use the nón lá as decoration. NONLA uses it as meaning:
-                a shelter for flavor, identity, and the giver’s face.
-              </p>
+            <div className="mt-6 rounded-lg border border-[#F4B400]/30 bg-[#F4B400]/10 p-5 space-y-3">
+              <h4 className="text-xs font-bold uppercase tracking-widest text-[#FFD84D] mb-1">Official Brand Metaphors</h4>
+              <ul className="text-xs text-white/84 space-y-2.5 leading-relaxed">
+                <li><span className="text-[#FFD84D] font-bold">“Trọn tinh túy Việt”</span> (The full essence of Vietnam): Robusta origin, Vietnamese culture, and craft distilled into a compact coffee gift.</li>
+                <li><span className="text-[#FFD84D] font-bold">“Dưới bóng nón lá”</span> (Sheltered under the nón lá): The nón lá protects Vietnamese flavor, the giver’s face, and the sincerity of the gesture.</li>
+                <li><span className="text-[#FFD84D] font-bold">“Che chở bản sắc”</span> (Protecting identity): Freeze-drying protects the coffee essence, while the nón lá protects cultural identity.</li>
+                <li><span className="text-[#FFD84D] font-bold">“Thăng hoa ân tình”</span> (Elevating gratitude): Turns modern convenience into a refined ritual of gratitude.</li>
+              </ul>
             </div>
 
             <div className="mt-10">

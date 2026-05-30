@@ -10,26 +10,43 @@ import {
 
 const insightLayers = [
   {
-    title: 'Fear of looking cheap',
-    body: 'Convenience is useful, but a gift must still protect the giver’s image.',
+    title: 'Vietnamese Identity',
+    body: 'Desire for a convenient coffee gift with a strong Vietnamese cultural identity.',
     accent: '01',
   },
   {
-    title: 'Need for safe, presentable gifting',
-    body: 'Packaging, brand cues, and ritual must make the choice feel socially safe.',
+    title: 'Convenience Format',
+    body: 'Choosing instant/freeze-dried coffee solely for its modern convenience.',
     accent: '02',
   },
   {
-    title: 'Desire to show Vietnamese taste and thoughtfulness',
-    body: 'The giver wants something local, refined, and clearly chosen with care.',
+    title: 'Premium Stigma Fear',
+    body: 'Fear that standard convenient coffee formats may look insufficiently premium.',
     accent: '03',
+  },
+  {
+    title: 'Image Protection',
+    body: 'The critical need to protect and elevate the giver’s image in the recipient’s eyes.',
+    accent: '04',
   },
 ];
 
-const tensions = [
-  ['Convenience', 'Prestige'],
-  ['Practicality', 'Presentation'],
-  ['Newness', 'Brand Trust'],
+const bridges = [
+  {
+    left: 'Convenient format',
+    right: 'Premium signal',
+    resolution: 'Freeze-dried, but framed as premium',
+  },
+  {
+    left: 'Useful product',
+    right: 'Gift-worthy packaging',
+    resolution: 'Compact, but gift-ready',
+  },
+  {
+    left: 'New discovery',
+    right: 'Proven enough to trust',
+    resolution: 'New, but backed by proof',
+  },
 ];
 
 export default function Insight() {
@@ -57,10 +74,11 @@ export default function Insight() {
             <p className="text-xs uppercase tracking-widest text-[#FFD84D] font-bold mb-5">
               Human tension
             </p>
-            <p className="text-2xl md:text-3xl leading-relaxed text-white font-semibold">
-              “Tôi không sợ tặng cà phê tiện lợi vì nó rẻ — tôi sợ tặng một
-              thương hiệu mà người nhận chưa nghe tên, với bao bì không đủ nói
-              lên sự trân trọng của tôi.”
+            <p className="text-xl md:text-2xl leading-relaxed text-white font-semibold">
+              “I want to give a convenient coffee gift with a strong Vietnamese identity, but I worry that convenience may make it look insufficiently premium to protect my image in the recipient’s eyes.”
+            </p>
+            <p className="mt-4 text-xs md:text-sm text-white/50 italic leading-relaxed border-t border-white/10 pt-4">
+              Vietnamese: “Tôi không sợ tặng cà phê tiện lợi vì nó rẻ — tôi sợ tặng một thương hiệu mà người nhận chưa nghe tên, với bao bì không đủ nói lên sự trân trọng của tôi.”
             </p>
             <NonLaDivider className="mt-8" />
           </motion.blockquote>
@@ -70,39 +88,57 @@ export default function Insight() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.55, delay: 0.1 }}
-            className="nonla-panel p-6 md:p-8 min-h-[360px] flex flex-col justify-between overflow-hidden"
+            className="nonla-panel p-6 md:p-8 min-h-[360px] flex flex-col justify-between overflow-hidden relative"
           >
-            <div className="absolute -right-3 -bottom-6 opacity-80">
+            <div className="absolute -right-3 -bottom-6 opacity-40 pointer-events-none select-none">
               <NonlaMascotFallback />
             </div>
             <div className="relative z-10">
-              <p className="text-xs uppercase tracking-widest text-[#FFD84D] font-bold mb-4">
-                The gift has to do two jobs
+              <h3 className="text-sm uppercase tracking-widest text-[#FFD84D] font-black mb-1">
+                THE GIFT MUST BALANCE TWO JOBS
+              </h3>
+              <p className="text-xs text-white/76 mb-6 font-semibold">
+                Practical enough to use. Premium enough to give.
               </p>
-              <div className="space-y-4">
-                {tensions.map(([left, right]) => (
-                  <div key={left} className="rounded-2xl bg-white/[0.07] border border-white/10 p-4">
-                    <div className="flex items-center justify-between gap-3 text-sm font-bold text-white">
-                      <span>{left}</span>
-                      <span className="text-[#FFD84D]">vs</span>
-                      <span className="text-right">{right}</span>
+              <div className="space-y-6">
+                {bridges.map((bridge, idx) => (
+                  <div key={idx} className="relative">
+                    <div className="flex justify-between items-center text-xs md:text-sm font-bold text-white px-1">
+                      <span className="flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#FFD84D]" />
+                        {bridge.left}
+                      </span>
+                      <span className="flex items-center gap-1.5 text-right">
+                        {bridge.right}
+                        <span className="w-1.5 h-1.5 rounded-full bg-white/80" />
+                      </span>
                     </div>
-                    <div className="mt-3 h-1.5 rounded-full bg-white/10 overflow-hidden">
-                      <div className="h-full w-2/3 rounded-full bg-gradient-to-r from-[#FFD84D] to-[#F4B400]" />
+
+                    <div className="relative mt-3 mb-2 flex items-center justify-center">
+                      <div className="absolute left-0 right-0 h-[1px] border-t border-dashed border-white/20 z-0"></div>
+                      <div className="relative z-10 px-3.5 py-1 bg-[#FFD84D] text-[#0A192F] text-[10px] md:text-xs font-black rounded-full shadow-md text-center">
+                        {bridge.resolution}
+                      </div>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="relative z-10 mt-8 flex items-end gap-3">
-              <MiniNonlaPack label="Gift" />
-              <MiniNonlaPack label="Tet" src={['nonla-pack-egg-cream.png', 'nonla-pack-egg-cream.webp']} />
-              <CoffeeBean className="relative opacity-70" />
+
+            <div className="relative z-10 mt-6 pt-4 border-t border-white/10">
+              <p className="text-xs text-white/78 leading-relaxed italic mb-4">
+                “The buyer is not rejecting convenience. They need convenience to be protected by presentation, proof, and cultural meaning.”
+              </p>
+              <div className="flex items-end gap-3 origin-bottom-left scale-[0.70] sm:scale-[0.80] md:scale-100 transition-all">
+                <MiniNonlaPack label="Gift" />
+                <MiniNonlaPack label="Tet" src={['nonla-pack-egg-cream.png', 'nonla-pack-egg-cream.webp']} />
+                <CoffeeBean className="relative opacity-70" />
+              </div>
             </div>
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-6">
           {insightLayers.map((layer, index) => (
             <motion.article
               key={layer.title}

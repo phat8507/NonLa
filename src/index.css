@@ -54,8 +54,14 @@
 
 @layer components {
   .nonla-page-bg {
+    isolation: isolate;
+    min-height: 100vh;
     background:
-      linear-gradient(180deg, #1747FF 0%, #1238F5 20%, #0D35D6 44%, #1238F5 68%, #0A2EA8 100%);
+      radial-gradient(circle at 82% 6%, rgba(255, 216, 77, 0.2), transparent 24rem),
+      radial-gradient(circle at 8% 22%, rgba(255, 255, 255, 0.12), transparent 22rem),
+      radial-gradient(circle at 92% 62%, rgba(244, 180, 0, 0.12), transparent 26rem),
+      linear-gradient(180deg, #1747FF 0%, #1238F5 22%, #1747FF 46%, #1238F5 70%, #0A2EA8 100%);
+    background-attachment: fixed;
   }
 
   .section-bg-text {
@@ -90,11 +96,31 @@
   .nonla-section {
     position: relative;
     overflow: hidden;
-    background:
-      radial-gradient(70% 62% at 86% 18%, rgba(255, 216, 77, 0.14), transparent 52%),
-      radial-gradient(78% 64% at 8% 82%, rgba(255, 255, 255, 0.08), transparent 56%),
-      linear-gradient(135deg, rgba(18, 56, 245, 0.9) 0%, rgba(23, 71, 255, 0.82) 46%, rgba(7, 27, 114, 0.82) 100%);
+    background: transparent;
     color: #fff;
+  }
+
+  .nonla-section-inner {
+    width: min(100%, 1280px);
+    margin: 0 auto;
+    padding-block: clamp(4rem, 7vw, 6.75rem);
+  }
+
+  .nonla-section--hero .nonla-section-inner {
+    padding-block: 0;
+  }
+
+  .nonla-section--dark-card::before,
+  .nonla-section--chart::before,
+  .nonla-section--standard::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at var(--orb-x, 82%) var(--orb-y, 20%), rgba(255, 216, 77, 0.1), transparent 22rem),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 38%, rgba(8, 22, 58, 0.08));
   }
 
   .nonla-section-blend {
@@ -102,13 +128,9 @@
   }
 
   .nonla-section-blend::before {
-    content: '';
-    position: absolute;
-    inset: -1px 0;
-    z-index: 0;
-    pointer-events: none;
     background:
-      linear-gradient(180deg, rgba(18, 56, 245, 0.28), rgba(23, 71, 255, 0.1) 42%, rgba(10, 22, 40, 0.16) 100%);
+      radial-gradient(circle at var(--orb-x, 82%) var(--orb-y, 20%), rgba(255, 216, 77, 0.1), transparent 22rem),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 42%, rgba(8, 22, 58, 0.06));
   }
 
   .section-gradient-orb {
@@ -120,6 +142,25 @@
     opacity: 0.22;
     pointer-events: none;
     background: rgba(255, 216, 77, 0.45);
+  }
+
+  .brand-orb {
+    position: absolute;
+    width: min(46vw, 520px);
+    height: min(46vw, 520px);
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(255, 216, 77, 0.2), transparent 68%);
+    filter: blur(18px);
+    pointer-events: none;
+    opacity: 0.58;
+  }
+
+  .coffee-bean-cluster {
+    position: absolute;
+    width: 170px;
+    height: 120px;
+    pointer-events: none;
+    opacity: 0.42;
   }
 
   .section-transition-soft {
@@ -151,21 +192,30 @@
   }
 
   .nonla-card {
-    background: rgba(8, 22, 58, 0.84);
-    border: 1px solid rgba(255, 216, 77, 0.24);
-    box-shadow: 0 22px 56px rgba(0, 0, 0, 0.24);
+    background: rgba(8, 22, 58, 0.88);
+    border: 1px solid rgba(255, 216, 77, 0.28);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.26);
   }
 
   .nonla-card-strong {
     background:
-      linear-gradient(145deg, rgba(8, 22, 58, 0.94), rgba(0, 51, 204, 0.68));
+      linear-gradient(145deg, rgba(8, 22, 58, 0.96), rgba(10, 22, 40, 0.88) 58%, rgba(23, 71, 255, 0.48));
     border: 1px solid rgba(255, 216, 77, 0.38);
-    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.32);
+    box-shadow: 0 30px 72px rgba(0, 0, 0, 0.34);
   }
 
   .nonla-panel {
-    background: rgba(7, 18, 44, 0.88);
-    border: 1px solid rgba(255, 255, 255, 0.13);
+    background: rgba(8, 22, 58, 0.9);
+    border: 1px solid rgba(255, 216, 77, 0.2);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+  }
+
+  .nonla-chart-surface {
+    border-radius: 24px;
+    background: #fff6dc;
+    border: 1px solid rgba(255, 216, 77, 0.48);
+    color: #0A1628;
+    box-shadow: inset 0 0 0 1px rgba(10, 22, 40, 0.06), 0 24px 54px rgba(0, 0, 0, 0.22);
   }
 
   .nonla-card:hover,
@@ -229,10 +279,7 @@
   }
 
   .brand-section {
-    background:
-      radial-gradient(circle at 86% 18%, rgba(255, 216, 77, 0.14), transparent 30%),
-      radial-gradient(circle at 8% 82%, rgba(255, 255, 255, 0.08), transparent 32%),
-      linear-gradient(135deg, rgba(18, 56, 245, 0.78) 0%, rgba(23, 71, 255, 0.72) 52%, rgba(10, 46, 168, 0.76) 100%);
+    background: transparent;
     color: #FFFFFF;
   }
 
@@ -242,8 +289,8 @@
     z-index: 0;
     pointer-events: none;
     background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.045), transparent 34%),
-      radial-gradient(circle at 70% 44%, rgba(244, 180, 0, 0.08), transparent 18%);
+      linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 34%),
+      radial-gradient(circle at 70% 44%, rgba(244, 180, 0, 0.06), transparent 18%);
   }
 
   .brand-section--darken .section-bg-text,
@@ -299,6 +346,13 @@
     z-index: 1;
     pointer-events: none;
     overflow: hidden;
+  }
+
+  .section-decor--light .section-decor__leaf--two,
+  .section-decor--light .section-decor__bean--3,
+  .section-decor--light .section-decor__bean--4,
+  .section-decor--light .section-decor__hat--one {
+    display: none;
   }
 
   .brand-leaf {
@@ -415,6 +469,30 @@
     background: rgba(244, 180, 0, 0.15);
     transform: rotate(35deg);
     position: relative;
+  }
+
+  @media (max-width: 640px) {
+    .nonla-section-inner {
+      padding-block: 3.5rem;
+    }
+
+    .section-decor__leaf--two,
+    .section-decor__bean--2,
+    .section-decor__bean--3,
+    .section-decor__bean--4,
+    .section-decor__hat {
+      display: none;
+    }
+
+    .brand-leaf {
+      width: 82px;
+      height: 31px;
+      opacity: 0.32;
+    }
+
+    .coffee-bean-field__bean {
+      opacity: 0.14;
+    }
   }
 
   .coffee-bean::after,

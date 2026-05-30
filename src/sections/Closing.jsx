@@ -1,6 +1,11 @@
 import { motion } from 'framer-motion';
 import SectionWrapper from '../components/SectionWrapper';
-import { MiniNonlaPack, NonLaDivider, NonlaMascotFallback, CoffeeBean } from '../components/BrandDecor';
+import {
+  CoffeeBean,
+  MiniNonlaPack,
+  NonLaDivider,
+  NonlaMascotFallback,
+} from '../components/BrandDecor';
 import BrandAsset from '../components/BrandAsset';
 
 function NonlaWordmark() {
@@ -33,26 +38,15 @@ const closingPoints = [
   'The perception shift: from convenient coffee to a Vietnamese gift ritual.',
 ];
 
-const sources = [
-  'Statista',
-  'NIQ 2025',
-  'Decision Lab',
-  'Q&Me',
-  'Kantar',
-  'Meta',
-  'YouNet Media',
-  'Worldpanel',
-];
-
 export default function Closing() {
   return (
-    <SectionWrapper id="closing" bgColor="#0A1628" className="min-h-screen pb-10 pt-24">
-      <div className="relative z-10 mx-auto grid min-h-[calc(100svh-8rem)] max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_0.82fr]">
+    <SectionWrapper id="closing" className="min-h-screen" decor="medium">
+      <div className="mx-auto grid min-h-[calc(100svh-7rem)] max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_0.82fr]">
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.75 }}
+          transition={{ duration: 0.65 }}
         >
           <BrandAsset
             src={['nonla-logo.svg', 'nonla-logo.png', 'nonla-logo.webp']}
@@ -65,22 +59,24 @@ export default function Closing() {
           </p>
           <h2 className="max-w-3xl text-4xl font-black leading-[0.98] text-white md:text-6xl lg:text-7xl">
             Trọn tinh túy Việt
-            <span className="block text-[#F4B400]">dưới bóng nón.</span>
+            <span className="block text-[#F4B400]">dưới bóng nón lá.</span>
           </h2>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/74">
-            A premium coffee gift can carry more than taste: it can carry face, memory,
-            and a small ritual of Vietnam.
+          <p className="mt-2 text-xs md:text-sm font-bold text-[#FFD84D] tracking-wide mb-6">
+            “The full essence of Vietnam, sheltered under the nón lá.”
+          </p>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/76">
+            NONLA turns Vietnamese coffee into a giftable cultural ritual — compact, premium, and protected under the nón lá.
           </p>
 
-          <div className="mt-8 flex flex-col gap-4">
+          <div className="mt-8 grid grid-cols-1 gap-4">
             {closingPoints.map((point, index) => (
               <motion.div
                 key={point}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -18 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: index * 0.08 }}
-                className="glass-card flex items-start gap-4 border-l-4 border-l-[#F4B400] p-5"
+                transition={{ duration: 0.4, delay: index * 0.06 }}
+                className="nonla-card flex items-start gap-4 border-l-4 border-l-[#F4B400] p-5"
               >
                 <span className="mt-1 text-[#F4B400]" aria-hidden="true">●</span>
                 <p className="text-base font-semibold leading-relaxed text-white/88">{point}</p>
@@ -94,10 +90,10 @@ export default function Closing() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 24 }}
+          initial={{ opacity: 0, scale: 0.96, y: 24 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.75 }}
+          transition={{ duration: 0.65 }}
           className="relative mx-auto h-[520px] w-full max-w-md"
         >
           <div className="absolute inset-x-8 bottom-8 h-28 rounded-[50%] bg-[#F4B400]/20 blur-2xl" aria-hidden="true" />
@@ -122,22 +118,6 @@ export default function Closing() {
             />
           ))}
         </motion.div>
-      </div>
-
-      <div className="relative z-10 mx-auto mt-12 max-w-4xl text-center">
-        <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-white/46">
-          Research Sources
-        </h3>
-        <div className="flex flex-wrap justify-center gap-2">
-          {sources.map((source) => (
-            <span key={source} className="rounded border border-white/10 bg-white/6 px-3 py-1 text-xs text-white/54">
-              {source}
-            </span>
-          ))}
-        </div>
-        <p className="mt-8 text-xs text-white/38">
-          © 2026 Team SHIFT — YFC Future Leaders Program
-        </p>
       </div>
     </SectionWrapper>
   );

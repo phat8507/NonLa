@@ -2,29 +2,14 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { BrandGradientBackground, SectionDecor } from './BrandDecor';
 
-/**
- * SectionWrapper
- *
- * Reusable wrapper for each major section of the case study page.
- *
- * Props:
- *  - id: section id for nav targeting (string)
- *  - bgColor: Tailwind bg class or inline color (string, default "bg-[#0A1628]")
- *  - bgText: oversized background text content (string)
- *  - bgTextDark: if true, uses dark stroke style for light backgrounds (boolean)
- *  - children: section content
- *  - className: extra Tailwind classes for the outer container
- *  - diagonal: "top" | "bottom" | "both" — apply diagonal clip-path
- */
-
 const sectionVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      duration: 0.6,
+      duration: 0.55,
       ease: 'easeOut',
-      staggerChildren: 0.1,
+      staggerChildren: 0.08,
     },
   },
 };
@@ -37,40 +22,42 @@ export default function SectionWrapper({
   children,
   className = '',
   diagonal,
+  decor = 'light',
+  variant = 'standard',
 }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
-  // Build diagonal class
   let diagonalClass = '';
   if (diagonal === 'top') diagonalClass = 'diagonal-top';
   else if (diagonal === 'bottom') diagonalClass = 'diagonal-bottom';
   else if (diagonal === 'both') diagonalClass = 'diagonal-top diagonal-bottom';
 
-  // Determine if bgColor is a Tailwind class or an inline color
-  const isTailwindClass = bgColor.startsWith('bg-');
   const isLightSection = ['#FFFFFF', '#F5F7FA', 'bg-white', 'bg-[#F5F7FA]'].includes(bgColor);
+  const showDecor = decor !== 'none';
+  const showGradient = variant !== 'hero';
 
   return (
     <section
       id={id}
       ref={ref}
       className={`
-        nonla-section nonla-section-blend brand-section ${isLightSection ? 'brand-section--darken' : ''}
-        relative overflow-hidden
-        py-16 px-5 sm:px-6 md:py-20 md:px-8 lg:py-24 lg:px-16
-        ${isTailwindClass && !isLightSection ? bgColor : ''}
+        nonla-section nonla-section-blend nonla-section--${variant}
+        ${isLightSection ? 'brand-section--darken' : ''}
+        relative overflow-hidden px-5 sm:px-6 md:px-8 lg:px-16
         ${diagonalClass}
         ${className}
       `}
-      style={undefined}
     >
-      <BrandGradientBackground />
-      <div className="section-transition-soft section-transition-soft--top" aria-hidden="true" />
-      <div className="section-transition-soft section-transition-soft--bottom" aria-hidden="true" />
-      <SectionDecor density="low" />
+      {showGradient && <BrandGradientBackground />}
+      {showGradient && (
+        <>
+          <div className="section-transition-soft section-transition-soft--top" aria-hidden="true" />
+          <div className="section-transition-soft section-transition-soft--bottom" aria-hidden="true" />
+        </>
+      )}
+      {showDecor && <SectionDecor density={decor === 'medium' ? 'standard' : 'low'} />}
 
-      {/* Oversized background text */}
       {bgText && (
         <div
           className={`section-bg-text ${bgTextDark ? 'section-bg-text-dark' : ''}`}
@@ -80,9 +67,8 @@ export default function SectionWrapper({
         </div>
       )}
 
-      {/* Content wrapper — sits above bg text */}
       <motion.div
-        className="relative z-10"
+        className="nonla-section-inner relative z-10"
         variants={sectionVariants}
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
