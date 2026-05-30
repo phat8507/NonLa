@@ -103,19 +103,22 @@ function MarketGrowthChart() {
           </div>
         </div>
 
-        {/* Right: Giftset Price Acceptance breakdown */}
+        {/* Right: Giftset Price Opportunity Fit breakdown */}
         <div className="space-y-5">
-          <h4 className="text-xs font-black text-[#FFD84D] uppercase tracking-wider">Giftset Price Acceptance</h4>
+          <h4 className="text-xs font-black text-[#FFD84D] uppercase tracking-wider">Giftset Price Opportunity Fit</h4>
           <p className="text-sm text-white/80 leading-relaxed italic">
             “The opportunity is not more instant coffee. It is a premium, culturally coded coffee gift that feels valuable before the first sip.”
           </p>
-          
+          <p className="rounded-xl border border-[#FFD84D]/25 bg-[#FFD84D]/10 px-3 py-2 text-xs font-semibold leading-relaxed text-white/82">
+            Strategic scoring — directional, not survey data.
+          </p>
+
           <div className="space-y-3.5 border-t border-white/10 pt-4">
             {/* Segment 1 */}
             <div>
               <div className="flex justify-between items-center text-xs font-bold text-white mb-1.5">
                 <span>Mid-Premium Sweet Spot (200k - 500k)</span>
-                <span className="text-[#FFD84D]">60% Acceptance</span>
+                <span className="text-[#FFD84D]">60% Opportunity Fit</span>
               </div>
               <div className="h-3 w-full bg-white/10 rounded-full overflow-hidden">
                 <div className="h-full bg-[#FFD84D]" style={{ width: '60%' }} />
@@ -127,7 +130,7 @@ function MarketGrowthChart() {
             <div>
               <div className="flex justify-between items-center text-xs font-bold text-white mb-1.5">
                 <span>Entry Gift Segment (&lt;200k)</span>
-                <span className="text-white/60">25% Acceptance</span>
+                <span className="text-white/60">25% Opportunity Fit</span>
               </div>
               <div className="h-3 w-full bg-white/10 rounded-full overflow-hidden">
                 <div className="h-full bg-[#1A4DFF]" style={{ width: '25%' }} />
@@ -139,7 +142,7 @@ function MarketGrowthChart() {
             <div>
               <div className="flex justify-between items-center text-xs font-bold text-white mb-1.5">
                 <span>High-End Luxury (&gt;500k)</span>
-                <span className="text-white/60">15% Acceptance</span>
+                <span className="text-white/60">15% Opportunity Fit</span>
               </div>
               <div className="h-3 w-full bg-white/10 rounded-full overflow-hidden">
                 <div className="h-full bg-[#1A4DFF]/60" style={{ width: '15%' }} />

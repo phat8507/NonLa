@@ -22,7 +22,7 @@ export default function SectionWrapper({
   children,
   className = '',
   diagonal,
-  decor = 'light',
+  decor = 'none',
   variant = 'standard',
 }) {
   const ref = useRef(null);
@@ -35,7 +35,7 @@ export default function SectionWrapper({
 
   const isLightSection = ['#FFFFFF', '#F5F7FA', 'bg-white', 'bg-[#F5F7FA]'].includes(bgColor);
   const showDecor = decor !== 'none';
-  const showGradient = variant !== 'hero';
+  const showGradient = variant !== 'hero' && variant !== 'standard';
 
   return (
     <section

@@ -103,7 +103,7 @@ export default function Closing() {
           <BrandAsset
             src="coffee-beans-pile.png"
             decorative
-            className="absolute bottom-4 w-72 h-auto z-10 opacity-70 mix-blend-screen pointer-events-none"
+            className="absolute bottom-4 w-72 h-auto z-10 opacity-55 pointer-events-none"
             fallback={null}
           />
           <div className="absolute bottom-6 w-80 h-10 bg-[#0A1628]/80 blur-md rounded-full z-0" aria-hidden="true" />
@@ -141,7 +141,7 @@ export default function Closing() {
             <BrandAsset
               src={['mascot.png', 'mascot.webp']}
               alt="NONLA campaign mascot"
-              className="w-full h-auto object-contain mix-blend-screen drop-shadow-md animate-float-slow"
+              className="w-full h-auto object-contain drop-shadow-md animate-float-slow"
               fallback={null}
             />
           </div>

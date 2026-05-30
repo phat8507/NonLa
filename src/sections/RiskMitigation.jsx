@@ -232,7 +232,7 @@ const RiskMitigation = () => {
           variants={containerVariants}
         >
           {/* Card 1 */}
-          <motion.div variants={cardVariants} className="glass-card relative overflow-hidden flex flex-col h-full border border-[#FFD84D]/15 bg-navy-card">
+          <motion.div variants={cardVariants} className="glass-card relative overflow-hidden flex flex-col h-full border border-[#FFD84D]/15 bg-[#08163A]/90">
             <div className="h-1 w-full bg-gradient-to-r from-red-500 to-orange-400"></div>
             <div className="p-8 flex-1 flex flex-col">
               <div className="flex justify-between items-start mb-6">
@@ -268,7 +268,7 @@ const RiskMitigation = () => {
           </motion.div>
 
           {/* Card 2 */}
-          <motion.div variants={cardVariants} className="glass-card relative overflow-hidden flex flex-col h-full border border-[#FFD84D]/15 bg-navy-card">
+          <motion.div variants={cardVariants} className="glass-card relative overflow-hidden flex flex-col h-full border border-[#FFD84D]/15 bg-[#08163A]/90">
             <div className="h-1 w-full bg-gradient-to-r from-orange-400 to-amber-400"></div>
             <div className="p-8 flex-1 flex flex-col">
               <div className="flex justify-between items-start mb-6">
@@ -307,7 +307,7 @@ const RiskMitigation = () => {
           </motion.div>
 
           {/* Card 3 */}
-          <motion.div variants={cardVariants} className="glass-card relative overflow-hidden flex flex-col h-full border border-[#FFD84D]/15 bg-navy-card">
+          <motion.div variants={cardVariants} className="glass-card relative overflow-hidden flex flex-col h-full border border-[#FFD84D]/15 bg-[#08163A]/90">
             <div className="h-1 w-full bg-gradient-to-r from-amber-400 to-yellow-400"></div>
             <div className="p-8 flex-1 flex flex-col">
               <div className="flex justify-between items-start mb-6">

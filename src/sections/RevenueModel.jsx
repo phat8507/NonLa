@@ -11,7 +11,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
 const RevenueWaterfall = () => {
   const steps = [
-    { label: "Marketing Budget", value: "4.0B", change: "start", height: 33.3, bottom: 0, color: "bg-[#1A4DFF]", desc: "Initial Investment" },
+    { label: "4B Investment Input", value: "4.0B", change: "input", height: 33.3, bottom: 0, color: "bg-white/10 border border-dashed border-[#FFD84D]/45", desc: "Marketing budget input" },
     { label: "B2B Revenue", value: "+9.0B", change: "plus", height: 75.0, bottom: 0, color: "bg-[#FFD84D]", desc: "300 orders × 30M" },
     { label: "B2C Revenue", value: "+3.0B", change: "plus", height: 25.0, bottom: 75.0, color: "bg-[#F4B400]", desc: "10,000 orders × 300k" },
     { label: "Revenue Target", value: "12.0B", change: "total", height: 100.0, bottom: 0, color: "bg-[#22C55E]", desc: "Target 3.0× ROAS" }
@@ -19,8 +19,8 @@ const RevenueWaterfall = () => {
 
   return (
     <div className="glass-card p-6 border border-[#FFD84D]/20 mt-12 relative overflow-hidden">
-      <h3 className="text-xl font-bold text-white mb-2">Revenue Waterfall & ROAS Bridge</h3>
-      <p className="text-xs text-[#8A9BB5] mb-6">Visualizing how B2B corporate contracts and B2C retail orders scale our 4B budget to 12B revenue.</p>
+      <h3 className="text-xl font-bold text-white mb-2">ROAS Bridge: 4B Investment → 12B Revenue Target</h3>
+      <p className="text-xs text-[#8A9BB5] mb-6">Marketing budget is shown as the investment input; B2B and B2C bars are the revenue contributors that build to the 12B target.</p>
       
       {/* Waterfall Display Area */}
       <div className="relative h-64 w-full border-b border-white/20 pb-2 select-none flex justify-between items-end gap-2 md:gap-4 px-2">
