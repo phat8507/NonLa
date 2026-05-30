@@ -52,6 +52,90 @@ function ChannelIcon({ name }) {
       </svg>
     );
   }
+  if (name === 'Instagram') {
+    return (
+      <svg viewBox="0 0 24 24" className={baseClass} aria-hidden="true">
+        <rect x="4" y="4" width="16" height="16" rx="5" fill="none" stroke="#0A1628" strokeWidth="2.3" />
+        <circle cx="12" cy="12" r="3.5" fill="none" stroke="#0A1628" strokeWidth="2" />
+        <circle cx="16.8" cy="7.3" r="1.2" fill="#0A1628" />
+      </svg>
+    );
+  }
+  if (name === 'Zalo') {
+    return (
+      <svg viewBox="0 0 24 24" className={baseClass} aria-hidden="true">
+        <rect x="3" y="5" width="18" height="14" rx="4" fill="#0A1628" />
+        <path d="M8 9h5l-5 6h6M16 9v6" stroke="#FFD84D" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    );
+  }
+  if (name === 'ShopeeFood' || name === 'Shopee') {
+    return (
+      <svg viewBox="0 0 24 24" className={baseClass} aria-hidden="true">
+        <path d="M7 8h10l1 12H6L7 8Z" fill="#0A1628" />
+        <path d="M9 8a3 3 0 0 1 6 0" fill="none" stroke="#0A1628" strokeWidth="2" strokeLinecap="round" />
+        <path d="M10 12h4.2a1.8 1.8 0 0 1 0 3.6H10" fill="none" stroke="#FFD84D" strokeWidth="1.8" strokeLinecap="round" />
+      </svg>
+    );
+  }
+  if (name === 'GrabFood') {
+    return (
+      <svg viewBox="0 0 24 24" className={baseClass} aria-hidden="true">
+        <path d="M18 9.5a6.2 6.2 0 1 0 .1 5.1h-5.5v-3h8.2c.2 1.1.1 2.2-.2 3.2A8.4 8.4 0 1 1 18 6.1Z" fill="#0A1628" />
+      </svg>
+    );
+  }
+  if (name === 'LinkedIn') {
+    return (
+      <svg viewBox="0 0 24 24" className={baseClass} aria-hidden="true">
+        <rect x="4" y="4" width="16" height="16" rx="2.5" fill="#0A1628" />
+        <path d="M7.5 10h2.2v6.8H7.5V10Zm1.1-3.2a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM11 10h2.1v.9c.4-.6 1.1-1.1 2.2-1.1 1.8 0 2.9 1.2 2.9 3.4v3.6H16v-3.4c0-1-.5-1.6-1.3-1.6s-1.5.6-1.5 1.6v3.4H11V10Z" fill="#FFD84D" />
+      </svg>
+    );
+  }
+  if (name === 'Email') {
+    return (
+      <svg viewBox="0 0 24 24" className={baseClass} aria-hidden="true">
+        <rect x="3" y="6" width="18" height="12" rx="2" fill="#0A1628" />
+        <path d="m5 8 7 5 7-5" fill="none" stroke="#FFD84D" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    );
+  }
+  if (name === 'Landing page') {
+    return (
+      <svg viewBox="0 0 24 24" className={baseClass} aria-hidden="true">
+        <rect x="4" y="5" width="16" height="14" rx="2" fill="#0A1628" />
+        <path d="M8 9h8M8 12h5M8 15h7" stroke="#FFD84D" strokeWidth="1.7" strokeLinecap="round" />
+      </svg>
+    );
+  }
+  if (name === 'KOC') {
+    return (
+      <svg viewBox="0 0 24 24" className={baseClass} aria-hidden="true">
+        <circle cx="9" cy="9" r="3" fill="#0A1628" />
+        <path d="M4.5 18c.7-2.5 2.2-4 4.5-4s3.8 1.5 4.5 4" fill="#0A1628" />
+        <path d="m16 7 1.1 2.2 2.4.4-1.7 1.7.4 2.4-2.2-1.1-2.2 1.1.4-2.4-1.7-1.7 2.4-.4L16 7Z" fill="#0A1628" />
+      </svg>
+    );
+  }
+  if (name === 'Direct B2B') {
+    return (
+      <svg viewBox="0 0 24 24" className={baseClass} aria-hidden="true">
+        <rect x="3" y="8" width="18" height="11" rx="2" fill="#0A1628" />
+        <path d="M8 8V6h8v2" fill="none" stroke="#0A1628" strokeWidth="2" />
+        <path d="M7 13h10M9 16h6" stroke="#FFD84D" strokeWidth="1.7" strokeLinecap="round" />
+      </svg>
+    );
+  }
+  if (name === 'Offline popup') {
+    return (
+      <svg viewBox="0 0 24 24" className={baseClass} aria-hidden="true">
+        <path d="M5 9h14l-1 10H6L5 9Z" fill="#0A1628" />
+        <path d="M4 9 6.5 5h11L20 9" fill="none" stroke="#0A1628" strokeWidth="2" strokeLinejoin="round" />
+        <path d="M9 13h6" stroke="#FFD84D" strokeWidth="1.8" strokeLinecap="round" />
+      </svg>
+    );
+  }
   return (
     <svg viewBox="0 0 24 24" className={baseClass} aria-hidden="true">
       <circle cx="12" cy="12" r="8" fill="#0A1628" />
@@ -239,9 +323,6 @@ const IMCPlan = () => {
           </div>
 
           <div className="glass-card p-6 md:p-8 relative overflow-hidden">
-            <div className="absolute right-5 top-5 opacity-70 hidden sm:block">
-              <MiniNonlaPack label="IMC" />
-            </div>
             <AnimatePresence mode="wait">
               <motion.div
                 key={activePhase}
@@ -255,8 +336,8 @@ const IMCPlan = () => {
                     <h3 className="text-xl md:text-2xl font-bold text-[#F4B400] mb-2">"{phase.message}"</h3>
                     <div className="w-full h-px bg-white/10 my-4"></div>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                      <div className="col-span-2">
+                    <div className="grid grid-cols-1 md:grid-cols-[1fr_0.42fr] gap-8">
+                      <div>
                         <h4 className="text-sm uppercase text-[#8A9BB5] font-bold mb-3">Key Tactics</h4>
                         <ul className="space-y-3">
                           {phase.tactics.map((tactic, idx) => (
@@ -268,12 +349,15 @@ const IMCPlan = () => {
                         </ul>
                       </div>
                       
-                      <div>
+                      <div className="space-y-5">
                         <h4 className="text-sm uppercase text-[#8A9BB5] font-bold mb-3">Channels</h4>
                         <div className="flex flex-wrap gap-2">
                           {phase.channels.map((channel, idx) => (
                             <ChannelChip key={idx} name={channel} />
                           ))}
+                        </div>
+                        <div className="hidden sm:flex justify-end border-t border-white/10 pt-4">
+                          <MiniNonlaPack label={phase.name} />
                         </div>
                       </div>
                     </div>
