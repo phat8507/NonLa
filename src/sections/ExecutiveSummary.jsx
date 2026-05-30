@@ -23,7 +23,7 @@ const cards = [
   },
   {
     title: 'BIG IDEA',
-    body: 'Trọn tinh túy Việt dưới bóng nón lá',
+    body: 'Trọn tinh túy Việt dưới bóng nón',
     icon: (
       // Target / idea shape — nón lá triangle with sparkle
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none">

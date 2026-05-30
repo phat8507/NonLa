@@ -7,6 +7,39 @@ import { useInView } from 'react-intersection-observer';
 
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement);
 
+const channelMarks = {
+  TikTok: '♪',
+  Facebook: 'f',
+  YouTube: '▶',
+  Youtube: '▶',
+  PR: '▣',
+  Instagram: '◎',
+  ShopeeFood: 'S',
+  GrabFood: 'G',
+  LinkedIn: 'in',
+  Email: '@',
+  Shopee: 'S',
+  'TikTok Shop': '♪',
+  'Offline popup': '□',
+  'Meta retargeting': 'f',
+  Google: 'G',
+  'Landing page': '↗',
+  Zalo: 'Z',
+  KOC: '★',
+  'Direct B2B': 'B2B',
+};
+
+function ChannelChip({ name }) {
+  return (
+    <span className="nonla-chip">
+      <span className="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#FFD84D] px-1 text-[10px] font-black text-[#0A1628]">
+        {channelMarks[name] || '•'}
+      </span>
+      {name}
+    </span>
+  );
+}
+
 const IMCPlan = () => {
   const [activePhase, setActivePhase] = useState(1);
   const { ref: chartRef, inView: chartInView } = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -30,7 +63,7 @@ const IMCPlan = () => {
       name: "OCT",
       title: "Cho Dùng Thử, Đập Tan Định Kiến",
       budget: "1B (25%)",
-      message: "Trọn tinh túy Việt dưới bóng nón lá",
+      message: "Trọn tinh túy Việt dưới bóng nón",
       tactics: [
         "Lunchtime sampling via ShopeeFood/GrabFood (11:30–13:00, office buildings Grade A/B, 3+ person orders)",
         "30 KOC unboxing videos",
@@ -203,9 +236,7 @@ const IMCPlan = () => {
                         <h4 className="text-sm uppercase text-[#8A9BB5] font-bold mb-3">Channels</h4>
                         <div className="flex flex-wrap gap-2">
                           {phase.channels.map((channel, idx) => (
-                            <span key={idx} className="px-3 py-1.5 bg-white/10 rounded border border-white/5 text-xs text-white">
-                              {channel}
-                            </span>
+                            <ChannelChip key={idx} name={channel} />
                           ))}
                         </div>
                       </div>
@@ -233,42 +264,42 @@ const IMCPlan = () => {
               </thead>
               <tbody className="text-white/80">
                 <tr className="border-b border-white/5 hover:bg-white/5">
-                  <td className="p-4 font-bold text-white">TikTok</td>
+                  <td className="p-4 font-bold text-white"><ChannelChip name="TikTok" /></td>
                   <td className="p-4"><span className="text-[#F4B400]">Awareness + Trial</span></td>
                   <td className="p-4">Gen Z/Millennial reach, unboxing virality</td>
                 </tr>
                 <tr className="border-b border-white/5 hover:bg-white/5">
-                  <td className="p-4 font-bold text-white">Facebook</td>
+                  <td className="p-4 font-bold text-white"><ChannelChip name="Facebook" /></td>
                   <td className="p-4"><span className="text-[#F4B400]">Awareness + Community</span></td>
                   <td className="p-4">HR community targeting, broad Tet reach</td>
                 </tr>
                 <tr className="border-b border-white/5 hover:bg-white/5">
-                  <td className="p-4 font-bold text-white">Google</td>
+                  <td className="p-4 font-bold text-white"><ChannelChip name="Google" /></td>
                   <td className="p-4"><span className="text-[#1A4DFF]">Conversion</span></td>
                   <td className="p-4">Search intent capture, remarketing</td>
                 </tr>
                 <tr className="border-b border-white/5 hover:bg-white/5">
-                  <td className="p-4 font-bold text-white">Landing page</td>
+                  <td className="p-4 font-bold text-white"><ChannelChip name="Landing page" /></td>
                   <td className="p-4"><span className="text-[#1A4DFF]">Conversion</span></td>
                   <td className="p-4">B2B lead capture, product showcase</td>
                 </tr>
                 <tr className="border-b border-white/5 hover:bg-white/5">
-                  <td className="p-4 font-bold text-white">Zalo</td>
+                  <td className="p-4 font-bold text-white"><ChannelChip name="Zalo" /></td>
                   <td className="p-4"><span className="text-white">CRM + Nurture</span></td>
                   <td className="p-4">Vietnamese messaging dominance, direct follow-up</td>
                 </tr>
                 <tr className="border-b border-white/5 hover:bg-white/5">
-                  <td className="p-4 font-bold text-white">KOC</td>
+                  <td className="p-4 font-bold text-white"><ChannelChip name="KOC" /></td>
                   <td className="p-4"><span className="text-[#8A9BB5]">Consideration</span></td>
                   <td className="p-4">Authentic product proof, UGC generation</td>
                 </tr>
                 <tr className="border-b border-white/5 hover:bg-white/5">
-                  <td className="p-4 font-bold text-white">PR</td>
+                  <td className="p-4 font-bold text-white"><ChannelChip name="PR" /></td>
                   <td className="p-4"><span className="text-[#F4B400]">Authority</span></td>
                   <td className="p-4">Brand credibility, premium positioning</td>
                 </tr>
                 <tr className="hover:bg-white/5">
-                  <td className="p-4 font-bold text-white">Direct B2B</td>
+                  <td className="p-4 font-bold text-white"><ChannelChip name="Direct B2B" /></td>
                   <td className="p-4"><span className="text-[#1A4DFF]">Conversion</span></td>
                   <td className="p-4">Personal relationship, sample delivery</td>
                 </tr>
