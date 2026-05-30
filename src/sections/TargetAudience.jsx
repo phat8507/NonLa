@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { CoffeeBean, CoffeeLeaf, MiniNonlaPack } from '../components/BrandDecor';
 
 /* ─── tier data ─── */
 const tiers = [
@@ -10,7 +11,7 @@ const tiers = [
     label: 'TERTIARY',
     bg: '#8A9BB5',
     textColor: '#FFFFFF',
-    widthPercent: 40,
+    widthPercent: 54,
     details: {
       demographics: 'Tourists + Việt Kiều | Needs: compact, no equipment, cultural signal',
       role: 'Long-term expansion after domestic brand proof',
@@ -181,7 +182,7 @@ function PyramidTier({ tier, isActive, onToggle, index }) {
               animate={{ y: 0 }}
               exit={{ y: -10 }}
               transition={{ duration: 0.3 }}
-              className="glass-card-light p-5 md:p-6 mt-2 mb-2"
+              className="target-detail-panel p-5 md:p-6 mt-2 mb-2"
               style={{
                 borderLeft: `4px solid ${tier.bg}`,
               }}
@@ -212,18 +213,18 @@ function PyramidTier({ tier, isActive, onToggle, index }) {
 /* ─── accordion item component ─── */
 function AccordionItem({ item, isOpen, onToggle }) {
   return (
-    <div className="border-b border-[#0A1628]/10 last:border-b-0">
+    <div className="border-b border-white/10 last:border-b-0">
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between py-4 md:py-5 px-5 md:px-6 text-left cursor-pointer bg-transparent border-none outline-none group"
       >
-        <span className="text-base md:text-lg font-bold text-[#0A1628] group-hover:text-[#0033CC] transition-colors duration-200">
+        <span className="text-base md:text-lg font-bold text-white group-hover:text-[#FFD84D] transition-colors duration-200">
           {item.question}
         </span>
         <motion.span
           animate={{ rotate: isOpen ? 45 : 0 }}
           transition={{ duration: 0.3 }}
-          className="flex items-center justify-center w-8 h-8 rounded-full bg-[#0033CC]/10 text-[#0033CC] text-xl font-bold shrink-0 ml-4"
+          className="flex items-center justify-center w-8 h-8 rounded-full bg-[#F4B400]/15 text-[#F4B400] text-xl font-bold shrink-0 ml-4"
         >
           +
         </motion.span>
@@ -239,7 +240,7 @@ function AccordionItem({ item, isOpen, onToggle }) {
             className="overflow-hidden"
           >
             <div className="px-5 md:px-6 pb-5 md:pb-6">
-              <p className="text-sm md:text-base text-[#0A1628]/70 leading-relaxed">
+              <p className="text-sm md:text-base text-white/72 leading-relaxed">
                 {item.answer}
               </p>
             </div>
@@ -276,10 +277,17 @@ export default function TargetAudience() {
     <section
       id="target"
       ref={sectionRef}
-      className="relative bg-[#F5F7FA] py-24 md:py-32 overflow-hidden"
+      className="brand-section relative py-24 md:py-32 overflow-hidden"
     >
       {/* ── oversized background text ── */}
-      <div className="section-bg-text section-bg-text-dark" aria-hidden="true">
+      <div className="brand-gradient-background" aria-hidden="true" />
+      <div className="section-decor" aria-hidden="true">
+        <CoffeeLeaf className="section-decor__leaf section-decor__leaf--one" />
+        <CoffeeLeaf className="section-decor__leaf section-decor__leaf--two" />
+        <CoffeeBean className="section-decor__bean section-decor__bean--1" />
+        <CoffeeBean className="section-decor__bean section-decor__bean--2" />
+      </div>
+      <div className="section-bg-text" aria-hidden="true">
         TARGET
       </div>
 
@@ -289,7 +297,7 @@ export default function TargetAudience() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-xs uppercase tracking-widest text-[#0033CC] font-semibold mb-4"
+          className="text-xs uppercase tracking-widest text-[#FFD84D] font-semibold mb-4"
         >
           Target
         </motion.p>
@@ -299,7 +307,7 @@ export default function TargetAudience() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-3xl md:text-5xl font-bold text-[#0A1628] mb-3"
+          className="text-3xl md:text-5xl font-bold text-white mb-3"
         >
           Target Audience
         </motion.h2>
@@ -308,7 +316,7 @@ export default function TargetAudience() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-[#8A9BB5] text-lg md:text-xl max-w-2xl mb-14"
+          className="text-white/72 text-lg md:text-xl max-w-2xl mb-14"
         >
           A tiered approach: concentrate on the highest-value segment first,
           then let brand momentum cascade.
@@ -334,11 +342,15 @@ export default function TargetAudience() {
           </motion.div>
 
           {/* Click hint */}
+          <div className="pointer-events-none absolute right-6 top-8 hidden md:block" aria-hidden="true">
+            <MiniNonlaPack label="Gift" />
+          </div>
+
           <motion.p
             initial={{ opacity: 0 }}
             animate={pyramidInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.8 }}
-            className="text-center text-xs text-[#8A9BB5] mt-6"
+            className="text-center text-xs text-white/54 mt-6"
           >
             ↑ Click any tier to explore details
           </motion.p>
@@ -350,7 +362,7 @@ export default function TargetAudience() {
             initial={{ opacity: 0, y: 20 }}
             animate={rationaleInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="text-2xl md:text-3xl font-bold text-[#0A1628] mb-6"
+            className="text-2xl md:text-3xl font-bold text-white mb-6"
           >
             Targeting Rationale
           </motion.h3>
@@ -359,7 +371,7 @@ export default function TargetAudience() {
             initial={{ opacity: 0, y: 30 }}
             animate={rationaleInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="glass-card-light rounded-2xl overflow-hidden"
+            className="glass-card rounded-2xl overflow-hidden"
           >
             {rationaleItems.map((item, i) => (
               <AccordionItem
@@ -377,7 +389,7 @@ export default function TargetAudience() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5, delay: 1.0 }}
-          className="text-xs text-[#8A9BB5] mt-10"
+          className="text-xs text-white/48 mt-10"
         >
           Data sources: Statista, Shopee Analytics, Grand View Research (Personalized Gifts Market 2026-2034)
         </motion.p>

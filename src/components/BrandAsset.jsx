@@ -22,13 +22,14 @@ export default function BrandAsset({
   decorative = false,
   ...props
 }) {
-  const candidates = useMemo(() => normalizeSources(src).map(resolveAssetPath), [src]);
+  const sourceKey = normalizeSources(src).join('|');
+  const candidates = useMemo(() => normalizeSources(src).map(resolveAssetPath), [sourceKey]);
   const [candidateIndex, setCandidateIndex] = useState(0);
   const resolvedSrc = candidates[candidateIndex];
 
   useEffect(() => {
     setCandidateIndex(0);
-  }, [candidates]);
+  }, [sourceKey]);
 
   if (!resolvedSrc) {
     return fallback;
@@ -41,7 +42,7 @@ export default function BrandAsset({
       aria-hidden={decorative ? 'true' : undefined}
       className={className}
       onError={() => setCandidateIndex((index) => index + 1)}
-      loading="lazy"
+      loading="eager"
       decoding="async"
       {...props}
     />

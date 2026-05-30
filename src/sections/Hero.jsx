@@ -239,13 +239,13 @@ export default function Hero() {
               className="w-fit rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-white/72 backdrop-blur-md sm:text-xs"
               variants={fadeUp}
             >
-              YFC Future Leaders · NONLA Campaign
+              Mở ra một Việt Nam · NONLA Campaign
             </motion.p>
 
             <motion.div variants={fadeUp}>
-              <h1 className="hero-headline max-w-[12ch] text-[3.25rem] font-black uppercase leading-[0.92] text-white sm:text-7xl md:text-8xl xl:text-9xl">
-                MỞ RA
-                <span className="block text-yellow">/ MỘT VIỆT NAM</span>
+              <h1 className="hero-headline max-w-[760px] text-[3.1rem] font-black leading-[0.98] text-white sm:text-6xl md:text-7xl xl:text-7xl">
+                Trọn tinh túy Việt
+                <span className="block text-yellow">dưới bóng nón</span>
               </h1>
             </motion.div>
 

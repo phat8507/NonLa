@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { CoffeeBean, CoffeeLeaf, MiniNonlaPack } from '../components/BrandDecor';
 
 const red = '#C83A30';
 const redFill = '#F9E0DC';
@@ -170,7 +171,7 @@ function PriceBar({ bar }) {
 
 function PerceptualMap() {
   return (
-    <div className="overflow-x-auto rounded-xl bg-white p-3 md:p-5">
+    <div className="perceptual-map-card overflow-x-auto rounded-xl p-3 md:p-5">
       <svg
         viewBox="0 0 1000 770"
         role="img"
@@ -394,7 +395,7 @@ function PerceptualMapV2() {
   };
 
   return (
-    <div className="overflow-x-auto rounded-xl bg-white p-3 md:p-5 hide-scrollbar">
+    <div className="perceptual-map-card overflow-x-auto rounded-xl p-3 md:p-5 hide-scrollbar">
       <svg
         viewBox="0 0 1000 790"
         role="img"
@@ -482,6 +483,13 @@ export default function CompetitorLandscape() {
       ref={sectionRef}
       className="relative bg-[#0A1628] py-16 md:py-24 overflow-hidden"
     >
+      <div className="brand-gradient-background" aria-hidden="true" />
+      <div className="section-decor" aria-hidden="true">
+        <CoffeeLeaf className="section-decor__leaf section-decor__leaf--one" />
+        <CoffeeBean className="section-decor__bean section-decor__bean--1" />
+        <CoffeeBean className="section-decor__bean section-decor__bean--2" />
+        <span className="section-decor__hat section-decor__hat--two" />
+      </div>
       <div className="section-bg-text" aria-hidden="true">
         RIVALS
       </div>
@@ -536,8 +544,21 @@ export default function CompetitorLandscape() {
           variants={fadeUp}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="glass-card p-2 md:p-4 mb-6"
+          className="glass-card polished-map-shell p-2 md:p-4 mb-6"
         >
+          <div className="mb-3 flex items-center justify-between gap-4 px-2 pt-2">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#FFD84D]">
+                NONLA white space
+              </p>
+              <p className="mt-1 text-sm text-white/62">
+                Premium giftability, Vietnamese identity, and accessible price.
+              </p>
+            </div>
+            <div className="hidden sm:block">
+              <MiniNonlaPack label="NONLA" />
+            </div>
+          </div>
           <PerceptualMap />
         </motion.div>
 

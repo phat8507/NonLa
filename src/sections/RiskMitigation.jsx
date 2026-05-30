@@ -19,13 +19,12 @@ const RiskMitigation = () => {
   return (
     <SectionWrapper 
       id="risk" 
-      bgColor="#F5F7FA" 
+      bgColor="#0A1628" 
       bgText="RISK" 
-      bgTextDark={true}
     >
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="mb-12">
-          <span className="text-[#0033CC] text-sm font-bold tracking-widest uppercase">
+          <span className="text-[#FFD84D] text-sm font-bold tracking-widest uppercase">
             RISK & MITIGATION
           </span>
         </div>
@@ -38,7 +37,7 @@ const RiskMitigation = () => {
           variants={containerVariants}
         >
           {/* Card 1 */}
-          <motion.div variants={cardVariants} className="glass-card-light relative overflow-hidden flex flex-col h-full">
+          <motion.div variants={cardVariants} className="glass-card relative overflow-hidden flex flex-col h-full">
             <div className="h-1 w-full bg-gradient-to-r from-red-500 to-orange-400"></div>
             <div className="p-8 flex-1 flex flex-col">
               <div className="flex justify-between items-start mb-6">
@@ -74,7 +73,7 @@ const RiskMitigation = () => {
           </motion.div>
 
           {/* Card 2 */}
-          <motion.div variants={cardVariants} className="glass-card-light relative overflow-hidden flex flex-col h-full">
+          <motion.div variants={cardVariants} className="glass-card relative overflow-hidden flex flex-col h-full">
             <div className="h-1 w-full bg-gradient-to-r from-orange-400 to-amber-400"></div>
             <div className="p-8 flex-1 flex flex-col">
               <div className="flex justify-between items-start mb-6">
@@ -113,7 +112,7 @@ const RiskMitigation = () => {
           </motion.div>
 
           {/* Card 3 */}
-          <motion.div variants={cardVariants} className="glass-card-light relative overflow-hidden flex flex-col h-full">
+          <motion.div variants={cardVariants} className="glass-card relative overflow-hidden flex flex-col h-full">
             <div className="h-1 w-full bg-gradient-to-r from-amber-400 to-yellow-400"></div>
             <div className="p-8 flex-1 flex flex-col">
               <div className="flex justify-between items-start mb-6">
