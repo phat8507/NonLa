@@ -95,10 +95,10 @@ export default function Insight() {
             </div>
             <div className="relative z-10">
               <h3 className="text-sm uppercase tracking-widest text-[#FFD84D] font-black mb-1">
-                THE GIFT MUST BALANCE TWO JOBS
+                The Gift Tension Bridge
               </h3>
               <p className="text-xs text-white/76 mb-6 font-semibold">
-                Practical enough to use. Premium enough to give.
+                Resolving friction points between practical convenience and premium gift signals.
               </p>
               <div className="space-y-6">
                 {bridges.map((bridge, idx) => (
@@ -108,9 +108,9 @@ export default function Insight() {
                         <span className="w-1.5 h-1.5 rounded-full bg-[#FFD84D]" />
                         {bridge.left}
                       </span>
-                      <span className="flex items-center gap-1.5 text-right">
+                      <span className="flex items-center gap-1.5 text-right text-white/60">
                         {bridge.right}
-                        <span className="w-1.5 h-1.5 rounded-full bg-white/80" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
                       </span>
                     </div>
 
@@ -129,7 +129,7 @@ export default function Insight() {
               <p className="text-xs text-white/78 leading-relaxed italic mb-4">
                 “The buyer is not rejecting convenience. They need convenience to be protected by presentation, proof, and cultural meaning.”
               </p>
-              <div className="flex items-end gap-3 origin-bottom-left scale-[0.70] sm:scale-[0.80] md:scale-100 transition-all">
+              <div className="flex items-end gap-3 origin-bottom-left scale-[0.55] sm:scale-[0.65] transition-all">
                 <MiniNonlaPack label="Gift" />
                 <MiniNonlaPack label="Egg Cream" src={['pack-egg-cream.png', 'pack-giftbox.png']} />
                 <CoffeeBean className="relative opacity-70" />

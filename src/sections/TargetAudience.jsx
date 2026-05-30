@@ -138,7 +138,7 @@ const TargetPrioritizationMatrix = () => {
         <div className="flex flex-col justify-center h-full">
           <div className="space-y-4 text-sm text-white/80">
             <p className="italic text-[#8A9BB5]">
-              “Strategic scoring based on fit with Tet gifting urgency, order volume, and repeat potential.”
+              “Strategic scoring — directional, not survey data.”
             </p>
             <div className="space-y-3 border-t border-white/10 pt-4">
               <div className="flex items-start gap-3">

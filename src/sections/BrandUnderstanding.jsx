@@ -22,6 +22,84 @@ const truths = [
 
 const assets = ['Nón lá', 'Vietnamese flavors', 'Compact gift pack', 'Cultural identity'];
 
+function BrandReframeDiagram() {
+  return (
+    <div className="nonla-card-strong p-6 md:p-8 overflow-hidden relative">
+      <div className="absolute right-5 bottom-4 opacity-30">
+        <MiniNonlaPack label="NONLA" />
+      </div>
+      <p className="text-xs uppercase tracking-widest text-[#FFD84D] font-bold mb-6">
+        Brand Reframe Diagram
+      </p>
+
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr_1fr] gap-6 items-center relative z-10 select-none">
+        
+        {/* From Side */}
+        <div className="rounded-2xl bg-white/[0.04] border border-white/10 p-5">
+          <p className="text-white/40 text-[10px] font-black uppercase tracking-widest mb-2">From Segment</p>
+          <h4 className="text-2xl font-black text-white/90">Instant coffee</h4>
+          <p className="text-white/60 text-xs mt-3 leading-relaxed">
+            Perceived as purely practical, quick, transactional, and easy to dismiss as a cheap gift.
+          </p>
+        </div>
+
+        {/* Central Proof Bridge */}
+        <div className="flex flex-col gap-3 relative py-4 lg:py-0">
+          {/* SVG Connector Lines */}
+          <div className="absolute inset-0 pointer-events-none hidden lg:block">
+            <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <path d="M 0 50 Q 25 20 50 20" fill="none" stroke="rgba(255, 216, 77, 0.2)" strokeWidth="1" />
+              <path d="M 0 50 Q 25 50 50 50" fill="none" stroke="rgba(255, 216, 77, 0.2)" strokeWidth="1" />
+              <path d="M 0 50 Q 25 80 50 80" fill="none" stroke="rgba(255, 216, 77, 0.2)" strokeWidth="1" />
+              <path d="M 50 20 Q 75 20 100 50" fill="none" stroke="#FFD84D" strokeWidth="1.5" />
+              <path d="M 50 50 Q 75 50 100 50" fill="none" stroke="#FFD84D" strokeWidth="1.5" />
+              <path d="M 50 80 Q 75 80 100 50" fill="none" stroke="#FFD84D" strokeWidth="1.5" />
+            </svg>
+          </div>
+
+          <div className="text-center text-[10px] font-black uppercase text-[#FFD84D] tracking-widest mb-1 relative z-10">
+            Transformation Proof Points
+          </div>
+          
+          <div className="rounded-xl bg-white/[0.06] border border-white/10 p-3 flex items-center gap-3 relative z-10 hover:border-[#FFD84D]/30 transition-colors">
+            <span className="w-5 h-5 rounded-full bg-[#1A4DFF] text-white text-[10px] font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <div className="text-left">
+              <span className="text-white text-xs font-bold block">Premium Freeze-Dried Format</span>
+              <span className="text-white/60 text-[10px]">High fidelity taste, locking in pure coffee aroma.</span>
+            </div>
+          </div>
+
+          <div className="rounded-xl bg-[#1A4DFF]/15 border border-[#1A4DFF]/30 p-3 flex items-center gap-3 relative z-10 hover:border-[#FFD84D]/30 transition-colors">
+            <span className="w-5 h-5 rounded-full bg-[#1A4DFF] text-white text-[10px] font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <div className="text-left">
+              <span className="text-white text-xs font-bold block">Robusta Buôn Ma Thuột</span>
+              <span className="text-white/60 text-[10px]">Pure Vietnamese origin story, rich and authentic.</span>
+            </div>
+          </div>
+
+          <div className="rounded-xl bg-white/[0.06] border border-white/10 p-3 flex items-center gap-3 relative z-10 hover:border-[#FFD84D]/30 transition-colors">
+            <span className="w-5 h-5 rounded-full bg-[#1A4DFF] text-white text-[10px] font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <div className="text-left">
+              <span className="text-white text-xs font-bold block">Nón Lá Gifting Design</span>
+              <span className="text-white/60 text-[10px]">Iconic design language conveying respect and status.</span>
+            </div>
+          </div>
+        </div>
+
+        {/* To Side */}
+        <div className="rounded-2xl bg-[#FFD84D] text-[#0A1628] p-5 shadow-xl shadow-[#F4B400]/20 hover:scale-[1.02] transition-transform">
+          <p className="text-[#0A1628]/60 text-[10px] font-black uppercase tracking-widest mb-2">To Strategic Reframe</p>
+          <h4 className="text-2xl font-black">Vietnamese coffee gift ritual</h4>
+          <p className="text-[#0A1628]/80 text-xs mt-3 leading-relaxed">
+            Owns high cultural relevance, acts as a presentable social signal, and serves as a highly gift-ready Tet item.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
 export default function BrandUnderstanding() {
   return (
     <SectionWrapper id="brand" bgText="BRAND">
@@ -107,33 +185,9 @@ export default function BrandUnderstanding() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.5, delay: 0.08 }}
-            className="nonla-card-strong p-6 md:p-8 overflow-hidden"
+            className="w-full"
           >
-            <div className="absolute right-5 bottom-4 opacity-80">
-              <MiniNonlaPack label="NONLA" />
-            </div>
-            <p className="text-xs uppercase tracking-widest text-[#FFD84D] font-bold mb-6">
-              Strategic reframe
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-5 md:items-center">
-              <div className="rounded-2xl bg-white/[0.07] border border-white/12 p-5">
-                <p className="text-white/54 text-sm font-bold uppercase tracking-widest mb-3">
-                  From
-                </p>
-                <h4 className="text-2xl font-black text-white">Instant coffee</h4>
-                <p className="text-white/64 text-sm mt-3">Practical, quick, easy to dismiss.</p>
-              </div>
-              <div className="text-[#FFD84D] text-3xl font-black text-center">→</div>
-              <div className="rounded-2xl bg-[#FFD84D] text-[#0A1628] p-5 shadow-xl shadow-[#F4B400]/20">
-                <p className="text-[#0A1628]/60 text-sm font-black uppercase tracking-widest mb-3">
-                  To
-                </p>
-                <h4 className="text-2xl font-black">Vietnamese coffee gift ritual</h4>
-                <p className="text-[#0A1628]/72 text-sm mt-3">
-                  Cultural, presentable, and gift-ready.
-                </p>
-              </div>
-            </div>
+            <BrandReframeDiagram />
           </motion.div>
         </div>
       </div>
