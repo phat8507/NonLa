@@ -25,76 +25,104 @@ const assets = ['Nón lá', 'Vietnamese flavors', 'Compact gift pack', 'Cultural
 function BrandReframeDiagram() {
   return (
     <div className="nonla-card-strong p-6 md:p-8 overflow-hidden relative">
-      <div className="absolute right-5 bottom-4 opacity-30">
-        <MiniNonlaPack label="NONLA" />
-      </div>
-      <p className="text-xs uppercase tracking-widest text-[#FFD84D] font-bold mb-6">
+      <p className="text-xs uppercase tracking-widest text-[#FFD84D] font-bold mb-6 text-center lg:text-left">
         Brand Reframe Diagram
       </p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr_1fr] gap-6 items-center relative z-10 select-none">
+      {/* Grid container with 5 columns on desktop, 1 column on mobile/tablet */}
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1.4fr_auto_1fr] gap-4 lg:gap-5 items-center relative z-10 select-none">
         
-        {/* From Side */}
-        <div className="rounded-2xl bg-white/[0.04] border border-white/10 p-5">
-          <p className="text-white/40 text-[10px] font-black uppercase tracking-widest mb-2">From Segment</p>
-          <h4 className="text-2xl font-black text-white/90">Instant coffee</h4>
-          <p className="text-white/60 text-xs mt-3 leading-relaxed">
-            Perceived as purely practical, quick, transactional, and easy to dismiss as a cheap gift.
+        {/* LEFT: From Segment */}
+        <div className="rounded-2xl bg-white/[0.03] border border-white/10 p-5 h-full flex flex-col justify-center">
+          <p className="text-[#8A9BB5] text-[10px] font-black uppercase tracking-widest mb-2">From Segment</p>
+          <h4 className="text-xl md:text-2xl font-black text-white leading-tight">Instant coffee</h4>
+          <p className="text-white/70 text-xs mt-3 leading-relaxed">
+            Perceived as practical, quick, transactional, and easy to dismiss as a cheap gift.
           </p>
         </div>
 
-        {/* Central Proof Bridge */}
-        <div className="flex flex-col gap-3 relative py-4 lg:py-0">
-          {/* SVG Connector Lines */}
-          <div className="absolute inset-0 pointer-events-none hidden lg:block">
-            <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <path d="M 0 50 Q 25 20 50 20" fill="none" stroke="rgba(255, 216, 77, 0.2)" strokeWidth="1" />
-              <path d="M 0 50 Q 25 50 50 50" fill="none" stroke="rgba(255, 216, 77, 0.2)" strokeWidth="1" />
-              <path d="M 0 50 Q 25 80 50 80" fill="none" stroke="rgba(255, 216, 77, 0.2)" strokeWidth="1" />
-              <path d="M 50 20 Q 75 20 100 50" fill="none" stroke="#FFD84D" strokeWidth="1.5" />
-              <path d="M 50 50 Q 75 50 100 50" fill="none" stroke="#FFD84D" strokeWidth="1.5" />
-              <path d="M 50 80 Q 75 80 100 50" fill="none" stroke="#FFD84D" strokeWidth="1.5" />
+        {/* CONNECTOR 1: Left -> Center */}
+        <div className="flex items-center justify-center lg:px-2">
+          {/* Desktop Arrow */}
+          <div className="hidden lg:flex items-center justify-center">
+            <svg className="w-6 h-6 text-[#FFD84D]/60 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </div>
+          {/* Mobile Arrow */}
+          <div className="flex lg:hidden items-center justify-center my-1">
+            <svg className="w-5 h-5 text-[#FFD84D]/60 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </div>
+        </div>
 
-          <div className="text-center text-[10px] font-black uppercase text-[#FFD84D] tracking-widest mb-1 relative z-10">
+        {/* CENTER: Transformation Proof Points */}
+        <div className="flex flex-col gap-3.5 h-full justify-between">
+          <div className="text-center text-[10px] font-black uppercase text-[#FFD84D] tracking-widest mb-1">
             Transformation Proof Points
           </div>
           
-          <div className="rounded-xl bg-white/[0.06] border border-white/10 p-3 flex items-center gap-3 relative z-10 hover:border-[#FFD84D]/30 transition-colors">
-            <span className="w-5 h-5 rounded-full bg-[#1A4DFF] text-white text-[10px] font-bold flex items-center justify-center flex-shrink-0">1</span>
+          {/* Proof 1 */}
+          <div className="rounded-xl bg-white/[0.04] border border-white/10 p-3.5 flex items-start gap-3 hover:border-[#FFD84D]/30 transition-colors">
+            <span className="w-5 h-5 rounded-full bg-[#1A4DFF] text-white text-[10px] font-black flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
             <div className="text-left">
-              <span className="text-white text-xs font-bold block">Premium Freeze-Dried Format</span>
-              <span className="text-white/60 text-[10px]">High fidelity taste, locking in pure coffee aroma.</span>
+              <span className="text-white text-xs font-bold block leading-tight">Premium freeze-dried format</span>
+              <span className="text-white/60 text-[10px] mt-1 block leading-normal">High-fidelity taste, locking in pure coffee aroma.</span>
             </div>
           </div>
 
-          <div className="rounded-xl bg-[#1A4DFF]/15 border border-[#1A4DFF]/30 p-3 flex items-center gap-3 relative z-10 hover:border-[#FFD84D]/30 transition-colors">
-            <span className="w-5 h-5 rounded-full bg-[#1A4DFF] text-white text-[10px] font-bold flex items-center justify-center flex-shrink-0">2</span>
+          {/* Proof 2 */}
+          <div className="rounded-xl bg-white/[0.04] border border-white/10 p-3.5 flex items-start gap-3 hover:border-[#FFD84D]/30 transition-colors">
+            <span className="w-5 h-5 rounded-full bg-[#1A4DFF] text-white text-[10px] font-black flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
             <div className="text-left">
-              <span className="text-white text-xs font-bold block">Robusta Buôn Ma Thuột</span>
-              <span className="text-white/60 text-[10px]">Pure Vietnamese origin story, rich and authentic.</span>
+              <span className="text-white text-xs font-bold block leading-tight">Robusta Buôn Ma Thuột</span>
+              <span className="text-white/60 text-[10px] mt-1 block leading-normal">Pure Vietnamese origin story, rich and authentic.</span>
             </div>
           </div>
 
-          <div className="rounded-xl bg-white/[0.06] border border-white/10 p-3 flex items-center gap-3 relative z-10 hover:border-[#FFD84D]/30 transition-colors">
-            <span className="w-5 h-5 rounded-full bg-[#1A4DFF] text-white text-[10px] font-bold flex items-center justify-center flex-shrink-0">3</span>
+          {/* Proof 3 */}
+          <div className="rounded-xl bg-white/[0.04] border border-white/10 p-3.5 flex items-start gap-3 hover:border-[#FFD84D]/30 transition-colors">
+            <span className="w-5 h-5 rounded-full bg-[#1A4DFF] text-white text-[10px] font-black flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
             <div className="text-left">
-              <span className="text-white text-xs font-bold block">Nón Lá Gifting Design</span>
-              <span className="text-white/60 text-[10px]">Iconic design language conveying respect and status.</span>
+              <span className="text-white text-xs font-bold block leading-tight">Nón lá gifting design</span>
+              <span className="text-white/60 text-[10px] mt-1 block leading-normal">Iconic design language conveying respect and status.</span>
             </div>
           </div>
         </div>
 
-        {/* To Side */}
-        <div className="rounded-2xl bg-[#FFD84D] text-[#0A1628] p-5 shadow-xl shadow-[#F4B400]/20 hover:scale-[1.02] transition-transform">
-          <p className="text-[#0A1628]/60 text-[10px] font-black uppercase tracking-widest mb-2">To Strategic Reframe</p>
-          <h4 className="text-2xl font-black">Vietnamese coffee gift ritual</h4>
-          <p className="text-[#0A1628]/80 text-xs mt-3 leading-relaxed">
-            Owns high cultural relevance, acts as a presentable social signal, and serves as a highly gift-ready Tet item.
+        {/* CONNECTOR 2: Center -> Right */}
+        <div className="flex items-center justify-center lg:px-2">
+          {/* Desktop Arrow */}
+          <div className="hidden lg:flex items-center justify-center">
+            <svg className="w-6 h-6 text-[#FFD84D]/60 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </div>
+          {/* Mobile Arrow */}
+          <div className="flex lg:hidden items-center justify-center my-1">
+            <svg className="w-5 h-5 text-[#FFD84D]/60 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </div>
+        </div>
+
+        {/* RIGHT: Strategic Reframe */}
+        <div className="rounded-2xl bg-[#FFD84D]/10 border border-[#FFD84D]/35 p-5 h-full flex flex-col justify-center shadow-lg shadow-[#F4B400]/5 hover:scale-[1.02] transition-transform">
+          <p className="text-[#FFD84D] text-[10px] font-black uppercase tracking-widest mb-2">Strategic Reframe</p>
+          <h4 className="text-xl md:text-2xl font-black text-[#FFD84D] leading-tight">Vietnamese coffee gift ritual</h4>
+          <p className="text-white/80 text-xs mt-3 leading-relaxed">
+            Owns high cultural relevance, acts as a presentable social signal, and serves as a gift-ready Tết item.
           </p>
         </div>
 
+      </div>
+
+      {/* Centered strategically aligned caption */}
+      <div className="relative z-10 mt-6 pt-4 border-t border-white/10">
+        <p className="text-[11px] text-white/50 text-center italic leading-relaxed">
+          “The strategic shift is not from low to high price; it is from functional convenience to gift-worthy cultural meaning.”
+        </p>
       </div>
     </div>
   );
