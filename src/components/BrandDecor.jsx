@@ -77,7 +77,7 @@ export function SectionDecor({ density = 'standard' }) {
   const beans = density === 'low' ? 2 : 4;
 
   return (
-    <div className="section-decor" aria-hidden="true">
+    <div className={`section-decor section-decor--${density === 'low' ? 'light' : 'medium'}`} aria-hidden="true">
       <CoffeeLeaf className="section-decor__leaf section-decor__leaf--one" />
       <CoffeeLeaf className="section-decor__leaf section-decor__leaf--two" />
       {Array.from({ length: beans }, (_, index) => (
