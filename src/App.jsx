@@ -18,23 +18,20 @@ const RevenueModel = lazy(() => import('./sections/RevenueModel'));
 const RiskMitigation = lazy(() => import('./sections/RiskMitigation'));
 const Closing = lazy(() => import('./sections/Closing'));
 
-// Loading fallback
 const SectionLoader = () => (
-  <div className="w-full min-h-[50vh] flex items-center justify-center bg-[#0A1628]">
-    <div className="w-12 h-12 non-la bg-[#F4B400] animate-pulse"></div>
+  <div className="flex min-h-[50vh] w-full items-center justify-center bg-[#0A1628]">
+    <div className="non-la h-12 w-12 animate-pulse bg-[#F4B400]" />
   </div>
 );
 
 function App() {
   return (
-    <div className="relative w-full overflow-x-hidden text-white font-jakarta">
-      {/* Global Navigation */}
+    <div className="nonla-page-bg relative w-full overflow-x-hidden font-jakarta text-white">
       <StickyNav />
-      
-      {/* Global Background Elements */}
-      <FloatingElements count={25} dark={true} />
 
-      <main>
+      <FloatingElements count={8} dark={true} />
+
+      <main className="relative z-0">
         <Suspense fallback={<SectionLoader />}>
           <Hero />
           <ExecutiveSummary />

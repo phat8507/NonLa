@@ -1,5 +1,6 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import BrandAsset from './BrandAsset';
 
 const SECTIONS = [
   { id: 'hero', label: 'Hero' },
@@ -18,14 +19,11 @@ const SECTIONS = [
   { id: 'closing', label: 'Closing' },
 ];
 
-/** NONLA wordmark — the "ñ" gets a nón lá triangle instead of a tilde */
 function NonlaWordmark() {
   return (
-    <span className="font-black text-lg tracking-widest uppercase text-white select-none flex items-end leading-none">
+    <span className="flex select-none items-end text-lg font-black uppercase leading-none tracking-widest text-white sm:text-xl">
       <span>NO</span>
-      {/* ñ with triangle */}
       <span className="relative inline-flex flex-col items-center" style={{ marginBottom: 0 }}>
-        {/* Nón lá triangle replacing tilde */}
         <span
           className="block"
           style={{
@@ -45,12 +43,11 @@ function NonlaWordmark() {
   );
 }
 
-function NavDot({ section, isActive, onClick }) {
+function NavDot({ section, isActive, onClick, dotRef }) {
   const [hovered, setHovered] = useState(false);
 
   return (
     <div className="relative flex shrink-0 items-center justify-center">
-      {/* Tooltip */}
       <AnimatePresence>
         {hovered && (
           <motion.div
@@ -72,8 +69,8 @@ function NavDot({ section, isActive, onClick }) {
         )}
       </AnimatePresence>
 
-      {/* Dot */}
       <button
+        ref={dotRef}
         onClick={onClick}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
@@ -87,8 +84,8 @@ function NavDot({ section, isActive, onClick }) {
 export default function StickyNav() {
   const [activeSection, setActiveSection] = useState('hero');
   const [isScrolled, setIsScrolled] = useState(false);
+  const dotRefs = useRef({});
 
-  // Track scroll position for bg opacity
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 60);
@@ -97,7 +94,6 @@ export default function StickyNav() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // IntersectionObserver to detect visible section
   useEffect(() => {
     const observerOptions = {
       root: null,
@@ -125,41 +121,57 @@ export default function StickyNav() {
 
   const scrollTo = useCallback((id) => {
     const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   }, []);
+
+  useEffect(() => {
+    dotRefs.current[activeSection]?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'center',
+    });
+  }, [activeSection]);
 
   return (
     <motion.nav
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between gap-4 px-4 sm:px-5 md:px-8"
+      className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between gap-3 px-4 sm:px-5 md:px-8"
       style={{
-        height: '56px',
+        height: '60px',
         background: isScrolled
-          ? 'rgba(10, 22, 40, 0.75)'
-          : 'rgba(10, 22, 40, 0.3)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
+          ? 'rgba(10, 22, 40, 0.82)'
+          : 'rgba(10, 22, 40, 0.38)',
+        backdropFilter: 'blur(18px)',
+        WebkitBackdropFilter: 'blur(18px)',
+        borderBottom: '1px solid rgba(255,255,255,0.08)',
         transition: 'background 0.3s ease',
       }}
     >
-      {/* Left: Wordmark */}
-      <div className="flex-shrink-0">
-        <NonlaWordmark />
-      </div>
+      <button
+        onClick={() => scrollTo('hero')}
+        className="flex min-w-[96px] shrink-0 items-center justify-start rounded-full outline-none ring-yellow/40 transition focus-visible:ring-2 sm:min-w-[132px]"
+        aria-label="Go to NONLA hero section"
+      >
+        <BrandAsset
+          src={['nonla-logo.svg', 'nonla-logo.png', 'nonla-logo.webp']}
+          alt="NONLA logo"
+          className="h-7 max-w-[132px] object-contain sm:h-8 sm:max-w-[180px]"
+          fallback={<NonlaWordmark />}
+        />
+      </button>
 
-      {/* Center / Right: Dots */}
-      <div className="hide-scrollbar flex max-w-[calc(100vw-104px)] flex-1 items-center justify-end gap-2 overflow-x-auto py-3 pl-3 pr-1 md:max-w-none md:flex-none md:gap-3 md:overflow-visible md:p-0">
+      <div className="hide-scrollbar flex max-w-[calc(100vw-128px)] flex-1 items-center justify-end gap-2 overflow-x-auto py-3 pl-2 pr-1 md:max-w-none md:flex-none md:gap-3 md:overflow-visible md:p-0">
         {SECTIONS.map((section) => (
           <NavDot
             key={section.id}
             section={section}
             isActive={activeSection === section.id}
             onClick={() => scrollTo(section.id)}
+            dotRef={(node) => {
+              dotRefs.current[section.id] = node;
+            }}
           />
         ))}
       </div>

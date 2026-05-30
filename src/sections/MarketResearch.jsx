@@ -1,414 +1,140 @@
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+import { motion } from 'framer-motion';
 import AnimatedCounter from '../components/AnimatedCounter';
+import SectionWrapper from '../components/SectionWrapper';
+import { CoffeeBean, CoffeeLeaf, MiniNonlaPack } from '../components/BrandDecor';
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
-
-/* ─── animation variants ─── */
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.12 },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
-  },
-};
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
-  },
-};
-
-/* ─── counter cards data ─── */
-const counterCards = [
+const stats = [
   {
     prefix: 'USD ',
     target: 8.9,
     suffix: 'B',
     decimals: 1,
-    label: 'Vietnam Coffee Market 2025',
+    label: 'Vietnam coffee market 2025',
   },
   {
     prefix: '+',
     target: 18.3,
     suffix: '%',
     decimals: 1,
-    label: 'YoY Growth 2025',
+    label: 'YoY growth in 2025',
   },
   {
     prefix: 'CAGR ',
     target: 6.6,
-    suffix: '%/yr',
+    suffix: '%',
     decimals: 1,
-    label: 'Projected 2025-2030',
+    label: 'Projected coffee growth',
   },
   {
-    prefix: 'CAGR ',
-    target: 3.7,
-    suffix: '%/yr',
-    decimals: 1,
-    label: 'Projected 2025-2033',
-  },
-  {
-    /* static display — compound text, not a single number */
-    static: true,
-    display: 'USD 325M → 731M',
-    sublabel: 'CAGR 12.26% (2021→2028)',
-    label: 'Instant Segment Growth',
-  },
-];
-
-/* ─── Tet cards data ─── */
-const tetCards = [
-  {
-    target: 13,
-    suffix: 'T VND',
-    decimals: 0,
-    body: 'Tet FMCG in 4 cities = 19% of annual FMCG',
-    source: 'Source: Statista',
-  },
-  {
+    prefix: '',
     target: 33.4,
     suffix: 'B VND',
     decimals: 1,
-    body: 'Gift set revenue Shopee Tet 2024',
-    source: 'Source: Statista',
-  },
-  {
-    target: 5,
-    prefix: '1-',
-    suffix: 'M VND',
-    decimals: 0,
-    body: 'Average Tet gift spend per adult 2025',
-    source: 'Source: Statista',
+    label: 'Shopee Tet gift set revenue',
   },
 ];
 
-/* ─── chart config ─── */
-const chartData = {
-  labels: ['2022', '2023', '2024', '2025'],
-  datasets: [
-    {
-      label: 'Market Size',
-      data: [3.31, 5.0, 7.5, 8.9],
-      backgroundColor: (ctx) => {
-        const chart = ctx.chart;
-        const { ctx: canvasCtx, chartArea } = chart;
-        if (!chartArea) return '#F4B400';
-        const gradient = canvasCtx.createLinearGradient(
-          0,
-          chartArea.bottom,
-          0,
-          chartArea.top,
-        );
-        gradient.addColorStop(0, '#F4B400');
-        gradient.addColorStop(1, '#FFD84D');
-        return gradient;
-      },
-      borderRadius: 8,
-      borderSkipped: false,
-      barPercentage: 0.6,
-      categoryPercentage: 0.7,
-    },
-  ],
-};
+const flow = [
+  {
+    title: 'Market growth',
+    body: 'Vietnamese coffee is expanding in value, not only in volume.',
+  },
+  {
+    title: 'Gifting season',
+    body: 'Tet concentrates demand into a short, high-intent purchase window.',
+  },
+  {
+    title: 'Category gap',
+    body: 'Instant coffee feels practical, while gift sets often lack a coffee ritual.',
+  },
+  {
+    title: 'NONLA opportunity',
+    body: 'Own the premium Vietnamese coffee gift space with culture and convenience.',
+  },
+];
 
-const chartOptions = {
-  responsive: true,
-  maintainAspectRatio: false,
-  plugins: {
-    legend: { display: false },
-    title: {
-      display: true,
-      text: 'Coffee Market Size 2022–2025',
-      color: '#FFFFFF',
-      font: { family: 'Plus Jakarta Sans', size: 16, weight: '700' },
-      padding: { bottom: 20 },
-    },
-    tooltip: {
-      backgroundColor: 'rgba(10,22,40,0.9)',
-      titleFont: { family: 'Plus Jakarta Sans' },
-      bodyFont: { family: 'Plus Jakarta Sans' },
-      callbacks: {
-        label: (ctx) => `USD ${ctx.parsed.y}B`,
-      },
-    },
-  },
-  scales: {
-    x: {
-      grid: { display: false },
-      ticks: {
-        color: '#8A9BB5',
-        font: { family: 'Plus Jakarta Sans', size: 13 },
-      },
-      border: { color: 'rgba(255,255,255,0.1)' },
-    },
-    y: {
-      grid: { color: 'rgba(255,255,255,0.06)' },
-      ticks: {
-        color: '#8A9BB5',
-        font: { family: 'Plus Jakarta Sans', size: 12 },
-        callback: (v) => `$${v}B`,
-      },
-      border: { display: false },
-      title: {
-        display: true,
-        text: 'USD Billion',
-        color: '#8A9BB5',
-        font: { family: 'Plus Jakarta Sans', size: 12 },
-      },
-      beginAtZero: true,
-    },
-  },
-  animation: {
-    duration: 1200,
-    easing: 'easeOutQuart',
-  },
-};
-
-/* ═══════════════════════════════════════════════ */
 export default function MarketResearch() {
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
-
-  const row2Ref = useRef(null);
-  const row2InView = useInView(row2Ref, { once: true, margin: '-80px' });
-
-  const row3Ref = useRef(null);
-  const row3InView = useInView(row3Ref, { once: true, margin: '-80px' });
-
   return (
-    <section
-      id="market"
-      ref={sectionRef}
-      className="relative bg-[#0A1628] py-24 md:py-32 overflow-hidden"
-    >
-      {/* ── oversized background text ── */}
-      <div className="section-bg-text" aria-hidden="true">
-        MARKET
-      </div>
+    <SectionWrapper id="market" bgText="MARKET">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-12 max-w-3xl">
+          <p className="text-xs uppercase tracking-widest text-[#FFD84D] font-bold mb-4">
+            Market
+          </p>
+          <h2 className="nonla-section-title text-4xl md:text-5xl">
+            Market Research
+          </h2>
+          <p className="text-white/74 text-lg md:text-xl mt-5 leading-relaxed">
+            The opportunity is not “more instant coffee.” It is a giftable,
+            culturally coded coffee format that feels premium before the first
+            sip.
+          </p>
+        </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10">
-        {/* ── section label ── */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-xs uppercase tracking-widest text-[#F4B400] font-semibold mb-4"
-        >
-          Market
-        </motion.p>
-
-        {/* ── section title ── */}
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-3xl md:text-5xl font-bold text-white mb-3"
-        >
-          Market Research
-        </motion.h2>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-[#8A9BB5] text-lg md:text-xl max-w-2xl mb-14"
-        >
-          Vietnam's coffee market is booming — and the premium segment is where the real opportunity lives.
-        </motion.p>
-
-        {/* ═══════════════════ ROW 1 — Counter cards ═══════════════════ */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className="flex flex-wrap gap-4 mb-16"
-        >
-          {counterCards.map((card, i) => (
-            <motion.div
-              key={i}
-              variants={cardVariants}
-              className="glass-card p-6 flex-1 min-w-[180px] md:min-w-[190px] transition-all duration-300 hover:-translate-y-1"
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
+          {stats.map((stat, index) => (
+            <motion.article
+              key={stat.label}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.45, delay: index * 0.06 }}
+              className="nonla-card p-6 overflow-hidden"
             >
-              {card.static ? (
-                <>
-                  <p className="text-2xl md:text-3xl font-bold text-[#F4B400] mb-1 leading-tight">
-                    {card.display}
-                  </p>
-                  <p className="text-xs font-semibold text-[#F4B400]/70 mb-2">
-                    {card.sublabel}
-                  </p>
-                </>
-              ) : (
-                <div className="text-2xl md:text-3xl font-bold text-[#F4B400] mb-2 leading-tight">
-                  <AnimatedCounter
-                    target={card.target}
-                    prefix={card.prefix}
-                    suffix={card.suffix}
-                    decimals={card.decimals}
-                    className="text-[#F4B400]"
-                  />
-                </div>
-              )}
-              <p className="text-sm text-[#8A9BB5]">{card.label}</p>
-            </motion.div>
+              <CoffeeBean className="absolute right-5 top-5 opacity-25 scale-75" />
+              <div className="text-3xl md:text-4xl font-black text-[#FFD84D] leading-tight">
+                <AnimatedCounter
+                  target={stat.target}
+                  prefix={stat.prefix}
+                  suffix={stat.suffix}
+                  decimals={stat.decimals}
+                />
+              </div>
+              <p className="text-white/76 text-sm leading-relaxed mt-3">{stat.label}</p>
+            </motion.article>
           ))}
-        </motion.div>
-
-        {/* ═══════════════════ ROW 2 — Chart + Callout ═══════════════════ */}
-        <div
-          ref={row2Ref}
-          className="flex flex-col lg:flex-row gap-6 mb-16"
-        >
-          {/* LEFT — Bar Chart (60%) */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={row2InView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="glass-card p-6 md:p-8 lg:w-[60%] w-full"
-          >
-            <div className="h-[320px] md:h-[380px]">
-              {row2InView && (
-                <Bar data={chartData} options={chartOptions} />
-              )}
-            </div>
-            <p className="text-xs text-[#8A9BB5] mt-4">
-              Source: Statista, Vietnam Coffee Association, Mordor Intelligence
-            </p>
-          </motion.div>
-
-          {/* RIGHT — Premiumization callout (40%) */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={row2InView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.15, ease: 'easeOut' }}
-            className="glass-card p-6 md:p-8 lg:w-[40%] w-full flex flex-col justify-center"
-          >
-            {/* Nón lá motif */}
-            <div className="mb-5">
-              <div
-                className="non-la w-8 h-8 bg-[#F4B400]/20 mx-0"
-                aria-hidden="true"
-              />
-            </div>
-
-            <h3 className="text-xl md:text-2xl font-bold text-white leading-snug mb-4">
-              <span className="text-[#F4B400]">+55.5%</span> export value
-              <br />
-              vs <span className="text-[#F4B400]">+1.8%</span> export volume
-              <br />
-              <span className="text-white/60">= </span>
-              <span className="text-[#F4B400]">30×</span> gap
-            </h3>
-
-            <p className="text-[#8A9BB5] text-sm md:text-base leading-relaxed mb-5">
-              Consumers pay more, not buy more. Advanced processing +
-              transparent origin + premium packaging = where the market
-              rewards.{' '}
-              <span className="text-white font-semibold">
-                NONLA is built for this.
-              </span>
-            </p>
-
-            <p className="text-xs text-[#8A9BB5]/60">
-              Source: Vietnam Customs, General Statistics Office 2024
-            </p>
-          </motion.div>
         </div>
 
-        {/* ═══════════════════ ROW 3 — Tet Gifting ═══════════════════ */}
-        <div ref={row3Ref}>
-          <motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            animate={row3InView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="text-2xl md:text-3xl font-bold text-white mb-8"
-          >
-            Tet Gifting Opportunity
-          </motion.h3>
+        <div className="nonla-card-strong p-6 md:p-8 overflow-hidden">
+          <CoffeeLeaf className="absolute -left-8 top-8 opacity-25" />
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5 mb-8">
+            <div>
+              <p className="text-xs uppercase tracking-widest text-[#FFD84D] font-bold mb-3">
+                Market opportunity flow
+              </p>
+              <h3 className="text-2xl md:text-3xl font-bold text-white">
+                From growing coffee demand to a clear gifting white space
+              </h3>
+            </div>
+            <MiniNonlaPack label="Gift" />
+          </div>
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={row3InView ? 'visible' : 'hidden'}
-            className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8"
-          >
-            {tetCards.map((card, i) => (
-              <motion.div
-                key={i}
-                variants={cardVariants}
-                className="glass-card p-6 md:p-8 transition-all duration-300 hover:-translate-y-1"
+          <div className="relative grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="hidden md:block absolute left-[10%] right-[10%] top-8 h-1 rounded-full bg-gradient-to-r from-[#FFD84D] via-white/25 to-[#FFD84D]" />
+            {flow.map((step, index) => (
+              <motion.article
+                key={step.title}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                className="relative rounded-2xl border border-white/12 bg-white/[0.07] p-5"
               >
-                <div className="text-3xl md:text-4xl font-bold text-[#F4B400] mb-2 leading-tight">
-                  <AnimatedCounter
-                    target={card.target}
-                    prefix={card.prefix || ''}
-                    suffix={card.suffix}
-                    decimals={card.decimals}
-                    className="text-[#F4B400]"
-                  />
+                <div className="relative z-10 w-12 h-12 rounded-full bg-[#FFD84D] text-[#0A1628] font-black flex items-center justify-center mb-5 shadow-lg shadow-[#F4B400]/20">
+                  {index + 1}
                 </div>
-
-                <p className="text-white text-sm md:text-base leading-relaxed mb-3">
-                  {card.body}
-                </p>
-
-                <p className="text-xs text-[#8A9BB5]/60">{card.source}</p>
-              </motion.div>
+                <h4 className="text-white font-bold text-lg">{step.title}</h4>
+                <p className="text-white/72 text-sm leading-relaxed mt-2">{step.body}</p>
+              </motion.article>
             ))}
-          </motion.div>
-
-          {/* callout */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate={row3InView ? 'visible' : 'hidden'}
-            transition={{ delay: 0.5 }}
-            className="glass-card p-6 md:p-8 text-center"
-          >
-            <p className="text-lg md:text-xl text-white leading-relaxed">
-              Category{' '}
-              <span className="font-semibold">
-                'premium Vietnamese coffee gift'
-              </span>{' '}
-              has no clear leader. This is the{' '}
-              <span className="text-[#F4B400] font-bold">white space</span>.
-            </p>
-          </motion.div>
+          </div>
         </div>
 
-        {/* ── global footnote ── */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 1.0 }}
-          className="text-xs text-[#8A9BB5] mt-10"
-        >
-          Data sources: Statista, Mordor Intelligence, Vietnam Customs, General Statistics Office, Shopee Analytics
-        </motion.p>
+        <p className="text-xs text-white/52 mt-8">
+          Data sources: Statista, Vietnam Coffee Association, Mordor
+          Intelligence, Shopee Analytics, Vietnam Customs.
+        </p>
       </div>
-    </section>
+    </SectionWrapper>
   );
 }

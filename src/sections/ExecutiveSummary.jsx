@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { CoffeeBean, CoffeeLeaf } from '../components/BrandDecor';
 
 const cards = [
   {
@@ -22,7 +23,7 @@ const cards = [
   },
   {
     title: 'BIG IDEA',
-    body: 'Trọn tinh túy Việt dưới bóng nón lá',
+    body: 'Trọn tinh túy Việt dưới bóng nón',
     icon: (
       // Target / idea shape — nón lá triangle with sparkle
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -129,10 +130,16 @@ export default function ExecutiveSummary() {
     <section
       id="overview"
       ref={sectionRef}
-      className="relative bg-[#F5F7FA] py-24 md:py-32 overflow-hidden"
+      className="nonla-section nonla-section-blend brand-section relative py-24 md:py-32 overflow-hidden"
     >
+      <div className="brand-gradient-background" aria-hidden="true" />
+      <div className="section-decor" aria-hidden="true">
+        <CoffeeLeaf className="section-decor__leaf section-decor__leaf--one" />
+        <CoffeeBean className="section-decor__bean section-decor__bean--1" />
+        <CoffeeBean className="section-decor__bean section-decor__bean--2" />
+      </div>
       {/* Oversized background text */}
-      <div className="section-bg-text section-bg-text-dark" aria-hidden="true">
+      <div className="section-bg-text" aria-hidden="true">
         OVERVIEW
       </div>
 
@@ -142,7 +149,7 @@ export default function ExecutiveSummary() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-xs uppercase tracking-widest text-[#0033CC] font-semibold mb-4"
+          className="text-xs uppercase tracking-widest text-[#FFD84D] font-semibold mb-4"
         >
           Overview
         </motion.p>
@@ -152,7 +159,7 @@ export default function ExecutiveSummary() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl md:text-5xl font-bold text-[#0A1628] mb-3"
+          className="text-4xl md:text-5xl font-bold text-white mb-3"
         >
           Executive Summary
         </motion.h2>
@@ -162,7 +169,7 @@ export default function ExecutiveSummary() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-[#8A9BB5] text-lg md:text-xl max-w-2xl mb-14"
+          className="text-white/72 text-lg md:text-xl max-w-2xl mb-14"
         >
           A strategic overview of the NONLA Coffee Tet 2025 integrated marketing campaign — from insight to execution.
         </motion.p>
@@ -178,7 +185,7 @@ export default function ExecutiveSummary() {
             <motion.div
               key={index}
               variants={cardVariants}
-              className="glass-card-light p-6 md:p-8 border-l-4 border-l-[#F4B400] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-default group"
+              className="glass-card p-6 md:p-8 border-l-4 border-l-[#F4B400] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-default group"
             >
               {/* Icon */}
               <div className="mb-4 w-10 h-10 flex items-center justify-center rounded-lg bg-[#0033CC]/[0.06] transition-colors duration-300 group-hover:bg-[#0033CC]/[0.12]">
@@ -186,12 +193,12 @@ export default function ExecutiveSummary() {
               </div>
 
               {/* Title */}
-              <h3 className="text-sm uppercase tracking-wider font-bold text-[#0033CC] mb-2">
+              <h3 className="text-sm uppercase tracking-wider font-bold text-[#FFD84D] mb-2">
                 {card.title}
               </h3>
 
               {/* Body */}
-              <p className="text-lg text-[#0A1628] leading-relaxed">
+              <p className="text-lg text-white/82 leading-relaxed">
                 {card.body}
               </p>
             </motion.div>
@@ -203,7 +210,7 @@ export default function ExecutiveSummary() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5, delay: 1.0 }}
-          className="text-xs text-[#8A9BB5] mt-8"
+          className="text-xs text-white/48 mt-8"
         >
           Source: NONLA Coffee Marketing Brief — Tet 2025 Campaign Planning Document
         </motion.p>

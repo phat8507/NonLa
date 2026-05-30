@@ -1,0 +1,93 @@
+import BrandAsset from './BrandAsset';
+
+export function CoffeeBean({ className = '', style }) {
+  return <span className={`coffee-bean-rich ${className}`} style={style} aria-hidden="true" />;
+}
+
+export function CoffeeLeaf({ className = '', style }) {
+  return <span className={`brand-leaf ${className}`} style={style} aria-hidden="true" />;
+}
+
+export function CoffeeBeanField({ count = 6, className = '' }) {
+  return (
+    <div className={`coffee-bean-field ${className}`} aria-hidden="true">
+      {Array.from({ length: count }, (_, index) => (
+        <CoffeeBean key={index} className={`coffee-bean-field__bean coffee-bean-field__bean--${index + 1}`} />
+      ))}
+    </div>
+  );
+}
+
+export function MiniNonlaPack({ label = 'NONLA', src, className = '' }) {
+  const fallback = (
+    <div className="product-pack-fallback mini-nonla-pack-fallback" role="img" aria-label={`NONLA ${label} coffee pack`}>
+      <div className="product-pack-fallback__bow" aria-hidden="true" />
+      <div className="product-pack-fallback__brand">nonla</div>
+      <div className="product-pack-fallback__line" />
+      <div className="product-pack-fallback__flavor">{label}</div>
+      <div className="product-pack-fallback__window" aria-hidden="true">
+        <span />
+        <span />
+        <span />
+      </div>
+    </div>
+  );
+
+  return (
+    <BrandAsset
+      src={src || ['nonla-pack-durian.svg', 'nonla-pack-durian.png', 'nonla-pack-durian.webp']}
+      alt={`NONLA ${label} coffee pack`}
+      className={`brand-asset mini-nonla-pack ${className}`}
+      fallback={fallback}
+    />
+  );
+}
+
+export const MiniPackFallback = MiniNonlaPack;
+
+export function NonlaMascotFallback({ className = '' }) {
+  return (
+    <div className={`mascot-fallback mascot-fallback--mini ${className}`} role="img" aria-label="NONLA campaign mascot">
+      <div className="mascot-fallback__hat" aria-hidden="true" />
+      <div className="mascot-fallback__face">
+        <span className="mascot-fallback__eye" />
+        <span className="mascot-fallback__eye" />
+        <span className="mascot-fallback__smile" />
+      </div>
+      <div className="mascot-fallback__body" aria-hidden="true" />
+    </div>
+  );
+}
+
+export function NonLaDivider({ className = '' }) {
+  return (
+    <div className={`nonla-divider ${className}`} aria-hidden="true">
+      <CoffeeBean />
+      <span className="nonla-divider__hat" />
+      <CoffeeBean />
+    </div>
+  );
+}
+
+export function BrandGradientBackground() {
+  return <div className="brand-gradient-background" aria-hidden="true" />;
+}
+
+export function SectionDecor({ density = 'standard' }) {
+  const beans = density === 'low' ? 2 : 4;
+
+  return (
+    <div className="section-decor" aria-hidden="true">
+      <CoffeeLeaf className="section-decor__leaf section-decor__leaf--one" />
+      <CoffeeLeaf className="section-decor__leaf section-decor__leaf--two" />
+      {Array.from({ length: beans }, (_, index) => (
+        <CoffeeBean
+          key={index}
+          className={`section-decor__bean section-decor__bean--${index + 1}`}
+        />
+      ))}
+      <span className="section-decor__hat section-decor__hat--one" />
+      <span className="section-decor__hat section-decor__hat--two" />
+    </div>
+  );
+}

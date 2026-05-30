@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { BrandGradientBackground, SectionDecor } from './BrandDecor';
 
 /**
  * SectionWrapper
@@ -48,20 +49,27 @@ export default function SectionWrapper({
 
   // Determine if bgColor is a Tailwind class or an inline color
   const isTailwindClass = bgColor.startsWith('bg-');
+  const isLightSection = ['#FFFFFF', '#F5F7FA', 'bg-white', 'bg-[#F5F7FA]'].includes(bgColor);
 
   return (
     <section
       id={id}
       ref={ref}
       className={`
+        nonla-section nonla-section-blend brand-section ${isLightSection ? 'brand-section--darken' : ''}
         relative overflow-hidden
         py-16 px-5 sm:px-6 md:py-20 md:px-8 lg:py-24 lg:px-16
-        ${isTailwindClass ? bgColor : ''}
+        ${isTailwindClass && !isLightSection ? bgColor : ''}
         ${diagonalClass}
         ${className}
       `}
-      style={!isTailwindClass ? { backgroundColor: bgColor } : undefined}
+      style={undefined}
     >
+      <BrandGradientBackground />
+      <div className="section-transition-soft section-transition-soft--top" aria-hidden="true" />
+      <div className="section-transition-soft section-transition-soft--bottom" aria-hidden="true" />
+      <SectionDecor density="low" />
+
       {/* Oversized background text */}
       {bgText && (
         <div
