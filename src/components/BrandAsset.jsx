@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 function resolveAssetPath(src) {
   if (!src) return '';
@@ -10,6 +10,10 @@ function resolveAssetPath(src) {
   return `${base}${base.endsWith('/') ? '' : '/'}assets/${src}`;
 }
 
+function normalizeSources(src) {
+  return (Array.isArray(src) ? src : [src]).filter(Boolean);
+}
+
 export default function BrandAsset({
   src,
   alt,
@@ -18,10 +22,15 @@ export default function BrandAsset({
   decorative = false,
   ...props
 }) {
-  const [hasError, setHasError] = useState(false);
-  const resolvedSrc = resolveAssetPath(src);
+  const candidates = useMemo(() => normalizeSources(src).map(resolveAssetPath), [src]);
+  const [candidateIndex, setCandidateIndex] = useState(0);
+  const resolvedSrc = candidates[candidateIndex];
 
-  if (!resolvedSrc || hasError) {
+  useEffect(() => {
+    setCandidateIndex(0);
+  }, [candidates]);
+
+  if (!resolvedSrc) {
     return fallback;
   }
 
@@ -31,7 +40,7 @@ export default function BrandAsset({
       alt={decorative ? '' : alt}
       aria-hidden={decorative ? 'true' : undefined}
       className={className}
-      onError={() => setHasError(true)}
+      onError={() => setCandidateIndex((index) => index + 1)}
       loading="lazy"
       decoding="async"
       {...props}

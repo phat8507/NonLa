@@ -29,7 +29,7 @@ function App() {
     <div className="relative w-full overflow-x-hidden font-jakarta text-white">
       <StickyNav />
 
-      <FloatingElements count={10} dark={true} />
+      <FloatingElements count={8} dark={true} />
 
       <main>
         <Suspense fallback={<SectionLoader />}>

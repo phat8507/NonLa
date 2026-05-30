@@ -5,7 +5,7 @@ import BrandAsset from '../components/BrandAsset';
 const containerVariants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.12 },
+    transition: { staggerChildren: 0.1 },
   },
 };
 
@@ -14,34 +14,69 @@ const fadeUp = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.65, ease: 'easeOut' },
+    transition: { duration: 0.6, ease: 'easeOut' },
   },
 };
 
 const scaleIn = {
-  hidden: { opacity: 0, scale: 0.92, y: 18 },
+  hidden: { opacity: 0, scale: 0.94, y: 18 },
   visible: {
     opacity: 1,
     scale: 1,
     y: 0,
-    transition: { duration: 0.75, ease: 'easeOut' },
+    transition: { duration: 0.7, ease: 'easeOut' },
   },
 };
 
 const heroSignals = [
   { label: '4B VND', detail: 'campaign budget' },
   { label: '12B VND', detail: 'revenue target' },
-  { label: 'ROAS 3.0×', detail: 'performance goal' },
+  { label: 'ROAS 3.0x', detail: 'performance goal' },
 ];
 
+const assetCandidates = {
+  mascot: ['nonla-mascot.svg', 'nonla-mascot.png', 'nonla-mascot.webp'],
+  durian: ['nonla-pack-durian.svg', 'nonla-pack-durian.png', 'nonla-pack-durian.webp'],
+  salt: ['nonla-pack-salt.svg', 'nonla-pack-salt.png', 'nonla-pack-salt.webp'],
+  daLat: ['nonla-pack-da-lat.svg', 'nonla-pack-da-lat.png', 'nonla-pack-da-lat.webp'],
+  eggCream: ['nonla-pack-egg-cream.svg', 'nonla-pack-egg-cream.png', 'nonla-pack-egg-cream.webp'],
+};
+
 const miniPacks = [
-  { src: 'nonla-pack-salt.png', label: 'Salt' },
-  { src: 'nonla-pack-da-lat.png', label: 'Da Lat' },
+  { src: assetCandidates.salt, label: 'Salt' },
+  { src: assetCandidates.daLat, label: 'Da Lat' },
+];
+
+const flavorCollection = [
+  {
+    src: assetCandidates.durian,
+    name: 'Durian Coffee',
+    packLabel: 'Durian',
+    copy: 'A bold tropical signature for curious gifting.',
+  },
+  {
+    src: assetCandidates.salt,
+    name: 'Salt Coffee',
+    packLabel: 'Salt',
+    copy: 'A creamy Vietnamese twist with a modern finish.',
+  },
+  {
+    src: assetCandidates.daLat,
+    name: 'Da Lat Coffee',
+    packLabel: 'Da Lat',
+    copy: 'Highland-inspired, smooth, and gift-ready.',
+  },
+  {
+    src: assetCandidates.eggCream,
+    name: 'Egg Cream Coffee',
+    packLabel: 'Egg Cream',
+    copy: 'A dessert-like coffee ritual in a compact pack.',
+  },
 ];
 
 function ProductFallback({ label = 'NONLA' }) {
   return (
-    <div className="product-pack-fallback" aria-label={`NONLA ${label} coffee pack`}>
+    <div className="product-pack-fallback" role="img" aria-label={`NONLA ${label} coffee pack`}>
       <div className="product-pack-fallback__bow" aria-hidden="true" />
       <div className="product-pack-fallback__brand">nonla</div>
       <div className="product-pack-fallback__line" />
@@ -57,7 +92,7 @@ function ProductFallback({ label = 'NONLA' }) {
 
 function MascotFallback() {
   return (
-    <div className="mascot-fallback" aria-label="NONLA mascot placeholder">
+    <div className="mascot-fallback" role="img" aria-label="NONLA campaign mascot">
       <div className="mascot-fallback__hat" aria-hidden="true" />
       <div className="mascot-fallback__face">
         <span className="mascot-fallback__eye" />
@@ -75,17 +110,18 @@ function CoffeeBean({ className = '', style }) {
 
 function HeroVisual() {
   return (
-    <div className="hero-visual-shell" aria-label="NONLA product visual system">
+    <div className="hero-visual-shell" aria-label="NONLA product and mascot visual">
       <div className="coffee-leaf-layer coffee-leaf-layer--one" aria-hidden="true" />
       <div className="coffee-leaf-layer coffee-leaf-layer--two" aria-hidden="true" />
+      <div className="coffee-leaf-layer coffee-leaf-layer--three" aria-hidden="true" />
 
       <motion.div
         className="hero-mascot-card mascot-shadow"
-        animate={{ y: [0, -12, 0] }}
-        transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 6.5, ease: 'easeInOut', repeat: Infinity }}
       >
         <BrandAsset
-          src="nonla-mascot.png"
+          src={assetCandidates.mascot}
           alt="NONLA mascot holding Vietnamese coffee"
           className="brand-asset hero-mascot-img"
           fallback={<MascotFallback />}
@@ -94,12 +130,13 @@ function HeroVisual() {
 
       <motion.div
         className="hero-main-pack"
-        initial={{ opacity: 0, x: 30, rotate: 4 }}
+        initial={{ opacity: 0, x: 28, rotate: 3 }}
         animate={{ opacity: 1, x: 0, rotate: -2 }}
-        transition={{ duration: 0.7, delay: 0.25, ease: 'easeOut' }}
+        whileHover={{ rotate: 1.5, y: -6 }}
+        transition={{ duration: 0.65, delay: 0.2, ease: 'easeOut' }}
       >
         <BrandAsset
-          src="nonla-pack-durian.png"
+          src={assetCandidates.durian}
           alt="NONLA Durian Coffee gift pack"
           className="brand-asset hero-pack-img"
           fallback={<ProductFallback label="Durian Coffee" />}
@@ -110,8 +147,8 @@ function HeroVisual() {
         <motion.div
           key={pack.label}
           className={`floating-brand-item floating-brand-item--${index + 1}`}
-          animate={{ y: [0, -10, 0], rotate: index === 0 ? [-5, 2, -5] : [4, -3, 4] }}
-          transition={{ duration: 5 + index, ease: 'easeInOut', repeat: Infinity }}
+          animate={{ y: [0, -8, 0], rotate: index === 0 ? [-4, 1, -4] : [3, -2, 3] }}
+          transition={{ duration: 5.4 + index, ease: 'easeInOut', repeat: Infinity }}
         >
           <BrandAsset
             src={pack.src}
@@ -126,6 +163,29 @@ function HeroVisual() {
       <CoffeeBean className="hero-bean hero-bean--two" />
       <CoffeeBean className="hero-bean hero-bean--three" />
     </div>
+  );
+}
+
+function FlavorCollection() {
+  return (
+    <motion.div className="flavor-collection" variants={fadeUp} aria-label="NONLA flavor collection">
+      {flavorCollection.map((flavor) => (
+        <article key={flavor.name} className="flavor-card">
+          <div className="flavor-card__pack">
+            <BrandAsset
+              src={flavor.src}
+              alt={`NONLA ${flavor.name} pack`}
+              className="brand-asset flavor-card__image"
+              fallback={<ProductFallback label={flavor.packLabel} />}
+            />
+          </div>
+          <div className="flavor-card__copy">
+            <h2>{flavor.name}</h2>
+            <p>{flavor.copy}</p>
+          </div>
+        </article>
+      ))}
+    </motion.div>
   );
 }
 
@@ -154,38 +214,38 @@ export default function Hero() {
         NONLA
       </div>
       <div className="hero-bean-wave" aria-hidden="true">
-        {Array.from({ length: 18 }, (_, index) => (
+        {Array.from({ length: 14 }, (_, index) => (
           <CoffeeBean
             key={index}
             style={{
-              left: `${index * 6 - 4}%`,
-              bottom: `${(index % 4) * 8}px`,
-              transform: `rotate(${index * 17}deg) scale(${0.75 + (index % 5) * 0.08})`,
-              animationDelay: `${index * 0.12}s`,
+              left: `${index * 8 - 5}%`,
+              bottom: `${(index % 3) * 7}px`,
+              transform: `rotate(${index * 17}deg) scale(${0.68 + (index % 4) * 0.08})`,
+              animationDelay: `${index * 0.14}s`,
             }}
           />
         ))}
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-[calc(100svh-4rem)] w-full max-w-7xl items-center px-5 py-10 sm:px-6 md:px-10 lg:px-16">
-        <div className="grid w-full grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.92fr)] lg:gap-14">
+      <div className="relative z-10 mx-auto flex min-h-[calc(100svh-4rem)] w-full max-w-7xl items-center px-5 py-12 sm:px-6 md:px-10 lg:px-16">
+        <div className="grid w-full grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,1.04fr)_minmax(340px,0.9fr)] lg:gap-12">
           <motion.div
-            className="flex min-w-0 flex-col gap-5"
+            className="hero-copy flex min-w-0 flex-col gap-5"
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
           >
             <motion.p
-              className="w-fit rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.22em] text-white/72 backdrop-blur-md sm:text-xs"
+              className="w-fit rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-white/72 backdrop-blur-md sm:text-xs"
               variants={fadeUp}
             >
               YFC Future Leaders · NONLA Campaign
             </motion.p>
 
             <motion.div variants={fadeUp}>
-              <h1 className="max-w-[10ch] text-[3.25rem] font-black uppercase leading-[0.92] tracking-[-0.06em] text-white sm:text-7xl md:text-8xl xl:text-9xl">
-                Mở ra
-                <span className="block text-yellow">một Việt Nam</span>
+              <h1 className="hero-headline max-w-[12ch] text-[3.25rem] font-black uppercase leading-[0.92] text-white sm:text-7xl md:text-8xl xl:text-9xl">
+                MỞ RA
+                <span className="block text-yellow">/ MỘT VIỆT NAM</span>
               </h1>
             </motion.div>
 
@@ -202,21 +262,23 @@ export default function Hero() {
               variants={fadeUp}
             >
               <button
+                type="button"
                 onClick={scrollToOverview}
-                className="inline-flex items-center justify-center rounded-full bg-yellow px-7 py-3.5 text-sm font-black uppercase tracking-wide text-blue-dark shadow-xl shadow-yellow/20 transition duration-200 hover:-translate-y-0.5 hover:shadow-yellow/30 active:translate-y-0 sm:text-base"
+                className="hero-cta hero-cta--primary"
               >
                 Explore NONLA
               </button>
               <button
+                type="button"
                 onClick={scrollToBigIdea}
-                className="inline-flex items-center justify-center rounded-full border border-white/18 bg-white/8 px-7 py-3.5 text-sm font-bold uppercase tracking-wide text-white backdrop-blur-md transition duration-200 hover:bg-white/14 active:scale-[0.98] sm:text-base"
+                className="hero-cta hero-cta--secondary"
               >
                 View the Case
               </button>
             </motion.div>
 
             <motion.div
-              className="grid max-w-2xl grid-cols-1 gap-3 pt-2 sm:grid-cols-3"
+              className="grid max-w-2xl grid-cols-1 gap-3 pt-1 sm:grid-cols-3"
               variants={fadeUp}
               aria-label="Campaign headline metrics"
             >
@@ -228,14 +290,11 @@ export default function Hero() {
               ))}
             </motion.div>
 
-            <motion.p className="text-xs text-white/45" variants={fadeUp}>
-              Asset-ready layout: add real mascot, pack, coffee bean, and logo images later in
-              public/assets without changing the UI logic.
-            </motion.p>
+            <FlavorCollection />
           </motion.div>
 
           <motion.div
-            className="relative flex min-w-0 items-center justify-center"
+            className="hero-visual-column relative flex min-w-0 items-center justify-center"
             variants={scaleIn}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}

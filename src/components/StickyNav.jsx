@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import BrandAsset from './BrandAsset';
 
@@ -43,7 +43,7 @@ function NonlaWordmark() {
   );
 }
 
-function NavDot({ section, isActive, onClick }) {
+function NavDot({ section, isActive, onClick, dotRef }) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -70,6 +70,7 @@ function NavDot({ section, isActive, onClick }) {
       </AnimatePresence>
 
       <button
+        ref={dotRef}
         onClick={onClick}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
@@ -83,6 +84,7 @@ function NavDot({ section, isActive, onClick }) {
 export default function StickyNav() {
   const [activeSection, setActiveSection] = useState('hero');
   const [isScrolled, setIsScrolled] = useState(false);
+  const dotRefs = useRef({});
 
   useEffect(() => {
     const handleScroll = () => {
@@ -122,6 +124,14 @@ export default function StickyNav() {
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   }, []);
 
+  useEffect(() => {
+    dotRefs.current[activeSection]?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'center',
+    });
+  }, [activeSection]);
+
   return (
     <motion.nav
       initial={{ y: -60, opacity: 0 }}
@@ -145,7 +155,7 @@ export default function StickyNav() {
         aria-label="Go to NONLA hero section"
       >
         <BrandAsset
-          src="nonla-logo.png"
+          src={['nonla-logo.svg', 'nonla-logo.png', 'nonla-logo.webp']}
           alt="NONLA logo"
           className="h-7 max-w-[132px] object-contain sm:h-8 sm:max-w-[180px]"
           fallback={<NonlaWordmark />}
@@ -159,6 +169,9 @@ export default function StickyNav() {
             section={section}
             isActive={activeSection === section.id}
             onClick={() => scrollTo(section.id)}
+            dotRef={(node) => {
+              dotRefs.current[section.id] = node;
+            }}
           />
         ))}
       </div>
