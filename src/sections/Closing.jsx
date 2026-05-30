@@ -49,7 +49,7 @@ export default function Closing() {
           transition={{ duration: 0.65 }}
         >
           <BrandAsset
-            src={['nonla-logo.svg', 'nonla-logo.png', 'nonla-logo.webp']}
+            src={[]}
             alt="NONLA logo"
             className="mb-8 h-10 w-auto"
             fallback={<NonlaWordmark />}

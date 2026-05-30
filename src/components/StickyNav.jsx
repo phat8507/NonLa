@@ -155,7 +155,7 @@ export default function StickyNav() {
         aria-label="Go to NONLA hero section"
       >
         <BrandAsset
-          src={['nonla-logo.svg', 'nonla-logo.png', 'nonla-logo.webp']}
+          src={[]}
           alt="NONLA logo"
           className="h-7 max-w-[132px] object-contain sm:h-8 sm:max-w-[180px]"
           fallback={<NonlaWordmark />}
