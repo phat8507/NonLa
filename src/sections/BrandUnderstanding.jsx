@@ -6,14 +6,17 @@ const truths = [
   {
     title: 'Freeze-dried coffee',
     body: 'Fast preparation with a stronger premium cue than standard instant coffee.',
+    pack: 'Americano',
   },
   {
     title: 'Convenient ritual',
     body: 'A compact format that still feels intentional when brewed or gifted.',
+    pack: 'Da Lat',
   },
   {
     title: 'Premium giftable pack',
     body: 'Packaging carries the social signal before the product is tasted.',
+    pack: 'Giftbox',
   },
 ];
 
@@ -68,9 +71,9 @@ export default function BrandUnderstanding() {
                 transition={{ duration: 0.45, delay: index * 0.08 }}
                 className="nonla-card p-6"
               >
-                <span className="mini-pack-fallback mb-5" aria-hidden="true">
-                  {index + 1}
-                </span>
+                <div className="mb-5 w-20">
+                  <MiniNonlaPack label={truth.pack} />
+                </div>
                 <h4 className="text-white text-lg font-bold">{truth.title}</h4>
                 <p className="text-white/72 text-sm leading-relaxed mt-3">{truth.body}</p>
               </motion.article>

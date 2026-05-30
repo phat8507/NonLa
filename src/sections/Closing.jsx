@@ -62,10 +62,10 @@ export default function Closing() {
             <span className="block text-[#F4B400]">dưới bóng nón lá.</span>
           </h2>
           <p className="mt-2 text-xs md:text-sm font-bold text-[#FFD84D] tracking-wide mb-6">
-            “The full essence of Vietnam, sheltered under the nón lá.”
+            "The full essence of Vietnam, sheltered under the nón lá."
           </p>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/76">
-            NONLA turns Vietnamese coffee into a giftable cultural ritual — compact, premium, and protected under the nón lá.
+            NONLA turns Vietnamese coffee into a giftable cultural ritual - compact, premium, and protected under the nón lá.
           </p>
 
           <div className="mt-8 grid grid-cols-1 gap-4">
@@ -97,14 +97,25 @@ export default function Closing() {
           className="relative mx-auto h-[520px] w-full max-w-md"
         >
           <div className="absolute inset-x-8 bottom-8 h-28 rounded-[50%] bg-[#F4B400]/20 blur-2xl" aria-hidden="true" />
+          <BrandAsset
+            src="coffee-beans-pile.png"
+            decorative
+            className="brand-asset closing-beans-pile"
+            fallback={null}
+          />
           <div className="absolute left-2 top-10 w-32 rotate-[-8deg]">
-            <MiniNonlaPack label="Durian" />
+            <MiniNonlaPack label="Giftbox" src={['pack-giftbox.png', 'pack-durian.png']} />
           </div>
           <div className="absolute right-0 top-28 w-28 rotate-[7deg]">
-            <MiniNonlaPack label="Salt" src={['nonla-pack-salt.svg', 'nonla-pack-salt.png', 'nonla-pack-salt.webp']} />
+            <MiniNonlaPack label="Salt" src={['pack-salt.png', 'pack-giftbox.png']} />
           </div>
           <div className="absolute bottom-20 left-1/2 -translate-x-1/2">
-            <NonlaMascotFallback />
+            <BrandAsset
+              src="mascot.png"
+              alt="NONLA campaign mascot"
+              className="brand-asset closing-mascot-img"
+              fallback={<NonlaMascotFallback />}
+            />
           </div>
           {Array.from({ length: 9 }, (_, index) => (
             <CoffeeBean

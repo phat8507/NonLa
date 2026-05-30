@@ -131,7 +131,7 @@ export default function Insight() {
               </p>
               <div className="flex items-end gap-3 origin-bottom-left scale-[0.70] sm:scale-[0.80] md:scale-100 transition-all">
                 <MiniNonlaPack label="Gift" />
-                <MiniNonlaPack label="Tet" src={['nonla-pack-egg-cream.png', 'nonla-pack-egg-cream.webp']} />
+                <MiniNonlaPack label="Egg Cream" src={['pack-egg-cream.png', 'pack-giftbox.png']} />
                 <CoffeeBean className="relative opacity-70" />
               </div>
             </div>

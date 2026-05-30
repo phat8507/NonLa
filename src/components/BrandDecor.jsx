@@ -18,6 +18,16 @@ export function CoffeeBeanField({ count = 6, className = '' }) {
   );
 }
 
+function packCandidatesForLabel(label) {
+  const key = label.toLowerCase();
+  if (key.includes('americano')) return ['pack-americano.png', 'pack-giftbox.png'];
+  if (key.includes('da lat') || key.includes('da-lat')) return ['pack-da-lat.png', 'pack-giftbox.png'];
+  if (key.includes('durian')) return ['pack-durian.png', 'pack-giftbox.png'];
+  if (key.includes('egg')) return ['pack-egg-cream.png', 'pack-giftbox.png'];
+  if (key.includes('salt')) return ['pack-salt.png', 'pack-giftbox.png'];
+  return ['pack-giftbox.png', 'pack-durian.png'];
+}
+
 export function MiniNonlaPack({ label = 'NONLA', src, className = '' }) {
   const fallback = (
     <div className="product-pack-fallback mini-nonla-pack-fallback" role="img" aria-label={`NONLA ${label} coffee pack`}>
@@ -35,7 +45,7 @@ export function MiniNonlaPack({ label = 'NONLA', src, className = '' }) {
 
   return (
     <BrandAsset
-      src={src || ['nonla-pack-durian.svg', 'nonla-pack-durian.png', 'nonla-pack-durian.webp']}
+      src={src || packCandidatesForLabel(label)}
       alt={`NONLA ${label} coffee pack`}
       className={`brand-asset mini-nonla-pack ${className}`}
       fallback={fallback}
