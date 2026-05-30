@@ -56,16 +56,18 @@ export default function SectionWrapper({
       id={id}
       ref={ref}
       className={`
-        brand-section ${isLightSection ? 'brand-section--darken' : ''}
+        nonla-section nonla-section-blend brand-section ${isLightSection ? 'brand-section--darken' : ''}
         relative overflow-hidden
         py-16 px-5 sm:px-6 md:py-20 md:px-8 lg:py-24 lg:px-16
         ${isTailwindClass && !isLightSection ? bgColor : ''}
         ${diagonalClass}
         ${className}
       `}
-      style={!isTailwindClass && !isLightSection ? { backgroundColor: bgColor } : undefined}
+      style={undefined}
     >
       <BrandGradientBackground />
+      <div className="section-transition-soft section-transition-soft--top" aria-hidden="true" />
+      <div className="section-transition-soft section-transition-soft--bottom" aria-hidden="true" />
       <SectionDecor density="low" />
 
       {/* Oversized background text */}

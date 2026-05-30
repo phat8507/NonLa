@@ -8,6 +8,16 @@ export function CoffeeLeaf({ className = '', style }) {
   return <span className={`brand-leaf ${className}`} style={style} aria-hidden="true" />;
 }
 
+export function CoffeeBeanField({ count = 6, className = '' }) {
+  return (
+    <div className={`coffee-bean-field ${className}`} aria-hidden="true">
+      {Array.from({ length: count }, (_, index) => (
+        <CoffeeBean key={index} className={`coffee-bean-field__bean coffee-bean-field__bean--${index + 1}`} />
+      ))}
+    </div>
+  );
+}
+
 export function MiniNonlaPack({ label = 'NONLA', src, className = '' }) {
   const fallback = (
     <div className="product-pack-fallback mini-nonla-pack-fallback" role="img" aria-label={`NONLA ${label} coffee pack`}>
@@ -32,6 +42,8 @@ export function MiniNonlaPack({ label = 'NONLA', src, className = '' }) {
     />
   );
 }
+
+export const MiniPackFallback = MiniNonlaPack;
 
 export function NonlaMascotFallback({ className = '' }) {
   return (

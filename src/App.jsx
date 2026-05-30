@@ -26,12 +26,12 @@ const SectionLoader = () => (
 
 function App() {
   return (
-    <div className="relative w-full overflow-x-hidden font-jakarta text-white">
+    <div className="nonla-page-bg relative w-full overflow-x-hidden font-jakarta text-white">
       <StickyNav />
 
       <FloatingElements count={8} dark={true} />
 
-      <main>
+      <main className="relative z-0">
         <Suspense fallback={<SectionLoader />}>
           <Hero />
           <ExecutiveSummary />

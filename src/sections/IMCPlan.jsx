@@ -3,37 +3,68 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement } from 'chart.js';
 import { Doughnut, Bar } from 'react-chartjs-2';
 import SectionWrapper from '../components/SectionWrapper';
+import { CoffeeBeanField, CoffeeLeaf, MiniNonlaPack } from '../components/BrandDecor';
 import { useInView } from 'react-intersection-observer';
 
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement);
 
-const channelMarks = {
-  TikTok: '♪',
-  Facebook: 'f',
-  YouTube: '▶',
-  Youtube: '▶',
-  PR: '▣',
-  Instagram: '◎',
-  ShopeeFood: 'S',
-  GrabFood: 'G',
-  LinkedIn: 'in',
-  Email: '@',
-  Shopee: 'S',
-  'TikTok Shop': '♪',
-  'Offline popup': '□',
-  'Meta retargeting': 'f',
-  Google: 'G',
-  'Landing page': '↗',
-  Zalo: 'Z',
-  KOC: '★',
-  'Direct B2B': 'B2B',
-};
+function ChannelIcon({ name }) {
+  const baseClass = "h-4 w-4";
+  if (name === 'TikTok' || name === 'TikTok Shop') {
+    return (
+      <svg viewBox="0 0 24 24" className={baseClass} aria-hidden="true">
+        <path d="M14.3 3.2v10.4a4.5 4.5 0 1 1-3.7-4.4v2.9a1.8 1.8 0 1 0 1.2 1.7V3.2h2.5Z" fill="#0A1628" />
+        <path d="M14.4 3.2c.6 2.5 2.3 4.1 4.9 4.5v2.8c-1.8-.1-3.4-.7-4.9-1.9V3.2Z" fill="#0A1628" />
+      </svg>
+    );
+  }
+  if (name === 'Facebook' || name === 'Meta retargeting') {
+    return (
+      <svg viewBox="0 0 24 24" className={baseClass} aria-hidden="true">
+        <path d="M14 8.1V6.7c0-.7.3-1 1.1-1h1.7V2.9c-.8-.1-1.7-.2-2.5-.2-2.6 0-4.3 1.6-4.3 4.5v.9H7.2v3.1H10v8h3.4v-8h2.8l.5-3.1H14Z" fill="#0A1628" />
+      </svg>
+    );
+  }
+  if (name === 'YouTube' || name === 'Youtube') {
+    return (
+      <svg viewBox="0 0 24 24" className={baseClass} aria-hidden="true">
+        <rect x="2.5" y="6.2" width="19" height="11.6" rx="3" fill="#0A1628" />
+        <path d="M10.2 9.2v5.6l5-2.8-5-2.8Z" fill="#FFD84D" />
+      </svg>
+    );
+  }
+  if (name === 'PR') {
+    return (
+      <svg viewBox="0 0 24 24" className={baseClass} aria-hidden="true">
+        <path d="M4 10.2h3.1l8.7-4.2v12l-8.7-4.2H4a2 2 0 0 1-2-2v-1.6a2 2 0 0 1 2-2Z" fill="#0A1628" />
+        <path d="M7.2 13.8 8.5 20h2.8L10 14.2Z" fill="#0A1628" />
+        <path d="M18.2 9.2a4.5 4.5 0 0 1 0 5.6" fill="none" stroke="#0A1628" strokeWidth="1.7" strokeLinecap="round" />
+      </svg>
+    );
+  }
+  if (name === 'Google') {
+    return (
+      <svg viewBox="0 0 24 24" className={baseClass} aria-hidden="true">
+        <path d="M20.6 12.2c0-.7-.1-1.3-.2-1.9H12v3.5h4.8a4.1 4.1 0 0 1-1.8 2.7v2.2h2.9c1.7-1.6 2.7-3.8 2.7-6.5Z" fill="#0A1628" />
+        <path d="M12 21c2.4 0 4.5-.8 6-2.2l-2.9-2.2c-.8.5-1.8.9-3.1.9-2.4 0-4.4-1.6-5.1-3.8h-3v2.3A9 9 0 0 0 12 21Z" fill="#0A1628" />
+        <path d="M6.9 13.7a5.4 5.4 0 0 1 0-3.4V8H4a9 9 0 0 0 0 8Z" fill="#0A1628" />
+        <path d="M12 6.5c1.3 0 2.5.5 3.4 1.3L18 5.2A9 9 0 0 0 4 8l2.9 2.3c.7-2.2 2.7-3.8 5.1-3.8Z" fill="#0A1628" />
+      </svg>
+    );
+  }
+  return (
+    <svg viewBox="0 0 24 24" className={baseClass} aria-hidden="true">
+      <circle cx="12" cy="12" r="8" fill="#0A1628" />
+      <path d="M8 12h8M12 8v8" stroke="#FFD84D" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
 
 function ChannelChip({ name }) {
   return (
     <span className="nonla-chip">
-      <span className="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#FFD84D] px-1 text-[10px] font-black text-[#0A1628]">
-        {channelMarks[name] || '•'}
+      <span className="inline-flex h-6 min-w-6 items-center justify-center rounded-full bg-[#FFD84D] px-1 text-[10px] font-black text-[#0A1628]">
+        <ChannelIcon name={name} />
       </span>
       {name}
     </span>
@@ -173,6 +204,8 @@ const IMCPlan = () => {
 
   return (
     <SectionWrapper id="imc" bgColor="#0A1628" bgText="IMC">
+      <CoffeeBeanField count={6} />
+      <CoffeeLeaf className="absolute right-8 top-32 opacity-25" />
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
           <span className="text-[#F4B400] text-sm font-bold tracking-widest uppercase">
@@ -183,7 +216,7 @@ const IMCPlan = () => {
         {/* Timeline */}
         <div className="mb-16">
           <div className="flex overflow-x-auto pb-6 hide-scrollbar snap-x relative">
-            <div className="absolute top-1/2 left-0 w-full h-0.5 bg-white/10 -translate-y-1/2 hidden md:block z-0"></div>
+            <div className="absolute top-1/2 left-0 w-full h-1 rounded-full bg-gradient-to-r from-transparent via-[#FFD84D]/45 to-transparent -translate-y-1/2 hidden md:block z-0"></div>
             
             {phases.map((phase, index) => (
               <div 
@@ -206,6 +239,9 @@ const IMCPlan = () => {
           </div>
 
           <div className="glass-card p-6 md:p-8 relative overflow-hidden">
+            <div className="absolute right-5 top-5 opacity-70 hidden sm:block">
+              <MiniNonlaPack label="IMC" />
+            </div>
             <AnimatePresence mode="wait">
               <motion.div
                 key={activePhase}

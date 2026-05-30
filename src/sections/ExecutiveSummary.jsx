@@ -130,7 +130,7 @@ export default function ExecutiveSummary() {
     <section
       id="overview"
       ref={sectionRef}
-      className="brand-section relative py-24 md:py-32 overflow-hidden"
+      className="nonla-section nonla-section-blend brand-section relative py-24 md:py-32 overflow-hidden"
     >
       <div className="brand-gradient-background" aria-hidden="true" />
       <div className="section-decor" aria-hidden="true">

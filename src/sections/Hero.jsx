@@ -210,6 +210,7 @@ export default function Hero() {
       className="relative min-h-[100svh] overflow-hidden bg-blue-primary pt-16"
     >
       <div className="hero-gradient" aria-hidden="true" />
+      <div className="section-transition-soft section-transition-soft--bottom" aria-hidden="true" />
       <div className="section-bg-text select-none" aria-hidden="true">
         NONLA
       </div>

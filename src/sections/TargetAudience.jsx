@@ -277,7 +277,7 @@ export default function TargetAudience() {
     <section
       id="target"
       ref={sectionRef}
-      className="brand-section relative py-24 md:py-32 overflow-hidden"
+      className="nonla-section nonla-section-blend brand-section relative py-24 md:py-32 overflow-hidden"
     >
       {/* ── oversized background text ── */}
       <div className="brand-gradient-background" aria-hidden="true" />

@@ -4,6 +4,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Tooltip, Lege
 import { Bar } from 'react-chartjs-2';
 import SectionWrapper from '../components/SectionWrapper';
 import AnimatedCounter from '../components/AnimatedCounter';
+import { CoffeeBeanField, CoffeeLeaf, MiniNonlaPack } from '../components/BrandDecor';
 import { useInView } from 'react-intersection-observer';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
@@ -68,11 +69,17 @@ const RevenueModel = () => {
 
   return (
     <SectionWrapper id="revenue" bgColor="#0A1628" bgText="REVENUE">
+      <CoffeeBeanField count={6} />
+      <CoffeeLeaf className="absolute left-8 top-28 opacity-25" />
+      <CoffeeLeaf className="absolute right-6 bottom-28 opacity-20 rotate-180" />
       <div className="max-w-5xl mx-auto">
         <div className="mb-12">
           <span className="text-[#F4B400] text-sm font-bold tracking-widest uppercase">
             REVENUE MODEL
           </span>
+          <div className="mt-4 hidden sm:block">
+            <MiniNonlaPack label="ROAS" />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
