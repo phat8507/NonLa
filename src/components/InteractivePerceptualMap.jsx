@@ -185,10 +185,10 @@ export default function InteractivePerceptualMap() {
 
             <line x1="13" y1="82" x2="91" y2="82" stroke="rgba(10,22,40,0.58)" strokeWidth="0.7" markerEnd="url(#mapArrow)" />
             <line x1="13" y1="82" x2="13" y2="11" stroke="rgba(10,22,40,0.58)" strokeWidth="0.7" markerEnd="url(#mapArrow)" />
-            <text x="12" y="90" fontSize="2.4" fontWeight="800" fill="#0A1628">Giá thấp</text>
-            <text x="78" y="90" fontSize="2.4" fontWeight="800" fill="#0A1628">Giá cao</text>
-            <text x="15" y="8" fontSize="2.4" fontWeight="800" fill="#0A1628">Vị bản địa, đa dạng</text>
-            <text x="38" y="88.5" fontSize="2.4" fontWeight="800" fill="#0A1628">Hương vị phổ thông</text>
+            <text x="12" y="90" fontSize="2.4" fontWeight="800" fill="#0A1628">Low Price</text>
+            <text x="78" y="90" fontSize="2.4" fontWeight="800" fill="#0A1628">High Price</text>
+            <text x="15" y="8" fontSize="2.4" fontWeight="800" fill="#0A1628">Distinctive Vietnamese Flavor</text>
+            <text x="38" y="88.5" fontSize="2.4" fontWeight="800" fill="#0A1628">Mainstream Flavor</text>
 
             <path
               d="M28 54 C34 40 43 30 56 22"

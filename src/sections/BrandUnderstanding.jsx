@@ -125,7 +125,7 @@ export default function BrandUnderstanding() {
                 <p className="text-[#0A1628]/60 text-sm font-black uppercase tracking-widest mb-3">
                   To
                 </p>
-                <h4 className="text-2xl font-black">Vietnamese coffee gift</h4>
+                <h4 className="text-2xl font-black">Vietnamese coffee gift ritual</h4>
                 <p className="text-[#0A1628]/72 text-sm mt-3">
                   Cultural, presentable, and gift-ready.
                 </p>

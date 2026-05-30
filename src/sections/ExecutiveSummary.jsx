@@ -5,28 +5,28 @@ import { CoffeeBean, CoffeeLeaf, MiniNonlaPack } from '../components/BrandDecor'
 const summaryItems = [
   {
     title: 'Insight',
-    body: 'Fear that convenience = cheap gift',
+    body: 'Convenience risks looking like a cheap gift',
     icon: '!',
   },
   {
     title: 'Big Idea',
-    body: 'Trọn tinh túy Việt dưới bóng nón',
+    body: 'Trọn tinh túy Việt dưới bóng nón lá',
     icon: '△',
     feature: true,
   },
   {
     title: 'Target',
-    body: 'Corporate Tet Gift Buyers (Primary)',
+    body: 'Corporate Tet Gift Buyers',
     icon: '◎',
   },
   {
     title: 'Strategy',
-    body: 'REFRAME: not coffee, a Vietnamese gifting ritual',
+    body: 'Reframe coffee into a Vietnamese gifting ritual',
     icon: '↗',
   },
   {
     title: 'Budget',
-    body: '4B VND → 12B VND target (ROAS 3.0×)',
+    body: '4B VND → 12B VND revenue target',
     icon: '₫',
   },
   {

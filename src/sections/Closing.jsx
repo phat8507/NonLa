@@ -59,11 +59,13 @@ export default function Closing() {
           </p>
           <h2 className="max-w-3xl text-4xl font-black leading-[0.98] text-white md:text-6xl lg:text-7xl">
             Trọn tinh túy Việt
-            <span className="block text-[#F4B400]">dưới bóng nón.</span>
+            <span className="block text-[#F4B400]">dưới bóng nón lá.</span>
           </h2>
+          <p className="mt-2 text-xs md:text-sm font-bold text-[#FFD84D] tracking-wide mb-6">
+            “The full essence of Vietnam, sheltered under the nón lá.”
+          </p>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/76">
-            A premium coffee gift can carry more than taste: it can carry face,
-            memory, and a small ritual of Vietnam.
+            NONLA turns Vietnamese coffee into a giftable cultural ritual — compact, premium, and protected under the nón lá.
           </p>
 
           <div className="mt-8 grid grid-cols-1 gap-4">
