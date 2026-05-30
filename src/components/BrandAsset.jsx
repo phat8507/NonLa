@@ -2,12 +2,23 @@ import { useEffect, useMemo, useState } from 'react';
 
 function resolveAssetPath(src) {
   if (!src) return '';
-  if (src.startsWith('http') || src.startsWith('data:') || src.startsWith('/')) {
+  if (src.startsWith('http') || src.startsWith('data:')) {
     return src;
   }
 
   const base = import.meta.env.BASE_URL || '/';
-  return `${base}${base.endsWith('/') ? '' : '/'}assets/${src}`;
+  const basePath = `${base}${base.endsWith('/') ? '' : '/'}`;
+  const cleanSrc = src.replace(/^\/+/, '');
+
+  if (cleanSrc.startsWith('assets/')) {
+    return `${basePath}${cleanSrc}`;
+  }
+
+  if (cleanSrc.includes('/')) {
+    return `${basePath}${cleanSrc}`;
+  }
+
+  return `${basePath}assets/nonla/${cleanSrc}`;
 }
 
 function normalizeSources(src) {
@@ -42,7 +53,7 @@ export default function BrandAsset({
       aria-hidden={decorative ? 'true' : undefined}
       className={className}
       onError={() => setCandidateIndex((index) => index + 1)}
-      loading="eager"
+      loading="lazy"
       decoding="async"
       {...props}
     />

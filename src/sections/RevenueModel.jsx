@@ -163,32 +163,32 @@ const RevenueModel = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 mb-12 lg:mb-16">
           {/* Left Column - Equations */}
           <div className="flex flex-col justify-center">
-            <div className="glass-card p-8 relative overflow-hidden mb-8">
+            <div className="glass-card p-6 md:p-8 relative overflow-hidden mb-6 border border-white/25">
               <div className="absolute top-0 right-0 w-32 h-32 non-la bg-white/5 -translate-y-10 translate-x-10"></div>
               
               <div className="space-y-6 font-mono relative z-10">
                 <div className="flex justify-between items-center text-sm md:text-base border-b border-white/10 pb-4">
                   <span className="text-[#8A9BB5] font-bold">B2B:</span>
-                  <div className="text-right">
-                    <span className="text-white">300 orders</span>
+                  <div className="text-right text-white">
+                    <span>300 orders</span>
                     <span className="text-[#8A9BB5] mx-2">×</span>
-                    <span className="text-white">30,000,000</span>
+                    <span>30,000,000</span>
                     <span className="text-[#8A9BB5] mx-2">=</span>
-                    <span className="text-[#F4B400] font-bold">9,000,000,000</span>
+                    <span className="text-[#FFD84D] font-bold">9,000,000,000</span>
                   </div>
                 </div>
                 
                 <div className="flex justify-between items-center text-sm md:text-base border-b border-white/20 pb-4">
                   <span className="text-[#8A9BB5] font-bold">B2C:</span>
-                  <div className="text-right">
-                    <span className="text-white">10,000 orders</span>
+                  <div className="text-right text-white">
+                    <span>10,000 orders</span>
                     <span className="text-[#8A9BB5] mx-2">×</span>
-                    <span className="text-white">300,000</span>
+                    <span>300,000</span>
                     <span className="text-[#8A9BB5] mx-2">=</span>
-                    <span className="text-[#F4B400] font-bold">3,000,000,000</span>
+                    <span className="text-[#FFD84D] font-bold">3,000,000,000</span>
                   </div>
                 </div>
 
@@ -200,7 +200,7 @@ const RevenueModel = () => {
                 </div>
               </div>
               
-              <div className="mt-8 flex flex-col sm:flex-row justify-between items-center gap-4 border-t border-white/10 pt-6">
+              <div className="mt-6 flex flex-col sm:flex-row justify-between items-center gap-4 border-t border-white/10 pt-6">
                 <p className="text-xs text-[#8A9BB5] italic">
                   *Corporate AOV 30M = ~100 boxes × 300k (assumed group bulk purchase)
                 </p>
@@ -210,7 +210,7 @@ const RevenueModel = () => {
               </div>
             </div>
 
-            <div className="glass-card p-6 border-l-4 border-l-[#22C55E]" ref={chartRef}>
+            <div className="glass-card p-6 border-l-4 border border-white/18 border-l-[#22C55E]" ref={chartRef}>
               <h4 className="text-white font-bold mb-4">Conservative Scenario</h4>
               <div className="flex items-center justify-between">
                 <div>

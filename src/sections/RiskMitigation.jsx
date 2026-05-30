@@ -64,14 +64,14 @@ const RiskMatrix = () => {
           </div>
 
           {/* Grid labels inside */}
-          <div className="absolute left-1.5 top-2 text-[8px] font-bold text-white/40 uppercase tracking-wider">High Impact</div>
-          <div className="absolute left-1.5 bottom-2 text-[8px] font-bold text-white/40 uppercase tracking-wider">Low Impact</div>
-          <div className="absolute right-2 bottom-2 text-[8px] font-bold text-white/40 uppercase tracking-wider">High Likelihood</div>
+          <div className="absolute left-1.5 top-2 text-[8px] font-bold text-white/72 uppercase tracking-wider">High Impact</div>
+          <div className="absolute left-1.5 bottom-2 text-[8px] font-bold text-white/72 uppercase tracking-wider">Low Impact</div>
+          <div className="absolute right-2 bottom-2 text-[8px] font-bold text-white/72 uppercase tracking-wider">High Likelihood</div>
 
         </div>
 
         {/* X and Y Axis Titles */}
-        <div className="w-full max-w-[280px] flex justify-between text-[9px] font-bold text-white/60 mt-2 px-1">
+        <div className="w-full max-w-[280px] flex justify-between text-[9px] font-bold text-white/84 mt-2 px-1">
           <span>Low Likelihood</span>
           <span>Medium</span>
           <span>High Likelihood</span>

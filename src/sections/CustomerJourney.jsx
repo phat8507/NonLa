@@ -109,7 +109,7 @@ const BarrierIntensityTimeline = () => {
         {/* Bottom Caption and Message */}
         <div className="border-t border-white/10 pt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-xs">
           <p className="italic text-[#8A9BB5] max-w-xl">
-            “The journey bottleneck is not awareness alone; it is confidence before purchase.”
+            “The journey bottleneck is not awareness alone; it is confidence before bulk purchase.”
           </p>
           <div className="flex items-center text-red-400 font-bold">
             <span className="w-2.5 h-2.5 rounded-full bg-red-500 mr-2 animate-pulse"></span>

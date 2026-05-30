@@ -2,7 +2,114 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SectionWrapper from '../components/SectionWrapper';
 
-const StrategicApproach = () => {
+const PillarToKPIMap = () => {
+  const pillars = [
+    {
+      title: "ELEVATE",
+      focus: "Perception & Pack",
+      desc: "Educate on freeze-dried quality under the iconic Nón Lá design to reframe instant coffee cheapness.",
+      kpis: [
+        { label: "UGC Posts", target: "500+" },
+        { label: "Engagement Rate", target: ">6%" }
+      ],
+      color: "border-[#F4B400]/30 text-[#F4B400] bg-[#F4B400]/5",
+      badgeColor: "bg-[#F4B400] text-[#0A1628]",
+      tag: "Perception"
+    },
+    {
+      title: "EDUCATE",
+      focus: "Salience & Presence",
+      desc: "Deploy Facebook/TikTok unboxings, Meta targeting, and authority PR to build strong gift top-of-mind.",
+      kpis: [
+        { label: "Brand Awareness", target: "+25 pts" },
+        { label: "Video Views", target: "3M" }
+      ],
+      color: "border-[#1A4DFF]/30 text-[#1A4DFF] bg-[#1A4DFF]/5",
+      badgeColor: "bg-[#1A4DFF] text-white",
+      tag: "Salience"
+    },
+    {
+      title: "ENABLE",
+      focus: "Conversion & Leads",
+      desc: "Provide custom engraving, bulk quote engines, B2B CRM, and corporate sample kits to remove B2B friction.",
+      kpis: [
+        { label: "B2B Lead Volume", target: "200 Leads" },
+        { label: "CVR / ROAS Goal", target: ">3% / >3x" }
+      ],
+      color: "border-[#22C55E]/30 text-[#22C55E] bg-[#22C55E]/5",
+      badgeColor: "bg-[#22C55E] text-white",
+      tag: "Conversion"
+    }
+  ];
+
+  return (
+    <div className="glass-card p-6 md:p-8 border border-[#FFD84D]/25 mt-12 relative overflow-hidden select-none">
+      <div className="absolute right-0 top-0 w-48 h-48 opacity-[0.03] pointer-events-none">
+         <div className="w-full h-full bg-white rounded-full"></div>
+      </div>
+      
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+        <div>
+          <h3 className="text-2xl font-black text-white">Pillar-to-KPI Map</h3>
+          <p className="text-xs text-[#8A9BB5] mt-1">Driving campaign outcomes from brand perception down to sales conversion.</p>
+        </div>
+        <div className="px-3 py-1 bg-[#F4B400]/10 rounded border border-[#F4B400]/30 text-xs font-bold text-[#FFD84D]">
+          Strategic Framework
+        </div>
+      </div>
+
+      {/* Horizontal Chevron/Funnel Path on Desktop */}
+      <div className="hidden lg:flex justify-between items-center mb-10 relative px-16">
+        <div className="absolute left-20 right-20 top-1/2 h-1 bg-gradient-to-r from-[#F4B400] via-[#1A4DFF] to-[#22C55E] -translate-y-1/2 z-0" />
+        
+        {pillars.map((p, idx) => (
+          <div key={idx} className="relative z-10 flex flex-col items-center">
+            <div className={`px-5 py-2 rounded-full font-black text-xs uppercase shadow-md ${p.badgeColor}`}>
+              {p.tag}
+            </div>
+            {idx < 2 && (
+              <div className="absolute left-[calc(100%+32px)] top-1/2 -translate-y-1/2 text-white/40 font-black text-lg">
+                ➔
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+        {pillars.map((p, idx) => (
+          <div 
+            key={idx} 
+            className={`border rounded-2xl p-6 flex flex-col justify-between hover:scale-[1.02] transition-all duration-300 ${p.color}`}
+          >
+            <div>
+              <div className="flex justify-between items-center mb-4">
+                <span className={`px-2.5 py-0.5 rounded text-[10px] font-black uppercase tracking-wider ${p.badgeColor}`}>
+                  {p.title}
+                </span>
+                <span className="text-white/40 text-xs font-black">Pillar 0{idx + 1}</span>
+              </div>
+              <h4 className="text-white text-lg font-bold mb-1">{p.focus}</h4>
+              <p className="text-white/70 text-xs leading-relaxed mb-6">{p.desc}</p>
+            </div>
+
+            <div className="border-t border-white/10 pt-4 space-y-3.5">
+              <span className="text-[10px] uppercase font-bold text-white/50 block tracking-wider">KPI Targets</span>
+              {p.kpis.map((kpi, kIdx) => (
+                <div key={kIdx} className="flex justify-between items-center text-xs bg-white/[0.03] border border-white/5 px-3 py-2 rounded-lg">
+                  <span className="text-white/80">{kpi.label}</span>
+                  <span className="font-mono font-black text-[#FFD84D]">{kpi.target}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+function StrategicApproach() {
   const [activeRow, setActiveRow] = useState(null);
 
   const sogs = [
@@ -200,98 +307,7 @@ const StrategicApproach = () => {
           </div>
         </motion.div>
 
-        <motion.div 
-          className="mb-16"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={containerVariants}
-        >
-          <h3 className="text-2xl font-bold text-[#0A1628] mb-6">3 Strategic Pillars</h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Pillar 1 */}
-            <motion.div variants={itemVariants} className="glass-card-light p-6">
-              <h4 className="text-xl font-black text-[#0033CC] uppercase mb-2 tracking-wide">Elevate</h4>
-              <p className="font-bold text-[#0A1628] mb-4">Nón lá + freeze-dried education</p>
-              <div className="mb-4">
-                <span className="text-xs bg-red-100 text-red-600 px-2 py-1 rounded font-bold">Barrier</span>
-                <p className="text-sm mt-2 text-[#0A1628]/70">Format skepticism + packaging credibility</p>
-              </div>
-              <div className="space-y-3 mt-6">
-                <div>
-                  <div className="flex justify-between text-xs mb-1 font-bold text-[#0A1628]">
-                    <span>UGC Posts</span>
-                    <span>500+</span>
-                  </div>
-                  <div className="h-2 bg-[#F5F7FA] rounded-full overflow-hidden">
-                    <motion.div initial={{ width: 0 }} whileInView={{ width: '100%' }} transition={{ duration: 1, delay: 0.5 }} className="h-full bg-[#F4B400]"></motion.div>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex justify-between text-xs mb-1 font-bold text-[#0A1628]">
-                    <span>Engagement Rate</span>
-                    <span>&gt;6%</span>
-                  </div>
-                  <div className="h-2 bg-[#F5F7FA] rounded-full overflow-hidden">
-                    <motion.div initial={{ width: 0 }} whileInView={{ width: '100%' }} transition={{ duration: 1, delay: 0.7 }} className="h-full bg-[#F4B400]"></motion.div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Pillar 2 */}
-            <motion.div variants={itemVariants} className="glass-card-light p-6">
-              <h4 className="text-xl font-black text-[#0033CC] uppercase mb-2 tracking-wide">Educate</h4>
-              <p className="font-bold text-[#0A1628] mb-4">Meta presence + TikTok + PR</p>
-              <div className="mb-4">
-                <span className="text-xs bg-red-100 text-red-600 px-2 py-1 rounded font-bold">Barrier</span>
-                <p className="text-sm mt-2 text-[#0A1628]/70">Brand awareness gap</p>
-              </div>
-              <div className="space-y-3 mt-6">
-                <div>
-                  <div className="flex justify-between text-xs mb-1 font-bold text-[#0A1628]">
-                    <span>Brand Awareness</span>
-                    <span>+25 pts</span>
-                  </div>
-                  <div className="h-2 bg-[#F5F7FA] rounded-full overflow-hidden">
-                    <motion.div initial={{ width: 0 }} whileInView={{ width: '100%' }} transition={{ duration: 1, delay: 0.6 }} className="h-full bg-[#F4B400]"></motion.div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Pillar 3 */}
-            <motion.div variants={itemVariants} className="glass-card-light p-6">
-              <h4 className="text-xl font-black text-[#0033CC] uppercase mb-2 tracking-wide">Enable</h4>
-              <p className="font-bold text-[#0A1628] mb-4">B2B landing page + CRM</p>
-              <div className="mb-4">
-                <span className="text-xs bg-red-100 text-red-600 px-2 py-1 rounded font-bold">Barrier</span>
-                <p className="text-sm mt-2 text-[#0A1628]/70">B2B conversion friction</p>
-              </div>
-              <div className="space-y-3 mt-6">
-                <div>
-                  <div className="flex justify-between text-xs mb-1 font-bold text-[#0A1628]">
-                    <span>B2B Leads</span>
-                    <span>200</span>
-                  </div>
-                  <div className="h-2 bg-[#F5F7FA] rounded-full overflow-hidden">
-                    <motion.div initial={{ width: 0 }} whileInView={{ width: '100%' }} transition={{ duration: 1, delay: 0.7 }} className="h-full bg-[#F4B400]"></motion.div>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex justify-between text-xs mb-1 font-bold text-[#0A1628]">
-                    <span>CVR / ROAS</span>
-                    <span>&gt;3% / &gt;3×</span>
-                  </div>
-                  <div className="h-2 bg-[#F5F7FA] rounded-full overflow-hidden">
-                    <motion.div initial={{ width: 0 }} whileInView={{ width: '100%' }} transition={{ duration: 1, delay: 0.9 }} className="h-full bg-[#F4B400]"></motion.div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
+        <PillarToKPIMap />
 
         <motion.div 
           className="mb-16"

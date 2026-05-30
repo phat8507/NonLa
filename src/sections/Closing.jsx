@@ -62,10 +62,10 @@ export default function Closing() {
             <span className="block text-[#F4B400]">dưới bóng nón lá.</span>
           </h2>
           <p className="mt-2 text-xs md:text-sm font-bold text-[#FFD84D] tracking-wide mb-6">
-            “The full essence of Vietnam, sheltered under the nón lá.”
+            "The full essence of Vietnam, sheltered under the nón lá."
           </p>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/76">
-            NONLA turns Vietnamese coffee into a giftable cultural ritual — compact, premium, and protected under the nón lá.
+            NONLA turns Vietnamese coffee into a giftable cultural ritual - compact, premium, and protected under the nón lá.
           </p>
 
           <div className="mt-8 grid grid-cols-1 gap-4">
@@ -94,26 +94,67 @@ export default function Closing() {
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.65 }}
-          className="relative mx-auto h-[520px] w-full max-w-md"
+          className="relative mx-auto flex items-center justify-center w-full max-w-sm h-[480px] select-none"
         >
-          <div className="absolute inset-x-8 bottom-8 h-28 rounded-[50%] bg-[#F4B400]/20 blur-2xl" aria-hidden="true" />
-          <div className="absolute left-2 top-10 w-32 rotate-[-8deg]">
-            <MiniNonlaPack label="Durian" />
+          {/* Soft Radial Glow */}
+          <div className="absolute w-[280px] h-[280px] rounded-full bg-gradient-to-tr from-[#F4B400]/22 to-[#1A4DFF]/15 blur-3xl pointer-events-none z-0" aria-hidden="true" />
+          
+          {/* Beans Base Layer */}
+          <BrandAsset
+            src="coffee-beans-pile.png"
+            decorative
+            className="absolute bottom-4 w-72 h-auto z-10 opacity-70 mix-blend-screen pointer-events-none"
+            fallback={null}
+          />
+          <div className="absolute bottom-6 w-80 h-10 bg-[#0A1628]/80 blur-md rounded-full z-0" aria-hidden="true" />
+
+          {/* Leaves Framing */}
+          <BrandAsset
+            src="coffee-leaves.png"
+            decorative
+            className="absolute inset-0 w-full h-full z-10 opacity-20 pointer-events-none hidden md:block"
+            fallback={null}
+          />
+
+          {/* Main Visual Anchor: Giftbox (Enlarged) */}
+          <div className="relative z-20 w-80 max-w-[85vw] flex items-center justify-center">
+            <BrandAsset
+              src={['pack-giftbox.png', 'pack-giftbox.webp', 'pack-giftbox.svg']}
+              alt="NONLA premium Tet coffee giftbox"
+              className="w-full h-auto object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.45)] hover:scale-[1.03] transition-transform duration-300"
+              fallback={
+                <div className="product-pack-fallback flex flex-col justify-between p-6 text-center rounded-2xl border border-white/20 bg-gradient-to-b from-[#fff3ca] to-[#dfa94c] shadow-2xl relative" style={{ width: '220px', minHeight: '310px' }}>
+                  <div className="absolute top-2 left-1/2 -translate-x-1/2 w-14 h-4 bg-gradient-to-r from-[#f4b400] to-[#ff8a22] rounded-full opacity-80" />
+                  <div className="mt-8 font-serif text-3xl font-black tracking-widest text-[#0A1628]">NONLA</div>
+                  <div className="my-2 border-t border-[#6a3314]/30" />
+                  <div className="text-xl font-black text-[#6a3314] uppercase tracking-wide">Premium Giftbox</div>
+                  <div className="mt-auto h-24 rounded-b-xl bg-white/40 flex items-center justify-center text-[10px] font-bold text-[#6a3314]/70 leading-normal">
+                    Che chở bản sắc,<br />thăng hoa ân tình
+                  </div>
+                </div>
+              }
+            />
           </div>
-          <div className="absolute right-0 top-28 w-28 rotate-[7deg]">
-            <MiniNonlaPack label="Salt" src={['nonla-pack-salt.svg', 'nonla-pack-salt.png', 'nonla-pack-salt.webp']} />
+
+          {/* Mascot Sitting beside the Giftbox (Optional) */}
+          <div className="absolute right-[-10px] md:right-[-20px] bottom-6 z-30 w-32 max-w-[32vw] pointer-events-none">
+            <BrandAsset
+              src={['mascot.png', 'mascot.webp']}
+              alt="NONLA campaign mascot"
+              className="w-full h-auto object-contain mix-blend-screen drop-shadow-md animate-float-slow"
+              fallback={null}
+            />
           </div>
-          <div className="absolute bottom-20 left-1/2 -translate-x-1/2">
-            <NonlaMascotFallback />
-          </div>
-          {Array.from({ length: 9 }, (_, index) => (
+
+          {/* Subtle Floating Coffee Beans */}
+          {Array.from({ length: 5 }, (_, index) => (
             <CoffeeBean
               key={index}
-              className="closing-bean"
+              className="closing-bean opacity-60 hidden md:block"
               style={{
-                left: `${6 + index * 11}%`,
-                bottom: `${index % 2 ? 18 : 0}px`,
-                transform: `rotate(${index * 23}deg) scale(${0.58 + (index % 3) * 0.08})`,
+                left: `${10 + index * 20}%`,
+                bottom: `${index % 2 ? 24 : 0}px`,
+                transform: `rotate(${index * 35}deg) scale(${0.65 + (index % 3) * 0.08})`,
               }}
             />
           ))}

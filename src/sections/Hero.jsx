@@ -35,16 +35,24 @@ const heroSignals = [
 ];
 
 const assetCandidates = {
-  mascot: ['nonla-mascot.svg', 'nonla-mascot.png', 'nonla-mascot.webp'],
-  durian: ['nonla-pack-durian.svg', 'nonla-pack-durian.png', 'nonla-pack-durian.webp'],
-  salt: ['nonla-pack-salt.svg', 'nonla-pack-salt.png', 'nonla-pack-salt.webp'],
-  daLat: ['nonla-pack-da-lat.svg', 'nonla-pack-da-lat.png', 'nonla-pack-da-lat.webp'],
-  eggCream: ['nonla-pack-egg-cream.svg', 'nonla-pack-egg-cream.png', 'nonla-pack-egg-cream.webp'],
+  mascot: ['mascot.png'],
+  giftbox: ['pack-giftbox.png', 'pack-durian.png'],
+  americano: ['pack-americano.png', 'pack-giftbox.png'],
+  durian: ['pack-durian.png', 'pack-giftbox.png'],
+  salt: ['pack-salt.png', 'pack-giftbox.png'],
+  daLat: ['pack-da-lat.png', 'pack-giftbox.png'],
+  eggCream: ['pack-egg-cream.png', 'pack-giftbox.png'],
+  podYellow: ['pod-yellow.png'],
+  podRed: ['pod-red.png'],
+  podBlue: ['pod-blue.png'],
+  beansCluster: ['coffee-beans-cluster.png'],
+  beansPile: ['coffee-beans-pile.png', 'coffee-beans-cluster.png'],
+  leaves: ['coffee-leaves.png'],
 };
 
 const miniPacks = [
-  { src: assetCandidates.salt, label: 'Salt' },
-  { src: assetCandidates.daLat, label: 'Da Lat' },
+  { src: assetCandidates.podYellow, label: 'Yellow pod' },
+  { src: assetCandidates.podRed, label: 'Red pod' },
 ];
 
 const flavorCollection = [
@@ -111,19 +119,42 @@ function CoffeeBean({ className = '', style }) {
 function HeroVisual() {
   return (
     <div className="hero-visual-shell" aria-label="NONLA product and mascot visual">
-      <div className="coffee-leaf-layer coffee-leaf-layer--one" aria-hidden="true" />
-      <div className="coffee-leaf-layer coffee-leaf-layer--two" aria-hidden="true" />
-      <div className="coffee-leaf-layer coffee-leaf-layer--three" aria-hidden="true" />
+      <div className="hero-product-glow" aria-hidden="true" />
+      <BrandAsset
+        src={assetCandidates.beansPile}
+        decorative
+        className="brand-asset hero-real-beans hero-real-beans--base"
+        fallback={
+          <div className="hero-beans-fallback" aria-hidden="true">
+            <CoffeeBean />
+            <CoffeeBean />
+            <CoffeeBean />
+          </div>
+        }
+      />
+      <BrandAsset
+        src={assetCandidates.leaves}
+        decorative
+        className="brand-asset hero-real-leaves hero-real-leaves--one"
+        fallback={<div className="coffee-leaf-layer coffee-leaf-layer--one" aria-hidden="true" />}
+      />
+      <BrandAsset
+        src={assetCandidates.leaves}
+        decorative
+        className="brand-asset hero-real-leaves hero-real-leaves--two"
+        fallback={<div className="coffee-leaf-layer coffee-leaf-layer--two" aria-hidden="true" />}
+      />
 
       <motion.div
         className="hero-mascot-card mascot-shadow"
-        animate={{ y: [0, -10, 0] }}
-        transition={{ duration: 6.5, ease: 'easeInOut', repeat: Infinity }}
+        animate={{ y: [0, -7, 0] }}
+        transition={{ duration: 7.5, ease: 'easeInOut', repeat: Infinity }}
       >
         <BrandAsset
           src={assetCandidates.mascot}
           alt="NONLA mascot holding Vietnamese coffee"
           className="brand-asset hero-mascot-img"
+          loading="eager"
           fallback={<MascotFallback />}
         />
       </motion.div>
@@ -136,9 +167,25 @@ function HeroVisual() {
         transition={{ duration: 0.65, delay: 0.2, ease: 'easeOut' }}
       >
         <BrandAsset
-          src={assetCandidates.durian}
-          alt="NONLA Durian Coffee gift pack"
+          src={assetCandidates.giftbox}
+          alt="NONLA Vietnamese coffee gift box"
           className="brand-asset hero-pack-img"
+          loading="eager"
+          fallback={<ProductFallback label="Gift Box" />}
+        />
+      </motion.div>
+
+      <motion.div
+        className="hero-secondary-pack"
+        initial={{ opacity: 0, x: -18, rotate: -5 }}
+        animate={{ opacity: 1, x: 0, rotate: -6 }}
+        whileHover={{ rotate: -3, y: -4 }}
+        transition={{ duration: 0.65, delay: 0.28, ease: 'easeOut' }}
+      >
+        <BrandAsset
+          src={assetCandidates.durian}
+          alt="NONLA Durian Coffee pack"
+          className="brand-asset hero-secondary-pack-img"
           fallback={<ProductFallback label="Durian Coffee" />}
         />
       </motion.div>
@@ -152,16 +199,14 @@ function HeroVisual() {
         >
           <BrandAsset
             src={pack.src}
-            alt={`NONLA ${pack.label} coffee pack`}
-            className="brand-asset mini-pack-img"
+            alt={`NONLA ${pack.label}`}
+            className="brand-asset mini-pack-img hero-pod-img"
             fallback={<ProductFallback label={pack.label} />}
           />
         </motion.div>
       ))}
 
       <CoffeeBean className="hero-bean hero-bean--one" />
-      <CoffeeBean className="hero-bean hero-bean--two" />
-      <CoffeeBean className="hero-bean hero-bean--three" />
     </div>
   );
 }
@@ -176,6 +221,7 @@ function FlavorCollection() {
               src={flavor.src}
               alt={`NONLA ${flavor.name} pack`}
               className="brand-asset flavor-card__image"
+              loading="eager"
               fallback={<ProductFallback label={flavor.packLabel} />}
             />
           </div>
@@ -249,7 +295,7 @@ export default function Hero() {
                 <span className="block text-yellow">dưới bóng nón lá</span>
               </h1>
               <p className="mt-2 text-xs md:text-sm font-bold text-[#FFD84D] tracking-wide">
-                “The full essence of Vietnam, sheltered under the nón lá.”
+                "The full essence of Vietnam, sheltered under the nón lá."
               </p>
             </motion.div>
 
