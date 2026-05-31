@@ -14,12 +14,12 @@ const RevenueWaterfall = () => {
     { label: "4B Investment Input", value: "4.0B", change: "input", height: 33.3, bottom: 0, color: "bg-white/10 border border-dashed border-[#FFD84D]/45", desc: "Marketing budget input" },
     { label: "B2B Revenue", value: "+9.0B", change: "plus", height: 75.0, bottom: 0, color: "bg-[#FFD84D]", desc: "300 orders × 30M" },
     { label: "B2C Revenue", value: "+3.0B", change: "plus", height: 25.0, bottom: 75.0, color: "bg-[#F4B400]", desc: "10,000 orders × 300k" },
-    { label: "Revenue Target", value: "12.0B", change: "total", height: 100.0, bottom: 0, color: "bg-[#22C55E]", desc: "Target 3.0× ROAS" }
+    { label: "Revenue Target", value: "12.0B", change: "total", height: 100.0, bottom: 0, color: "bg-[#22C55E]", desc: "Target 3.0x MER" }
   ];
 
   return (
     <div className="glass-card p-6 border border-[#FFD84D]/20 mt-12 relative overflow-hidden">
-      <h3 className="text-xl font-bold text-white mb-2">ROAS Bridge: 4B Investment → 12B Revenue Target</h3>
+      <h3 className="text-xl font-bold text-white mb-2">MER Bridge: 4B Investment → 12B Revenue Target</h3>
       <p className="text-xs text-[#8A9BB5] mb-6">Marketing budget is shown as the investment input; B2B and B2C bars are the revenue contributors that build to the 12B target.</p>
       
       {/* Waterfall Display Area */}
@@ -80,9 +80,9 @@ const RevenueWaterfall = () => {
           </p>
         </div>
         <div className="text-left md:text-right">
-          <span className="text-[9px] uppercase font-bold text-[#8A9BB5] tracking-wider block">ROAS Bridge Target</span>
+          <span className="text-[9px] uppercase font-bold text-[#8A9BB5] tracking-wider block">MER Bridge Target</span>
           <p className="text-xs text-white/90 font-medium mt-1">
-            ROAS Target: <span className="text-[#FFD84D] font-bold">3.0×</span> on <span className="text-[#FFD84D] font-bold">4B Budget</span> (Conservative floor: 2.4× at -20% volume).
+            MER Target: <span className="text-[#FFD84D] font-bold">3.0x</span> on <span className="text-[#FFD84D] font-bold">4B Budget</span> (Conservative floor: 2.4x at -20% volume).
           </p>
         </div>
       </div>
@@ -140,12 +140,13 @@ const RevenueModel = () => {
   };
 
   const funnelSteps = [
-    { value: "12B VND", label: "revenue target", isTop: true },
-    { value: "300", label: "B2B orders needed", cvr: "35%", cvrLabel: "close rate" },
-    { value: "860", label: "formal quotes", cvr: "55%", cvrLabel: "MQL→quote" },
-    { value: "1,560", label: "MQL", cvr: "55%", cvrLabel: "raw→MQL" },
-    { value: "2,840", label: "raw leads", cvr: "15%", cvrLabel: "traffic→lead" },
-    { value: "19,000", label: "B2B landing page visits", isBottom: true }
+    { value: "9B VND", label: "B2B Net Revenue Target", isTop: true },
+    { value: "300", label: "Contracts / Deposits Needed", cvr: "70%", cvrLabel: "negotiation→deposit" },
+    { value: "~430", label: "Negotiations Needed", cvr: "50%", cvrLabel: "quote→negotiation" },
+    { value: "~860", label: "Quote Requests Needed", cvr: "55%", cvrLabel: "MQL→quote" },
+    { value: "~1,560", label: "Qualified Leads / MQL Needed", cvr: "55%", cvrLabel: "raw→MQL" },
+    { value: "~2,840", label: "Raw Leads / Accounts Needed", cvr: "15%", cvrLabel: "traffic→lead" },
+    { value: "~18,900", label: "Traffic / Clicks Needed", isBottom: true }
   ];
 
   return (
@@ -156,10 +157,10 @@ const RevenueModel = () => {
       <div className="max-w-5xl mx-auto">
         <div className="mb-12">
           <span className="text-[#F4B400] text-sm font-bold tracking-widest uppercase">
-            REVENUE MODEL
+            REVENUE & MER MODEL
           </span>
           <div className="mt-4 hidden sm:block">
-            <MiniNonlaPack label="ROAS" />
+            <MiniNonlaPack label="MER" />
           </div>
         </div>
 
@@ -202,16 +203,16 @@ const RevenueModel = () => {
               
               <div className="mt-6 flex flex-col sm:flex-row justify-between items-center gap-4 border-t border-white/10 pt-6">
                 <p className="text-xs text-[#8A9BB5] italic">
-                  *Corporate AOV 30M = ~100 boxes × 300k (assumed group bulk purchase)
+                  *B2B Net AOV 30M assumes 25% trade discount from around 40M list-price order value.
                 </p>
                 <div className="px-4 py-2 bg-[#F4B400] text-[#0A1628] font-black rounded-full text-sm inline-flex items-center shadow-[0_0_15px_rgba(244,180,0,0.4)]">
-                  ROAS: 3.0×
+                  MER: 3.0x
                 </div>
               </div>
             </div>
 
             <div className="glass-card p-6 border-l-4 border border-white/18 border-l-[#22C55E]" ref={chartRef}>
-              <h4 className="text-white font-bold mb-4">Conservative Scenario</h4>
+              <h4 className="text-white font-bold mb-4 font-jakarta">Conservative Scenario</h4>
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-[#8A9BB5] text-sm mb-1">-20% volume scenario:</p>
@@ -219,8 +220,8 @@ const RevenueModel = () => {
                 </div>
                 <div className="h-12 w-px bg-white/20 mx-4"></div>
                 <div>
-                  <p className="text-[#8A9BB5] text-sm mb-1">Adjusted ROAS:</p>
-                  <p className="text-2xl font-bold text-white">2.4×</p>
+                  <p className="text-[#8A9BB5] text-sm mb-1">Adjusted MER:</p>
+                  <p className="text-2xl font-bold text-white">2.4x</p>
                 </div>
               </div>
               <div className="mt-4 flex items-center text-[#22C55E] text-sm font-bold bg-[#22C55E]/10 p-2 rounded w-fit">
@@ -238,6 +239,49 @@ const RevenueModel = () => {
                 <span className="text-xs font-bold text-white mr-2">B2C 3B</span>
               </div>
             </div>
+
+            {/* Discount Sensitivity Table */}
+            <div className="glass-card p-5 border border-white/10 mt-6 overflow-hidden">
+              <h4 className="text-white font-bold mb-3 text-sm flex items-center font-jakarta">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#FFD84D] mr-2 inline-block"></span>
+                Discount Sensitivity — B2B Net Revenue Protection
+              </h4>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-xs border-collapse">
+                  <thead>
+                    <tr className="border-b border-white/15 bg-white/[0.02]">
+                      <th className="py-2 px-2 text-[#8A9BB5] font-bold">Discount Tier</th>
+                      <th className="py-2 px-2 text-[#8A9BB5] font-bold">List Order</th>
+                      <th className="py-2 px-2 text-[#8A9BB5] font-bold text-right">Net AOV</th>
+                      <th className="py-2 px-2 text-[#8A9BB5] font-bold text-right">Contracts Needed</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-white/80 font-mono">
+                    <tr className="border-b border-white/5 hover:bg-white/[0.01]">
+                      <td className="py-2 px-2">20% Discount</td>
+                      <td className="py-2 px-2">~40M VND</td>
+                      <td className="py-2 px-2 text-right text-white font-bold">32M VND</td>
+                      <td className="py-2 px-2 text-right text-[#FFD84D] font-bold">≈ 282</td>
+                    </tr>
+                    <tr className="border-b border-white/5 hover:bg-white/[0.01] bg-[#FFD84D]/5">
+                      <td className="py-2 px-2 font-bold text-[#FFD84D]">25% Discount (Base)</td>
+                      <td className="py-2 px-2">~40M VND</td>
+                      <td className="py-2 px-2 text-right text-white font-bold">30M VND</td>
+                      <td className="py-2 px-2 text-right text-[#FFD84D] font-bold">300</td>
+                    </tr>
+                    <tr className="hover:bg-white/[0.01]">
+                      <td className="py-2 px-2">35% Discount</td>
+                      <td className="py-2 px-2">~40M VND</td>
+                      <td className="py-2 px-2 text-right text-white font-bold">26M VND</td>
+                      <td className="py-2 px-2 text-right text-[#FFD84D] font-bold">≈ 346</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-[10px] text-[#8A9BB5] mt-2.5 leading-relaxed font-jakarta">
+                Based on assumed 40M list-value B2B order. KPI must be calculated on net AOV after discount, not list price.
+              </p>
+            </div>
           </div>
 
           {/* Right Column - Funnel */}
@@ -248,9 +292,9 @@ const RevenueModel = () => {
             <div className="hidden lg:flex flex-col justify-between h-full space-y-4">
               <div className="grid grid-cols-2 gap-4 items-stretch">
                 {/* Left Sub-column: Targets & Outcomes */}
-                <div className="flex flex-col justify-between space-y-4">
+                <div className="flex flex-col justify-center space-y-6">
                   <div className="text-center font-bold text-[10px] uppercase tracking-wider text-[#8A9BB5] border-b border-white/10 pb-1">
-                    Target & Outcomes
+                    B2B Financial Targets
                   </div>
 
                   {/* Revenue Target Card */}
@@ -260,16 +304,16 @@ const RevenueModel = () => {
                     animate={funnelInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.5 }}
                   >
-                    <span className="block font-black text-2xl text-[#F4B400]">12B VND</span>
-                    <span className="text-[10px] uppercase font-bold text-white/70 tracking-wider">Revenue Target</span>
-                    <span className="text-[9px] text-[#8A9BB5] mt-1 italic">Start of Reverse Logic</span>
+                    <span className="block font-black text-2xl text-[#F4B400]">9B VND</span>
+                    <span className="text-[10px] uppercase font-bold text-white/70 tracking-wider">B2B Net Revenue Target</span>
+                    <span className="text-[9px] text-[#8A9BB5] mt-1 italic">75% of Total 12B Target</span>
                   </motion.div>
 
-                  {/* Connection AOV / share */}
+                  {/* Connection */}
                   <div className="flex flex-col items-center">
                     <div className="w-px h-4 bg-[#F4B400]/40"></div>
                     <div className="bg-[#0A1628] text-white/90 text-[9px] font-bold px-2.5 py-0.5 rounded-full border border-[#F4B400]/30 -my-2.5 z-10 whitespace-nowrap">
-                      9B B2B Share (AOV 30M)
+                      Net AOV: 30M VND (after 25% trade discount)
                     </div>
                     <div className="w-px h-4 bg-[#F4B400]/40"></div>
                   </div>
@@ -282,69 +326,83 @@ const RevenueModel = () => {
                     transition={{ duration: 0.5, delay: 0.15 }}
                   >
                     <span className="block font-black text-2xl text-white">300</span>
-                    <span className="text-[10px] uppercase font-bold text-white/70 tracking-wider">B2B Orders Needed</span>
-                    <span className="text-[9px] text-[#8A9BB5] mt-1">9B Revenue ÷ 30M AOV</span>
+                    <span className="text-[10px] uppercase font-bold text-white/70 tracking-wider">Contracts / Deposits Needed</span>
+                    <span className="text-[9px] text-[#8A9BB5] mt-1">9B B2B Rev ÷ 30M AOV</span>
                   </motion.div>
                 </div>
 
                 {/* Right Sub-column: Lead Generation */}
-                <div className="flex flex-col justify-between space-y-3">
+                <div className="flex flex-col justify-between space-y-3.5">
                   <div className="text-center font-bold text-[10px] uppercase tracking-wider text-[#8A9BB5] border-b border-white/10 pb-1">
-                    Lead-Gen Funnel Steps
+                    B2B Conversion Pipeline
                   </div>
 
-                  {/* Card 3: Quotes */}
+                  {/* Card 3: Negotiations */}
                   <motion.div
-                    className="glass-card p-3 flex flex-col justify-center items-center text-center border border-white/10 relative bg-[#1A4DFF]/10 hover:bg-[#1A4DFF]/20 transition-colors"
+                    className="glass-card p-2.5 flex flex-col justify-center items-center text-center border border-white/10 relative bg-[#1A4DFF]/10 hover:bg-[#1A4DFF]/20 transition-colors"
                     initial={{ opacity: 0, x: 20 }}
                     animate={funnelInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
-                    <span className="block font-black text-lg text-white">860</span>
-                    <span className="text-[10px] uppercase font-bold text-white/85 tracking-wider">Formal Quotes</span>
-                    <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 bg-[#0A1628] text-[#F4B400] text-[9px] font-bold px-2 py-0.5 rounded-full border border-white/20 z-10 whitespace-nowrap">
-                      ÷ 35% close rate
+                    <span className="block font-black text-base text-white">~430</span>
+                    <span className="text-[9.5px] uppercase font-bold text-white/85 tracking-wider">Negotiations Needed</span>
+                    <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 bg-[#0A1628] text-[#F4B400] text-[8.5px] font-bold px-2 py-0.5 rounded-full border border-white/20 z-10 whitespace-nowrap">
+                      ÷ 70% Negotiation→Deposit
                     </div>
                   </motion.div>
 
-                  {/* Card 4: MQL */}
+                  {/* Card 4: Quotes */}
                   <motion.div
-                    className="glass-card p-3 flex flex-col justify-center items-center text-center border border-white/10 relative bg-[#1A4DFF]/10 hover:bg-[#1A4DFF]/20 transition-colors"
+                    className="glass-card p-2.5 flex flex-col justify-center items-center text-center border border-white/10 relative bg-[#1A4DFF]/10 hover:bg-[#1A4DFF]/20 transition-colors"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={funnelInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.25 }}
+                  >
+                    <span className="block font-black text-base text-white">~860</span>
+                    <span className="text-[9.5px] uppercase font-bold text-white/85 tracking-wider">Quote Requests Needed</span>
+                    <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 bg-[#0A1628] text-[#F4B400] text-[8.5px] font-bold px-2 py-0.5 rounded-full border border-white/20 z-10 whitespace-nowrap">
+                      ÷ 50% Quote→Negotiation
+                    </div>
+                  </motion.div>
+
+                  {/* Card 5: MQL */}
+                  <motion.div
+                    className="glass-card p-2.5 flex flex-col justify-center items-center text-center border border-white/10 relative bg-[#1A4DFF]/10 hover:bg-[#1A4DFF]/20 transition-colors"
                     initial={{ opacity: 0, x: 20 }}
                     animate={funnelInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.3 }}
                   >
-                    <span className="block font-black text-lg text-white">1,560</span>
-                    <span className="text-[10px] uppercase font-bold text-white/85 tracking-wider">MQL</span>
-                    <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 bg-[#0A1628] text-[#F4B400] text-[9px] font-bold px-2 py-0.5 rounded-full border border-white/20 z-10 whitespace-nowrap">
-                      ÷ 55% MQL→quote
+                    <span className="block font-black text-base text-white">~1,560</span>
+                    <span className="text-[9.5px] uppercase font-bold text-white/85 tracking-wider">Qualified Leads / MQL</span>
+                    <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 bg-[#0A1628] text-[#F4B400] text-[8.5px] font-bold px-2 py-0.5 rounded-full border border-white/20 z-10 whitespace-nowrap">
+                      ÷ 55% MQL→Quote
                     </div>
                   </motion.div>
 
-                  {/* Card 5: Raw Leads */}
+                  {/* Card 6: Raw Leads */}
                   <motion.div
-                    className="glass-card p-3 flex flex-col justify-center items-center text-center border border-white/10 relative bg-[#1A4DFF]/10 hover:bg-[#1A4DFF]/20 transition-colors"
+                    className="glass-card p-2.5 flex flex-col justify-center items-center text-center border border-white/10 relative bg-[#1A4DFF]/10 hover:bg-[#1A4DFF]/20 transition-colors"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={funnelInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.35 }}
+                  >
+                    <span className="block font-black text-base text-white">~2,840</span>
+                    <span className="text-[9.5px] uppercase font-bold text-white/85 tracking-wider">Raw Leads / Accounts</span>
+                    <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 bg-[#0A1628] text-[#F4B400] text-[8.5px] font-bold px-2 py-0.5 rounded-full border border-white/20 z-10 whitespace-nowrap">
+                      ÷ 55% Raw→MQL
+                    </div>
+                  </motion.div>
+
+                  {/* Card 7: Clicks */}
+                  <motion.div
+                    className="glass-card p-2.5 flex flex-col justify-center items-center text-center border border-white/20 bg-white/5 hover:bg-white/10 transition-colors"
                     initial={{ opacity: 0, x: 20 }}
                     animate={funnelInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.4 }}
                   >
-                    <span className="block font-black text-lg text-white">2,840</span>
-                    <span className="text-[10px] uppercase font-bold text-white/85 tracking-wider">Raw Leads</span>
-                    <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 bg-[#0A1628] text-[#F4B400] text-[9px] font-bold px-2 py-0.5 rounded-full border border-white/20 z-10 whitespace-nowrap">
-                      ÷ 55% raw→MQL
-                    </div>
-                  </motion.div>
-
-                  {/* Card 6: Visits */}
-                  <motion.div
-                    className="glass-card p-3 flex flex-col justify-center items-center text-center border border-white/20 bg-white/5 hover:bg-white/10 transition-colors"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={funnelInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.5, delay: 0.5 }}
-                  >
-                    <span className="block font-black text-lg text-white">19,000</span>
-                    <span className="text-[10px] uppercase font-bold text-white/85 tracking-wider">Landing Page Visits</span>
-                    <span className="text-[9px] text-[#8A9BB5] mt-0.5">÷ 15% traffic→lead</span>
+                    <span className="block font-black text-base text-white">~18,900</span>
+                    <span className="text-[9.5px] uppercase font-bold text-white/85 tracking-wider">Traffic / Clicks Needed</span>
+                    <span className="text-[9px] text-[#8A9BB5] mt-0.5">÷ 15% Traffic→Lead</span>
                   </motion.div>
                 </div>
               </div>
@@ -359,9 +417,9 @@ const RevenueModel = () => {
                 animate={funnelInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.4 }}
               >
-                <span className="block font-black text-xl text-[#F4B400]">12B VND</span>
-                <span className="text-[10px] uppercase font-bold text-white/85 tracking-wider">Revenue Target</span>
-                <span className="text-[9px] text-white/70 mt-1">Total Target (B2B + B2C)</span>
+                <span className="block font-black text-xl text-[#F4B400]">9B VND</span>
+                <span className="text-[10px] uppercase font-bold text-white/85 tracking-wider">B2B Net Revenue Target</span>
+                <span className="text-[9px] text-white/70 mt-1">75% of Total 12B Target</span>
               </motion.div>
 
               {/* Card 2 */}
@@ -372,10 +430,10 @@ const RevenueModel = () => {
                 transition={{ duration: 0.4, delay: 0.1 }}
               >
                 <span className="block font-black text-xl text-white">300</span>
-                <span className="text-[10px] uppercase font-bold text-white/85 tracking-wider">B2B Orders Needed</span>
-                <span className="text-[9px] text-white/70 mt-0.5">AOV 30M | B2B share 9B</span>
+                <span className="text-[10px] uppercase font-bold text-white/85 tracking-wider">Contracts / Deposits Needed</span>
+                <span className="text-[9px] text-white/70 mt-0.5">AOV 30M | Net B2B Rev 9B</span>
                 <div className="absolute top-2 right-2 bg-[#0A1628]/95 text-[#F4B400] text-[8px] font-bold px-1.5 py-0.5 rounded border border-[#F4B400]/30">
-                  35% Close Rate
+                  70% Neg.→Deposit
                 </div>
               </motion.div>
 
@@ -384,12 +442,12 @@ const RevenueModel = () => {
                 className="glass-card p-4 flex flex-col justify-center items-center text-center border border-white/15 bg-[#1A4DFF]/20 relative"
                 initial={{ opacity: 0, y: 10 }}
                 animate={funnelInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.2 }}
+                transition={{ duration: 0.4, delay: 0.15 }}
               >
-                <span className="block font-black text-xl text-white">860</span>
-                <span className="text-[10px] uppercase font-bold text-white/85 tracking-wider">Formal Quotes</span>
+                <span className="block font-black text-xl text-white">~430</span>
+                <span className="text-[10px] uppercase font-bold text-white/85 tracking-wider">Negotiations Needed</span>
                 <div className="absolute top-2 right-2 bg-[#0A1628]/95 text-[#F4B400] text-[8px] font-bold px-1.5 py-0.5 rounded border border-[#F4B400]/30">
-                  55% MQL→Quote
+                  50% Quote→Neg.
                 </div>
               </motion.div>
 
@@ -398,12 +456,12 @@ const RevenueModel = () => {
                 className="glass-card p-4 flex flex-col justify-center items-center text-center border border-white/15 bg-[#1A4DFF]/20 relative"
                 initial={{ opacity: 0, y: 10 }}
                 animate={funnelInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.3 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
               >
-                <span className="block font-black text-xl text-white">1,560</span>
-                <span className="text-[10px] uppercase font-bold text-white/85 tracking-wider">MQL</span>
+                <span className="block font-black text-xl text-white">~860</span>
+                <span className="text-[10px] uppercase font-bold text-white/85 tracking-wider">Quote Requests Needed</span>
                 <div className="absolute top-2 right-2 bg-[#0A1628]/95 text-[#F4B400] text-[8px] font-bold px-1.5 py-0.5 rounded border border-[#F4B400]/30">
-                  55% Raw→MQL
+                  55% MQL→Quote
                 </div>
               </motion.div>
 
@@ -412,25 +470,39 @@ const RevenueModel = () => {
                 className="glass-card p-4 flex flex-col justify-center items-center text-center border border-white/15 bg-[#1A4DFF]/20 relative"
                 initial={{ opacity: 0, y: 10 }}
                 animate={funnelInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.4 }}
+                transition={{ duration: 0.4, delay: 0.25 }}
               >
-                <span className="block font-black text-xl text-white">2,840</span>
-                <span className="text-[10px] uppercase font-bold text-white/85 tracking-wider">Raw Leads</span>
+                <span className="block font-black text-xl text-white">~1,560</span>
+                <span className="text-[10px] uppercase font-bold text-white/85 tracking-wider">Qualified Leads / MQL</span>
                 <div className="absolute top-2 right-2 bg-[#0A1628]/95 text-[#F4B400] text-[8px] font-bold px-1.5 py-0.5 rounded border border-[#F4B400]/30">
-                  15% Traffic→Lead
+                  55% Raw→MQL
                 </div>
               </motion.div>
 
               {/* Card 6 */}
               <motion.div
-                className="glass-card p-4 flex flex-col justify-center items-center text-center border border-white/20 bg-white/10"
+                className="glass-card p-4 flex flex-col justify-center items-center text-center border border-white/15 bg-[#1A4DFF]/20 relative"
                 initial={{ opacity: 0, y: 10 }}
                 animate={funnelInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.5 }}
+                transition={{ duration: 0.4, delay: 0.3 }}
               >
-                <span className="block font-black text-xl text-white">19,000</span>
-                <span className="text-[10px] uppercase font-bold text-white/85 tracking-wider">Landing Page Visits</span>
-                <span className="text-[9px] text-white/70 mt-1">Reverse Base Traffic</span>
+                <span className="block font-black text-xl text-white">~2,840</span>
+                <span className="text-[10px] uppercase font-bold text-white/85 tracking-wider">Raw Leads / Accounts</span>
+                <div className="absolute top-2 right-2 bg-[#0A1628]/95 text-[#F4B400] text-[8px] font-bold px-1.5 py-0.5 rounded border border-[#F4B400]/30">
+                  15% Traffic→Lead
+                </div>
+              </motion.div>
+
+              {/* Card 7 */}
+              <motion.div
+                className="glass-card p-4 flex flex-col justify-center items-center text-center border border-white/20 col-span-2 bg-white/10"
+                initial={{ opacity: 0, y: 10 }}
+                animate={funnelInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: 0.35 }}
+              >
+                <span className="block font-black text-xl text-white">~18,900</span>
+                <span className="text-[10px] uppercase font-bold text-white/85 tracking-wider">Traffic / Clicks Needed</span>
+                <span className="text-[9px] text-white/70 mt-1">15% Click-to-Lead progression</span>
               </motion.div>
             </div>
 
@@ -475,13 +547,13 @@ const RevenueModel = () => {
 
             {/* Shared Caption (Visible on all sizes) */}
             <div className="mt-4 p-3 bg-white/5 border border-white/10 rounded-lg text-center mx-auto w-[95%] lg:w-full">
-              <p className="text-[10px] md:text-[11px] text-[#8A9BB5] leading-relaxed">
-                <span className="font-bold text-[#F4B400]">Reverse KPI logic:</span> start from revenue target, then calculate required orders, quotes, MQL, raw leads, and visits.
+              <p className="text-[10px] md:text-[11px] text-[#8A9BB5] leading-relaxed font-jakarta">
+                This campaign should not be judged by mass reach or cheapest messages. The key KPI is qualified B2B account progression: sample accepted, MQL, quote request, negotiation, deposit, and net B2B revenue after discount.
               </p>
             </div>
 
-            <p className="text-[10px] text-[#8A9BB5] text-center mt-3 italic">
-              Conversion rates = B2B F&B benchmark — needs real-time validation
+            <p className="text-[10px] text-[#8A9BB5] text-center mt-3 italic font-bold font-jakarta">
+              Conversion rates = B2B benchmark — subject to real-time validation
             </p>
           </div>
         </div>

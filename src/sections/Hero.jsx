@@ -31,7 +31,7 @@ const scaleIn = {
 const heroSignals = [
   { label: '4B VND', detail: 'campaign budget' },
   { label: '12B VND', detail: 'revenue target' },
-  { label: 'ROAS 3.0x', detail: 'performance goal' },
+  { label: 'MER 3.0x', detail: 'performance goal' },
 ];
 
 const assetCandidates = {

@@ -5,8 +5,8 @@ import SectionWrapper from '../components/SectionWrapper';
 const RiskMatrix = () => {
   return (
     <div className="glass-card p-6 flex flex-col h-full border border-[#FFD84D]/20">
-      <h3 className="text-xl font-bold text-white mb-2">Risk Matrix</h3>
-      <p className="text-xs text-[#8A9BB5] mb-6">Qualitative strategic scoring based on B2B Tet market entry friction.</p>
+      <h3 className="text-xl font-bold text-white mb-2 font-jakarta">Risk Matrix</h3>
+      <p className="text-xs text-[#8A9BB5] mb-6 font-jakarta">Qualitative strategic scoring based on B2B Tet market entry friction.</p>
       
       <div className="relative flex-1 flex flex-col justify-center items-center select-none py-4">
         {/* Matrix Plot Area */}
@@ -31,23 +31,23 @@ const RiskMatrix = () => {
           </div>
 
           {/* Plotted Risk Nodes */}
-          {/* Tet Delivery Failure: Likelihood Low (1), Impact High (3) -> Left-Top */}
-          <div className="absolute left-[16.6%] top-[16.6%] -translate-x-1/2 -translate-y-1/2 group z-20">
+          {/* December Too Late: Likelihood Med (2), Impact High (3) -> Middle-Top */}
+          <div className="absolute left-[50%] top-[16.6%] -translate-x-1/2 -translate-y-1/2 group z-20">
             <div className="w-5 h-5 rounded-full bg-[#FFD84D] border-2 border-[#0A1628] shadow-lg flex items-center justify-center cursor-pointer hover:scale-125 transition-transform">
               <span className="text-[10px] font-black text-[#0A1628]">03</span>
             </div>
             <div className="absolute left-6 top-1/2 -translate-y-1/2 bg-[#0A1628] text-white border border-[#FFD84D]/30 px-2 py-1 rounded text-[10px] font-bold whitespace-nowrap hidden md:block opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl">
-              Tet Delivery Failure (Impact: High, Likelihood: Low)
+              December Too Late (Impact: High, Likelihood: Med)
             </div>
           </div>
 
-          {/* Format Stigma: Likelihood Medium (2), Impact Medium (2) -> Center */}
+          {/* Big Idea without Proof: Likelihood Med (2), Impact High (3) -> Middle-Top */}
           <div className="absolute left-[50%] top-[50%] -translate-x-1/2 -translate-y-1/2 group z-20">
             <div className="w-5 h-5 rounded-full bg-[#1A4DFF] border-2 border-white shadow-lg flex items-center justify-center cursor-pointer hover:scale-125 transition-transform">
               <span className="text-[10px] font-black text-white">02</span>
             </div>
             <div className="absolute left-6 top-1/2 -translate-y-1/2 bg-[#0A1628] text-white border border-[#1A4DFF]/30 px-2 py-1 rounded text-[10px] font-bold whitespace-nowrap hidden md:block opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl">
-              Format Stigma (Impact: Med, Likelihood: Med)
+              Big Idea without Proof (Impact: High, Likelihood: Med)
             </div>
           </div>
 
@@ -85,11 +85,11 @@ const RiskMatrix = () => {
         </div>
         <div className="flex items-center text-xs text-white/80">
           <span className="w-2.5 h-2.5 rounded-full bg-[#1A4DFF] mr-2 inline-block"></span>
-          <span className="font-bold text-white mr-1">02. Format Stigma</span>
+          <span className="font-bold text-white mr-1">02. Big Idea without Proof</span>
         </div>
         <div className="flex items-center text-xs text-white/80">
           <span className="w-2.5 h-2.5 rounded-full bg-[#FFD84D] mr-2 inline-block"></span>
-          <span className="font-bold text-white mr-1">03. Tet Delivery Failure</span>
+          <span className="font-bold text-white mr-1">03. December Too Late</span>
         </div>
       </div>
     </div>
@@ -100,38 +100,38 @@ const MitigationTimeline = () => {
   const steps = [
     {
       month: "Sep",
-      title: "Sample Kit + B2B Proof",
-      mitigates: "Brand Trust Gap",
-      desc: "Deploy physical sample kits and early B2B proof directly to HR leads.",
-      status: "Prep Phase"
+      title: "B2B Intent Seeding",
+      mitigates: "Big Idea without proof",
+      desc: "Deploy credibility PR, search seeding, and account targeting to build early shortlist intent.",
+      status: "Seeding"
     },
     {
       month: "Oct",
-      title: "Packaging + Storytelling",
-      mitigates: "Format Stigma",
-      desc: "Introduce high-end premium rigid box styling. Dispel cheap perception.",
-      status: "Launch Phase"
+      title: "Preview Kit Sampling",
+      mitigates: "Brand Trust Gap",
+      desc: "Send office preview samples to qualified leads, driving scoring, scans and unboxings.",
+      status: "Trial & Qualification"
     },
     {
       month: "Nov",
-      title: "B2B Conversion Peak",
-      mitigates: "Conversion Peak",
-      desc: "Lock in corporate volume. Close custom engraving orders by Nov 30.",
-      status: "Peak Phase"
+      title: "Proposal & Discount Lock",
+      mitigates: "December Too Late / Discount Risk",
+      desc: "Submit final sample box, quotes, negotiate discount brackets and lock corporate deposits by Nov 30.",
+      status: "Deposit Peak"
     },
     {
       month: "Dec",
-      title: "Inventory & Logistics",
-      mitigates: "Tet Delivery Failure",
-      desc: "Maintain 10% inventory buffer. Execute last-mile delivery timeline communication.",
+      title: "Logistics Buffer",
+      mitigates: "Tet Delivery Delay",
+      desc: "Maintain 10% inventory buffer, early order closing, and clear delivery timeline communication.",
       status: "Fulfillment"
     }
   ];
 
   return (
     <div className="glass-card p-6 md:p-8 col-span-1 md:col-span-2 border border-[#FFD84D]/20">
-      <h3 className="text-xl font-bold text-white mb-2">Mitigation Timeline</h3>
-      <p className="text-xs text-[#8A9BB5] mb-8">Strategic phasing of mitigations to address risks before they impact key milestones.</p>
+      <h3 className="text-xl font-bold text-white mb-2 font-jakarta">Mitigation Timeline</h3>
+      <p className="text-xs text-[#8A9BB5] mb-8 font-jakarta">Strategic phasing of mitigations to address risks before they impact key milestones.</p>
       
       {/* Horizontal on Desktop, Vertical on Mobile */}
       <div className="flex flex-col md:flex-row justify-between items-stretch gap-6 relative">
@@ -148,12 +148,12 @@ const MitigationTimeline = () => {
               <span className="text-[10px] font-black uppercase text-[#FFD84D] tracking-widest">{step.status}</span>
             </div>
             
-            <h4 className="text-sm font-bold text-white mb-1.5">{step.title}</h4>
-            <p className="text-xs text-[#8A9BB5] leading-relaxed mb-3">{step.desc}</p>
+            <h4 className="text-sm font-bold text-white mb-1.5 font-jakarta">{step.title}</h4>
+            <p className="text-xs text-[#8A9BB5] leading-relaxed mb-3 font-jakarta">{step.desc}</p>
             
             <div className="mt-auto pt-2 border-t border-white/10 w-full">
-              <span className="text-[9px] uppercase font-bold text-white/50 block">Mitigates:</span>
-              <span className="text-[10px] font-bold text-[#FFD84D]">{step.mitigates}</span>
+              <span className="text-[9px] uppercase font-bold text-white/50 block tracking-wider">Mitigates:</span>
+              <span className="text-[10px] font-bold text-[#FFD84D] font-jakarta">{step.mitigates}</span>
             </div>
           </div>
         ))}
@@ -166,23 +166,23 @@ const RiskPrioritySummary = () => {
   return (
     <div className="glass-card p-6 border border-[#FFD84D]/20 border-l-4 border-l-[#FFD84D] flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
       <div className="flex-1">
-        <h3 className="text-lg font-bold text-white mb-3">Risk Priority Summary</h3>
+        <h3 className="text-lg font-bold text-white mb-3 font-jakarta">Risk Priority Summary</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
             <span className="text-[9px] uppercase font-bold text-[#8A9BB5] tracking-wider block">Highest Impact Risk</span>
-            <p className="text-sm text-white/90 mt-1 font-medium">
+            <p className="text-sm text-white/90 mt-1 font-medium font-jakarta">
               <span className="text-[#FFD84D] font-bold">Brand Trust Gap</span> (B2B Tet buyers avoid unknown brands).
             </p>
           </div>
           <div>
             <span className="text-[9px] uppercase font-bold text-[#8A9BB5] tracking-wider block">Fastest Mitigation</span>
-            <p className="text-sm text-white/90 mt-1 font-medium">
+            <p className="text-sm text-white/90 mt-1 font-medium font-jakarta">
               <span className="text-[#FFD84D] font-bold">Sample kit + B2B proof system</span> (delivers direct trust proof).
             </p>
           </div>
           <div>
             <span className="text-[9px] uppercase font-bold text-[#8A9BB5] tracking-wider block">Residual Risk Level</span>
-            <p className="text-sm text-white/90 mt-1 font-medium">
+            <p className="text-sm text-white/90 mt-1 font-medium font-jakarta">
               Managed to <span className="text-[#FFD84D] font-bold">Low</span> after active storytelling & delivery timeline controls.
             </p>
           </div>
@@ -191,7 +191,7 @@ const RiskPrioritySummary = () => {
       
       <div className="text-right border-t border-white/10 md:border-none pt-4 md:pt-0 w-full md:w-auto">
         <span className="text-[9px] uppercase font-bold text-[#8A9BB5] tracking-wider block">Reference Strategy</span>
-        <span className="text-xs font-bold text-[#FFD84D] mt-1 block">B2B Tet Gifting Standard</span>
+        <span className="text-xs font-bold text-[#FFD84D] mt-1 block font-jakarta">B2B Tet Gifting Standard</span>
       </div>
     </div>
   );
@@ -210,6 +210,17 @@ const RiskMitigation = () => {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
   };
+
+  const allRisks = [
+    { name: "1. Big Idea without proof", dangerous: "May be judged as emotional but unsupported.", mitigation: "Proof stack: catalog, samples, testimonials, PR, landing page." },
+    { name: "2. Nón lá becomes cheap souvenir", dangerous: "Weakens premium perception.", mitigation: "Use nón lá as metaphor for protecting identity and face, not just decoration." },
+    { name: "3. Brand trust gap", dangerous: "Biggest barrier for corporate gifting.", mitigation: "Sample first, professional quote, real reviews, corporate proof." },
+    { name: "4. Low-quality ad leads", dangerous: "Wastes money without generating B2B revenue.", mitigation: "Optimize for qualified lead, not cheap message." },
+    { name: "5. December is too late for bulk orders", dangerous: "Corporate buyers need shortlist, budget approval, and lead-time confirmation earlier.", mitigation: "Qualify in October, proposal and final sample in November, December for fulfillment and add-ons." },
+    { name: "6. 4B budget to 12B revenue pressure", dangerous: "MER 3.0x is hard if lead quality or B2B close rates are weak.", mitigation: "Phase-gate spending; do not scale November if MQL-to-quote or quote-to-deposit is below standard." },
+    { name: "7. Tet delivery delay", dangerous: "Damages giver’s face and brand credibility.", mitigation: "Clear delivery promise, early order close, logistics buffer." },
+    { name: "8. B2B discount reduces net revenue", dangerous: "If revenue is calculated on list price but actual discount is 20–35%, the 9B B2B target is inflated.", mitigation: "Calculate KPI by net AOV after discount; control discount tier and require deposit." }
+  ];
 
   return (
     <SectionWrapper 
@@ -244,24 +255,24 @@ const RiskMitigation = () => {
                 <span className="text-4xl font-black !text-white/45">01</span>
               </div>
               
-              <h3 className="text-2xl font-bold !text-white mb-4">Brand Trust Gap</h3>
+              <h3 className="text-2xl font-bold !text-white mb-4 font-jakarta">Brand Trust Gap</h3>
               
               <div className="mb-6 flex-1">
                 <h4 className="text-xs uppercase font-bold !text-red-400 mb-2 tracking-wider">Why Dangerous</h4>
-                <p className="!text-white/85 text-sm leading-relaxed">
-                  Corporate buyers avoid unknown brands at Tet.
+                <p className="!text-white/85 text-sm leading-relaxed font-jakarta">
+                  Biggest barrier for corporate gifting. Buyers avoid unknown brands.
                 </p>
               </div>
               
               <div className="bg-[#22C55E]/15 p-4 rounded-lg border border-[#22C55E]/30">
-                <h4 className="text-xs uppercase font-bold !text-[#22C55E] mb-2 tracking-wider flex items-center">
+                <h4 className="text-xs uppercase font-bold !text-[#22C55E] mb-2 tracking-wider flex items-center font-jakarta">
                   <svg className="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   Mitigation
                 </h4>
-                <p className="!text-white/95 text-sm font-medium">
-                  Sample kit program + B2B proof system + PR authority
+                <p className="!text-white/95 text-sm font-medium font-jakarta">
+                  Sample first, professional quote, real reviews, corporate proof.
                 </p>
               </div>
             </div>
@@ -280,27 +291,24 @@ const RiskMitigation = () => {
                 <span className="text-4xl font-black !text-white/45">02</span>
               </div>
               
-              <h3 className="text-2xl font-bold !text-white mb-4">Format Stigma</h3>
+              <h3 className="text-2xl font-bold !text-white mb-4 font-jakarta">Big Idea without proof</h3>
               
               <div className="mb-6 flex-1">
                 <h4 className="text-xs uppercase font-bold !text-orange-400 mb-2 tracking-wider">Why Dangerous</h4>
-                <p className="!text-white/85 text-sm leading-relaxed">
-                  Perception undermines premium positioning ("instant = cheap").
+                <p className="!text-white/85 text-sm leading-relaxed font-jakarta">
+                  May be judged as emotional but unsupported by corporate givers.
                 </p>
               </div>
               
               <div className="bg-[#22C55E]/15 p-4 rounded-lg border border-[#22C55E]/30">
-                <h4 className="text-xs uppercase font-bold !text-[#22C55E] mb-2 tracking-wider flex items-center">
+                <h4 className="text-xs uppercase font-bold !text-[#22C55E] mb-2 tracking-wider flex items-center font-jakarta">
                   <svg className="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   Mitigation
                 </h4>
-                <p className="!text-white/95 text-sm font-medium mb-2">
-                  Packaging + storytelling (K Coffee, Hạt A precedent)
-                </p>
-                <p className="text-xs italic !text-white/85 border-l-2 border-[#22C55E] pl-2 bg-white/5 py-1 pr-1">
-                  "This is a packaging problem, not a product problem"
+                <p className="!text-white/95 text-sm font-medium font-jakarta">
+                  Proof stack: catalog, sample kit, real testimonials, PR, and landing page.
                 </p>
               </div>
             </div>
@@ -319,24 +327,24 @@ const RiskMitigation = () => {
                 <span className="text-4xl font-black !text-white/45">03</span>
               </div>
               
-              <h3 className="text-2xl font-bold !text-white mb-4">Tet Delivery Failure</h3>
+              <h3 className="text-2xl font-bold !text-white mb-4 font-jakarta">December is too late</h3>
               
               <div className="mb-6 flex-1">
                 <h4 className="text-xs uppercase font-bold !text-yellow-400 mb-2 tracking-wider">Why Dangerous</h4>
-                <p className="!text-white/85 text-sm leading-relaxed">
-                  Gifter loses face if gift arrives late.
+                <p className="!text-white/85 text-sm leading-relaxed font-jakarta">
+                  Corporate buyers need shortlist, budget approval, and lead-time confirmation earlier.
                 </p>
               </div>
               
               <div className="bg-[#22C55E]/15 p-4 rounded-lg border border-[#22C55E]/30">
-                <h4 className="text-xs uppercase font-bold !text-[#22C55E] mb-2 tracking-wider flex items-center">
+                <h4 className="text-xs uppercase font-bold !text-[#22C55E] mb-2 tracking-wider flex items-center font-jakarta">
                   <svg className="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   Mitigation
                 </h4>
-                <p className="!text-white/95 text-sm font-medium">
-                  Close B2B orders by Nov 30 + 10% inventory buffer + proactive delivery timeline communication
+                <p className="!text-white/95 text-sm font-medium font-jakarta">
+                  Qualify in October, proposal & final sample in November, December for fulfillment.
                 </p>
               </div>
             </div>
@@ -351,6 +359,35 @@ const RiskMitigation = () => {
         
         <div className="mt-8">
           <RiskPrioritySummary />
+        </div>
+
+        {/* Expanded Strategic Risk Mitigation Matrix Table */}
+        <div className="glass-card overflow-hidden mt-8 border border-[#FFD84D]/15">
+          <div className="p-6 border-b border-white/10 bg-white/5">
+            <h3 className="text-lg font-bold text-white font-jakarta">B2B IMC Strategic Risk Mitigation Matrix</h3>
+            <p className="text-xs text-[#8A9BB5] mt-0.5 font-jakarta">Full breakdown of the 8 core risks and tactical mitigations protecting the B2B sales engine.</p>
+          </div>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-xs sm:text-sm">
+              <thead>
+                <tr className="border-b border-white/15 bg-white/[0.02]">
+                  <th className="py-3 px-4 font-bold text-[#8A9BB5] w-[220px]">Risk Area</th>
+                  <th className="py-3 px-4 font-bold text-[#8A9BB5] w-[240px]">Why Dangerous</th>
+                  <th className="py-3 px-4 font-bold text-[#8A9BB5]">Tactical Mitigation Strategy</th>
+                </tr>
+              </thead>
+              <tbody className="text-white/80">
+                {allRisks.map((risk, idx) => (
+                  <tr key={idx} className="border-b border-white/5 hover:bg-white/[0.01] last:border-0">
+                    <td className="py-3 px-4 font-bold text-white font-jakarta">{risk.name}</td>
+                    <td className="py-3 px-4 text-white/70 leading-relaxed font-jakarta">{risk.dangerous}</td>
+                    <td className="py-3 px-4 text-[#FFD84D] font-medium leading-relaxed font-jakarta">{risk.mitigation}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </SectionWrapper>

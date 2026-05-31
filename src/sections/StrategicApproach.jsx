@@ -34,7 +34,7 @@ const PillarToKPIMap = () => {
       desc: "Provide custom engraving, bulk quote engines, B2B CRM, and corporate sample kits to remove B2B friction.",
       kpis: [
         { label: "B2B Lead Volume", target: "200 Leads" },
-        { label: "CVR / ROAS Goal", target: ">3% / >3x" }
+        { label: "CVR / Ad ROAS Goal", target: ">3% / >3x" }
       ],
       color: "border-[#22C55E]/30 text-[#22C55E] bg-[#22C55E]/5",
       badgeColor: "bg-[#22C55E] text-white",
@@ -371,7 +371,7 @@ function StrategicApproach() {
                   </tr>
                   <tr className="hover:bg-white/5 transition-colors">
                     <td className="py-3 px-4 font-bold text-[#F4B400]">ENABLE</td>
-                    <td className="py-3 px-4">ROAS</td>
+                    <td className="py-3 px-4">Ad ROAS</td>
                     <td className="py-3 px-4 font-bold">&gt;3×</td>
                     <td className="py-3 px-4 text-white/70">Ad platform + sales data</td>
                   </tr>
